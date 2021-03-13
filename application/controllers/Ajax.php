@@ -187,8 +187,34 @@ class Ajax extends CI_Controller {
        echo "</tbody>";
        echo "</table>";
     }
-      echo "</tbody>";
-      echo "<table>";   
+    else if($menu == "hisob")
+    {
+       $data['hisob']=$this->db->query("SELECT * from ".$menu)->result_array();
+       echo "<table class='table table-hover'>";
+       echo "<thead>";
+       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th></tr>";
+       echo "</thead>";
+       echo "<tbody>";
+       echo "<tr><td><select class='form-control' id='name_hisob'>";
+          foreach($data['hisob'] as $s)
+          {
+              echo "<option value='".$s['id']."'>".$s['name_hisob']."</option>";
+          }
+          
+            echo "<td><input type='number'></td><td><button class='btn btn-outline-success'>Save</button></td>"; 
+          
+      echo "</tr>";
+            foreach ($data['hisob'] as $b)
+                {
+                  echo "<tr id='".$b['id']."'>";
+                  echo "<td>".$b['name_hisob']."</td><td>".$b['hisob_summ']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_basket' name='".$b['id']."' >Edit</button><button class='btn btn-success updbasket' name='".$b['id']."'>Update</button></div></td>";
+                  echo "</tr>";
+                }
+
+       echo "</tbody>";
+       echo "</table>";
+    }
+  
   }
 
   Public function user_create()
