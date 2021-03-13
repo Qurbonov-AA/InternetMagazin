@@ -66,33 +66,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  <li class="list-group-item" name='menu'>Menu</li>
 				  <li class="list-group-item" name="services">Xizmatlar</li>
 				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
+                  <li class="list-group-item" name='hisob'>Hisob kitob</li>
 				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
-				<div id="calc">
-                    <div id="calWrap">
-                        <div class="top">
-                            <input type="text" v-model="total" />
-                        </div>
-                        <div id="keys">
-                            <div v-on:click="key(7)">7</div>
-                            <div v-on:click="key(8)">8</div>
-                            <div v-on:click="key(9)">9</div>
-                            <div v-on:click="key('+')">+</div>
-                            <div v-on:click="key(4)">4</div>
-                            <div v-on:click="key(5)">5</div>
-                            <div v-on:click="key(6)">6</div>
-                            <div v-on:click="key('-')">-</div>
-                            <div v-on:click="key(1)">1</div>
-                            <div v-on:click="key(2)">2</div>
-                            <div v-on:click="key(3)">3</div>
-                            <div v-on:click="key('*')">*</div>
-                            <div v-on:click="key(0)">0</div>
-                            <div v-on:click="clear()" class="clear">c</div>
-                            <div v-on:click="equal()">=</div>
-                            <div v-on:click="key('/')">/</div>
-                        </div>
-                    </div>  
-			</div>
+				
 			</div>
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
@@ -581,24 +558,7 @@ Highcharts.chart('container2', {
 
 </script>
 <script type="text/javascript">
-    var calc = new Vue({
-        el: '#calc',
-        data: {
-          total: 0
-        },
-        methods: {
-            key: function(num) {
-            return this.total += num;
-            },
-            clear: function() {
-            return this.total = 0;
-            },
-            equal: function() {
-             let equal = this.total;
-             return this.total = eval(equal);
-            }         
-        }
-    });
+    
 	$(document).ready(function(){
 
 		$("li").on("click",function(){
@@ -618,7 +578,9 @@ Highcharts.chart('container2', {
 				success : function(get_menu)
 					{
 						$("#dinamic_menu").html(get_menu);
+                        console.log(get_menu);
 					} 
+
 			});
 		});
 
