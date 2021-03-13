@@ -1,0 +1,2 @@
+[01-Mar-2021 01:18:09 Asia/Tashkent] PHP Fatal error:  Call to undefined function base_url() in /home/msansnav/magazin.msans-navoiy.uz/application/controllers/Basket.php on line 8
+[04-Mar-2021 20:14:56 Asia/Tashkent] PHP Parse error:  syntax error, unexpected end of file in /home/msansnav/magazin.msans-navoiy.uz/application/views/welcome_message.php on line 411
