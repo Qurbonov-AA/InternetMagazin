@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="log-sign" style="--i: 1.8s" >
         <a href="<?php echo base_url('index.php/welcome/admin');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-unlock" aria-hidden="true"></i></button> </a>        
         <a href="<?php echo base_url('index.php/basket');?>"><button  class="btn btn-outline-success"><i class="fa fa-2x fa-shopping-cart"> {{basket_count}} </i> </button>  </a>
-        <a href="<?php echo base_url('index.php/auth/login');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
+        <a href="<?php echo base_url('auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
         <a href="<?php echo base_url('index.php/auth/logout');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-out"> </i></button></a> 
         <a href="#"><button @click="change_language('ru')" class="btn btn-outline-success "><i class="fa fa-2x"> RU </i></button></a>
         <a href="#"><button @click="change_language('uz')" class="btn btn-outline-success "><i class="fa fa-2x"> UZ </i></button></a>
