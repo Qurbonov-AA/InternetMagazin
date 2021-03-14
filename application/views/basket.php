@@ -143,7 +143,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <a href="<?php echo base_url('index.php/basket');?>"><button  class="btn btn-outline-success"><i class="fa fa-2x fa-shopping-cart"> {{basket_count}} </i> </button> </a>
                  <a href="<?php echo base_url('index.php/auth/login');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
                  <a href="<?php echo base_url('index.php/auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-user-plus"> </i></button></a> 
-                 <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a>           
+                 <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a>    
+                 <button @click="change_language('ru')" class="btn btn-outline-info">RU</button>
+                 <button @click="change_language('uz')" class="btn btn-outline-info">UZ</button>       
   </div>
 </nav>
 
@@ -158,37 +160,62 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="container-fluid" id="basket">
     <div class="row">
       <div class="table-responsive">
-       <table class="table">
+        <table class="table">
           <thead>
           <tr>
-             <th> Tovarning nomi </th><th> Tovarning narxi </th> <th> buyurtmalar soni </th> 
-             <th> buyurtma berilgan sana </th> <th> Buyurtma holati </th>
+            <template class="lang" v-if="lang === 'uz'"> 
+               <th> Tovarning nomi </th>
+               <th> Tovarning narxi </th> 
+               <th> buyurtmalar soni </th> 
+               <th> buyurtma berilgan sana </th> 
+               <th> Buyurtma holati </th>
+               <th><button class="btn btn-success" @click="change_filter('Waiting')"> Qabulda</button></th>
+               <th><button class="btn btn-success" @click="change_filter('Active')">Qayta ishlash</button></th>
+               <th><button class="btn btn-success" @click="change_filter('Success')">Yetkazib berildi</button></th>
+            </template>
+            <template class="lang" v-else="lang === 'ru'"> 
+               <th> Имя бренда </th>
+               <th> Цена товара </th>             
+               <th> количество заказов </th>           
+               <th> Дата заказа </th>              
+               <th> Статус заказа </th>
+                <th><button class="btn btn-success" @click="change_filter('Waiting')">На ресепшене</button></th>
+                <th><button class="btn btn-success" @click="change_filter('Active')">Обработка</button></th>
+                <th><button class="btn btn-success" @click="change_filter('Success')">Доставленный</button></th>
+            </template>    
+             
+                                  
+
+     
           </tr> 
           </thead>
           <tbody>
-              <tr v-for="upd in basket_update" class="upd_tr" style=" ">
-                <td style="width: 25%;"> {{upd.t_name}}</td>
-                <td style="width: 15%;"> {{upd.price}}</td>
-                <td style="width: 10%;"> <input type="number" class="form-control" :value="upd.count" @change="get_gcount($event.target.value)"></td>
-                <td style="width: 15%;"> {{ upd.dates }} </td>
-                <td style="width: 15%;"> {{ upd.status }} </td>
-                <td style="width: 20%;"><button class="btn btn-info" @click="fn_save(upd.id)">Save</button></td>
-              </tr>
-              <tr>
-                  <td>  Tovarlarning nomi </td><td> Umumiy summa {{totalQuantity}} </td><td>Umumiy soni {{totalPrice}}</td><td></td>
-                  <td><button class="btn btn-success" @click="change_filter('Waiting')">Qabulda</button><button class="btn btn-success" @click="change_filter('Active')">Qayta ishlash</button><button class="btn btn-success" @click="change_filter('Success')">Yetkazib berildi</button></td><td></td>
+              <tr v-for="upd in basket_update" >
+                <template class="lang" v-if="lang==='uz'">
+                <td> {{upd.t_name}}</td>
+                </template>
+                <template class="lang" v-else="lang==='ru'">
+                <td> {{upd.t_name_ru}}</td>
+                </template>
+                <td> {{upd.price}}</td>
+                <td> <input type="number" class="form-control" :value="upd.count" @change="get_gcount($event.target.value)"></td>
+                <td> {{ upd.dates }} </td>
+                <td> {{ upd.status }} </td>
+                <td><button class="btn btn-info" @click="fn_save(upd.id)">Save</button></td>
               </tr>
               <tr v-for="(good,i) in basket_goods">
-                <template v-if="good.status === tabs">
-                <td > {{ good.t_name }}</td>
-                <td > {{ good.price }} </td>
-                <td > {{ good.count }} </td>
-                <td > {{ good.dates }} </td>
-                <td > {{ good.status }} </td>
-                <td><button class="btn btn-outline-danger" @click = "fn_delete(i)">Delete</button></td><td><button class='btn btn-outline-info edit_basket' @click="fn_edit(i)">Edit</button></td>
+                <template class="lang" v-if="lang==='uz'">
+                <td> {{ good.t_name }}</td>
                 </template>
-              </tr>  
-              
+                <template class="lang" v-else="lang==='ru'">
+                <td> {{ good.t_name_ru }}</td>
+                </template>
+                <td> {{ good.price }} </td>
+                <td> {{ good.count }} </td>
+                <td> {{ good.dates }} </td>
+                <td> {{ good.status }} </td>
+                <td><button class="btn btn-outline-danger" @click = "fn_delete(i)">Delete</button></td><td><button class='btn btn-outline-info edit_basket' @click="fn_edit(i)">Edit</button></td>
+              </tr>          
           </tbody>             
        </table> 
        </div>                
@@ -211,6 +238,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             basket_update: [],      
             gcount : 0,  
             tabs : "Waiting",
+            lang      :'uz', 
             url_goods : "<?php echo base_url('index.php/ajax/get_basket_goods');?>",
             url_delete: "<?php echo base_url('index.php/ajax/basket_delete');?>",
             url_update: "<?php echo base_url('index.php/ajax/basket_update');?>",
@@ -342,6 +370,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             msg: 'Hello WORLD Vue!',
             basket_count : 0,
             basket_goods : [],
+            language  :'uz',
             url_count : "<?php echo  base_url('index.php/ajax/count_basket'); ?>",  
             url_goods : "<?php echo  base_url('index.php/ajax/get_basket_goods'); ?>",
             
@@ -352,6 +381,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 app.show_cat = true;
                 app.show_scat = false;
                 console.log("show menu");
+            },
+            change_language: function(lang)
+            { 
+                app.lang = lang;
             }
         },
         mounted()
