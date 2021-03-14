@@ -144,8 +144,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <a href="<?php echo base_url('index.php/auth/login');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
                  <a href="<?php echo base_url('index.php/auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-user-plus"> </i></button></a> 
                  <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a>    
-                 <button @click="change_language('ru')" class="btn btn-outline-info">RU</button>
-                 <button @click="change_language('uz')" class="btn btn-outline-info">UZ</button>       
+                 <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+                 <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>       
   </div>
 </nav>
 
