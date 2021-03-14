@@ -189,28 +189,46 @@ class Ajax extends CI_Controller {
     }
     else if($menu == "hisob")
     {
-       $data['hisob']=$this->db->query("SELECT * from ".$menu)->result_array();
+       $data['hisob']        =$this->db->query("SELECT h.*,x.xarajat_turi from ".$menu." h, xarajat_turi x where h.xarajat_nomi= x.id ")->result_array();
+       $data['xarajat_turi'] = $this->db->query("SELECT * from xarajat_turi")->result_array();
        echo "<table class='table table-hover'>";
        echo "<thead>";
-       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th></tr>";
+       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th><th>Sanasi</th></tr>";
        echo "</thead>";
        echo "<tbody>";
-       echo "<tr><td><select class='form-control' id='name_hisob'>";
-          foreach($data['hisob'] as $s)
+       echo "<tr><td><select class='form-control' id='xarajat_nomi'>";
+          foreach($data['xarajat_turi'] as $x)
           {
-              echo "<option value='".$s['id']."'>".$s['name_hisob']."</option>";
-          }
-          
-            echo "<td><input type='number'></td><td><button class='btn btn-outline-success'>Save</button></td>"; 
+               echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
+          }  
+            echo "<td><input type='number' class='form-control' id='xarajat_summ'></td><td><button class='btn btn-outline-success' id='btn_hisob_save'>Save</button></td>"; 
           
       echo "</tr>";
             foreach ($data['hisob'] as $b)
                 {
                   echo "<tr id='".$b['id']."'>";
-                  echo "<td>".$b['name_hisob']."</td><td>".$b['hisob_summ']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_basket' name='".$b['id']."' >Edit</button><button class='btn btn-success updbasket' name='".$b['id']."'>Update</button></div></td>";
+                  echo "<td>".$b['xarajat_turi']."</td><td>".$b['xarajat_summ']."</td><td>".$b['data']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_hisob' name='".$b['id']."' >Edit</button><button class='btn btn-success updhisob' name='".$b['id']."'>Update</button></div></td>";
                   echo "</tr>";
                 }
 
+       echo "</tbody>";
+       echo "</table>";
+    }
+    else if($menu == "xarajat_turi")
+    {
+       $data['xarajat_turi']=$this->db->query("SELECT * from ".$menu)->result_array();
+       echo "<table class='table table-hover'>";
+       echo "<thead>";
+       echo "<tr><th>xarajat_turi</th></tr>";
+       echo "</thead>";
+       echo "<tbody>";
+       echo "<td><input type='number' class='form-control' id='xarajat_summ'></td><td><button class='btn btn-outline-success' id='btn_hisob_save'>Save</button></td>";
+            foreach ($data['xarajat_turi'] as $b)
+                {
+                  echo "<tr id='".$b['id']."'>";
+                  echo "<td>".$b['xarajat_turi']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_basket' name='".$b['id']."' >Edit</button><button class='btn btn-success updbasket' name='".$b['id']."'>Update</button></div></td>";
+                  echo "</tr>";
+                }
        echo "</tbody>";
        echo "</table>";
     }
@@ -519,6 +537,33 @@ class Ajax extends CI_Controller {
             echo "Ma'lumotlarni yozishda xatolik bor";
            }
          }  
+  }
+
+ Public function hisob_ins()
+  {
+    $xarajat_nomi = $this->input->post('xarajat_nomi');
+    $xarajat_summ = $this->input->post('xarajat_summ');
+    if( strlen($xarajat_summ)>0)
+    {
+      $data_ins = array(
+        'xarajat_nomi'=> $xarajat_nomi,
+        'xarajat_summ'=> $xarajat_summ,
+        'data'        => Date('Y-m-d H:i:s')
+      );
+      $error =$this->db->insert('hisob', $data_ins);
+        if ($error == 1)
+          {
+            echo "Ma'lumotlar bazaga yozildi";
+          }
+        else
+          {
+            echo "Ma'lumotlarni yozishda xatolik bor";
+          }
+      }
+      else
+      {
+        echo "Hamma qatorlarni to`ldirish shart!";
+      }
   }
 
 
@@ -844,8 +889,30 @@ public function groups_upd()
         echo "O'zgartirishda xatolik bor!";
       }
   }
-
-Public function get_types()
+ Public function hisob_upd()
+  {
+    $id  =$this->input->post('id');
+    $xarajat_nomi = $this->input->post('xarajat_nomi');
+    $xarajat_summ = $this->input->post('xarajat_summ');
+    $data         = $this->input->post('data');
+    if(strlen($xarajat_nomi)>0 and strlen($xarajat_summ)>0 and strlen($data)>0)
+    {
+       $error = $this->db->query('UPDATE hisob SET xarajat_nomi = "'.$xarajat_nomi.'", xarajat_summ ="'.$xarajat_summ.'", data="'.$data.'" where id = "'.$id.'"');
+       if($error =1)
+       {
+        echo "Ma'lumot muvofaqiyatli o'zgartirildi!";
+       }
+       else
+       {
+        echo "O'zgartirishda xatolik bor!";
+       }
+    }
+    else
+    {
+       echo "Ma'lumotni to'liq kiriting!";
+    }
+  }
+ Public function get_types()
   {
       $data['types'] = $this->db->query("SELECT * from types ")->result_array();
          
@@ -873,7 +940,14 @@ public function get_services()
             echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
           }
   }
-
+ public function get_xarajat_turi()
+  {
+    $data['xarajat_turi'] = $this->db->query("SELECT id, xarajat_turi FROM xarajat_turi")->result_array();
+      foreach($data['xarajat_turi'] as $x)
+          {
+            echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
+          }
+  }
 /*                        update knopkalar finish               */
 
 Public function get_categories()
