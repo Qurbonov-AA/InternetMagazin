@@ -66,7 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  <li class="list-group-item" name='menu'>Menu</li>
 				  <li class="list-group-item" name="services">Xizmatlar</li>
 				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
-                  <li class="list-group-item" name='hisob'>Hisob kitob</li>
+                  <li class="list-group-item" name='hisob'>Xarajatlar</li>
+                  <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
 				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
 				
@@ -578,7 +579,6 @@ Highcharts.chart('container2', {
 				success : function(get_menu)
 					{
 						$("#dinamic_menu").html(get_menu);
-                        console.log(get_menu);
 					} 
 
 			});
@@ -770,6 +770,22 @@ Highcharts.chart('container2', {
         				alert(get_good);
         			}
         	});
+        });
+
+        $("body").on('click','#btn_hisob_save', function(){
+            var xarajat_nomi = $('#xarajat_nomi').val(),
+                xarajat_summ = $('#xarajat_summ').val();
+            var url_xarajat ="<?php echo base_url('index.php/ajax/hisob_ins')?>";
+              $.ajax({
+                url  : url_xarajat,
+                type :'Post',
+                data :{'xarajat_nomi': xarajat_nomi,
+                       'xarajat_summ':xarajat_summ},
+                success:function(get_hisob)
+                    {
+                        alert(get_hisob);
+                    }                 
+              });
         });
 
         
@@ -1048,7 +1064,6 @@ Highcharts.chart('container2', {
         	    		{
         	    			$("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
         	    		}
-
         	    });
         	     $.ajax({
         	     	url   : url_services,
@@ -1096,6 +1111,39 @@ Highcharts.chart('container2', {
         	});
         });
 /*                       goods     update   finish             */
+
+/*                     hisob update start                      */
+        $('body').on('click','.edit_hisob', function(){
+            var id     = $(this).attr('name'),
+                xarajat_nomi = $("#"+id+" td:eq(0)").text();
+            var url_hisob = "<?php echo base_url('index.php/ajax/get_xarajat_turi');?>";
+            $.ajax({
+                    url : url_hisob,
+                    type : "POST",
+                    data : {'id' :id},
+                    success: function(xarajat_turi)
+                        {
+                            $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                        }
+                });
+        });
+
+        $('body').on('click','.updhisob',function(){
+            var id =$(this).attr('name'),
+                xarajat_nomi = $('#xarajat_nomi'+id).val();
+            var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
+            $.ajax({
+                url    : url_hisob_upd,
+                type   : 'POST',
+                data   : {'id'          : id,
+                          'xarajat_nomi': xarajat_nomi},
+                success:function(hisob_upd)
+                    {
+                       alert(hisob_upd)
+                    }
+            });
+        });
+/*                     hisob update finish                     */
 
 /*                       service     update   start             */
 		$("body").on("click", ".edit_basket", function(){
