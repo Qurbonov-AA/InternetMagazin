@@ -612,7 +612,7 @@ Highcharts.chart('container2', {
 	          success:function(form)
 	             	{
 	             		alert(form);
-	             		location.reload();
+	             		//location.reload();
 	             	}       
 	        });
        });
@@ -634,7 +634,7 @@ Highcharts.chart('container2', {
 				success :  function(get_ins)
 					{
 						alert(get_ins);
-						location.reload();
+						//location.reload();
 					}
 			});	
 		});
@@ -655,7 +655,7 @@ Highcharts.chart('container2', {
 				success :  function(get_ins)
 					{
 						alert(get_ins);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -681,7 +681,7 @@ Highcharts.chart('container2', {
 				success :  function(get_ins)
 					{
 						alert(get_ins);
-						location.reload();
+						//location.reload();
 					}
 			});
 
@@ -700,7 +700,7 @@ Highcharts.chart('container2', {
 				success: function(groups_save)
 					{
 						alert(groups_save);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -721,7 +721,7 @@ Highcharts.chart('container2', {
         		success: function(get_menu)
         			{
         				alert(get_menu);
-        				location.reload();
+        				//location.reload();
         			}
         	});
         });
@@ -739,7 +739,7 @@ Highcharts.chart('container2', {
 				success : function(ser)
 					{
 						alert(ser);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -778,7 +778,7 @@ Highcharts.chart('container2', {
             var url_xarajat ="<?php echo base_url('index.php/ajax/hisob_ins')?>";
               $.ajax({
                 url  : url_xarajat,
-                type :'Post',
+                type :"Post",
                 data :{'xarajat_nomi': xarajat_nomi,
                        'xarajat_summ':xarajat_summ},
                 success:function(get_hisob)
@@ -786,6 +786,20 @@ Highcharts.chart('container2', {
                         alert(get_hisob);
                     }                 
               });
+        });
+
+        $("body").on('click','#btn_xarajat_turi_save',function(){
+            var xarajat_turi = $('#xarajat_turi').val();
+            var url_xarajat_turi = "<?php echo base_url('index.php/ajax/xarajat_turi_ins')?>";
+            $.ajax({
+                url   : url_xarajat_turi,
+                type  : "POST",
+                data  :{'xarajat_turi':xarajat_turi},
+                success:function(xarajatlar_ins)
+                    {
+                        alert(xarajatlar_ins)
+                    }
+            });
         });
 
         
@@ -1027,9 +1041,9 @@ Highcharts.chart('container2', {
         		data: {'id':id, 
         		       'ser_name':save_name,
         		       'ser_name_ru':save_name_ru},
-        		success: function(ser_upd)
+        		success: function(service_upd)
         			{
-        				alert(ser_upd);
+        				alert(service_upd);
         			}
         	})
         }); 
@@ -1120,12 +1134,13 @@ Highcharts.chart('container2', {
             $.ajax({
                     url : url_hisob,
                     type : "POST",
-                    data : {'id' :id},
+                    data : {'id' :id,
+                            'xarajat_nomi':xarajat_nomi},
                     success: function(xarajat_turi)
                         {
                             $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
                         }
-                });
+            });
         });
 
         $('body').on('click','.updhisob',function(){
@@ -1144,6 +1159,34 @@ Highcharts.chart('container2', {
             });
         });
 /*                     hisob update finish                     */
+
+/*                     xarajat_turi update start                     */
+        $('body').on('click','.edit_xarajat_turi',function(){
+            var id           = $(this).attr('name'),
+                xarajat_turi = $("#"+id+" td:eq(0)").text();
+            $("#"+id+" td:eq(0)").html("<input class='form-control' id='xarajat_turi"+id+"' value='"+xarajat_turi+"'>");
+        });
+
+        $('body').on('click','.updxarajat_turi',function(){
+            var id          = $(this).attr('name'), 
+                xarajat_turi = $("#xarajat_turi"+id).val();
+            var url_xarajat_turi = "<?php echo base_url('index.php/ajax/xarajat_turi_upd')?>";
+            $.ajax({
+                url   : url_xarajat_turi,
+                type  : "POST",
+                data  : {'id':id,
+                         'xarajat_turi': xarajat_turi},
+                success:function(xarajat_upd)
+                    {
+                        alert(xarajat_upd);
+                    }
+            });
+
+        
+
+        });
+
+/*                     xarajat_turi update finish                     */
 
 /*                       service     update   start             */
 		$("body").on("click", ".edit_basket", function(){
@@ -1164,7 +1207,7 @@ Highcharts.chart('container2', {
         		success: function(basket_upd)
         			{
         				alert(basket_upd);
-        				location.reload();
+        				//location.reload();
         			}
         	})
         });
@@ -1182,7 +1225,7 @@ Highcharts.chart('container2', {
               success:function(users_del)
               	{
               		alert(users_del);
-              		location.reload();
+              		//location.reload();
               	}
            });
         });
@@ -1198,7 +1241,7 @@ Highcharts.chart('container2', {
 				success: function(btn_del)
 					{
 						alert(btn_del);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -1214,7 +1257,7 @@ Highcharts.chart('container2', {
 				success: function(btn_del)
 					{
 						alert(btn_del);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});  
@@ -1230,7 +1273,7 @@ Highcharts.chart('container2', {
 				success: function(btn_del)
 					{
 						alert(btn_del);
-						location.reload();
+						//location.reload();
 					}
 			});
 		}); 
@@ -1245,7 +1288,7 @@ Highcharts.chart('container2', {
 				success: function(menu_del)
 					{
 						alert(menu_del);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -1261,7 +1304,7 @@ Highcharts.chart('container2', {
 				success: function(service_del)
 					{
 						alert(service_del);
-						location.reload();
+						//location.reload();
 					}
 			});
 		});
@@ -1276,7 +1319,7 @@ Highcharts.chart('container2', {
              success:function(brands_del)
          		{
          			alert(brands_del);
-         			location.reload();
+         			//location.reload();
          		}
           });
        });
@@ -1291,11 +1334,24 @@ Highcharts.chart('container2', {
        		success: function(goods_del)
        			{
        				alert(goods_del);
-       				location.reload();
+       				//location.reload();
        			}
        	});
        }); 
-
+ 
+      $('body').on('click','#btn_xarajat_turi',function(){
+        var id = $(this).attr('name');
+        var url_xarajat_turi = "<?php echo base_url('index.php/ajax/btn_xarajat_turi_del')?>";
+        $.ajax({
+            url  : url_xarajat_turi,
+            type : "POST",
+            data : {'id':id},
+            success:function(xarajat_turi_del)
+                {
+                    alert(xarajat_turi_del);
+                }
+        }); 
+      });
 
 /*                 Delete knopkalari  finish                 */
 
