@@ -1041,9 +1041,9 @@ Highcharts.chart('container2', {
         		data: {'id':id, 
         		       'ser_name':save_name,
         		       'ser_name_ru':save_name_ru},
-        		success: function(ser_upd)
+        		success: function(service_upd)
         			{
-        				alert(ser_upd);
+        				alert(service_upd);
         			}
         	})
         }); 
