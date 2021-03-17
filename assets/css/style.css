@@ -84,7 +84,7 @@ body
     transition: opacity .5s;
     
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  .fade-enter, .fade-leave-to /* .fade-leave-active Ð´Ð¾ Ð²ÐµÑ€ÑÐ¸Ð¸ 2.1.8 */ {
     opacity: 0;
     
   }
@@ -132,7 +132,7 @@ body
       box-shadow: 10px 10px #4F4D4D; 
       background-color: #e7e7e7;  
       z-index: 10s;      
-      transform: rotateX(15deg) rotateY(10deg) rotateZ(10deg);
+      /*transform: rotateX(15deg) rotateY(10deg) rotateZ(10deg);*/
   }
   
   body:before{z-index: -1;}
@@ -383,12 +383,8 @@ section{
 
 .dropdown-link > a{
     display: flex;
-    background-color: white;
-    background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #1B1B22, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #1B1B22, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
+    color: #fff;
+    background: #343A40;
     padding: .5rem 1rem;
     font-size: .9rem;
     align-items: center;
@@ -397,8 +393,8 @@ section{
 }
 
 .dropdown-link:hover > a{
-    background-color: white;
-    color:yellow;
+    
+    
 }
 
 .dropdown-link:not(:nth-last-child(2)){
@@ -577,12 +573,12 @@ section{
         flex-direction: column;
     }
 
-   /* .nav-link{
-        width: 100%;
-        opacity: 0;
+    .nav-link{
+        width: 40%;
+        
         transform: translateY(15px);
     }
-    */
+    
 
     .nav-link > a{
         line-height: 1;
@@ -591,9 +587,7 @@ section{
 
     .nav-link:hover > a{
         transform: scale(1);
-        background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        background: #343A40;
 
     }
 
@@ -606,9 +600,7 @@ section{
         pointer-events: auto;
         width: 100%;
         padding: 0;
-        background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        background: #343A40;
         display: none;
     }
 
@@ -619,12 +611,13 @@ section{
 
     .nav-link:hover > a > i,
     .dropdown-link:hover > a > i{
+        
         transform: rotate(360deg);
     }
 
     .dropdown-link > a{
-        background-color: transparent;
         color: #fff;
+        background-color: #343A40;
         padding: 1.2rem 2rem;
         line-height: 1;
     }
@@ -643,17 +636,14 @@ section{
 
     .arrow{
         z-index: 1;
-        background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #343A40;
         left: 10%;
         transform: scale(1.1) rotate(45deg);
         transition: .5s;
     }
 
     .nav-link:hover .arrow{
-        background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        background:#343A40 ;
     }
 
     .dropdown .dropdown .arrow{
@@ -661,13 +651,12 @@ section{
     }
 
     .dropdown-link:hover > a{
-        background-color: yellow;
+        color: blue;
+        background-color: #343A40;
     }
 
     .dropdown-link:first-child:hover ~ .arrow{
-        background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+        background: #343A40;
     }
 
     .nav-link > a > i{

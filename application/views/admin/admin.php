@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
 				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
-				
+		
 			</div>
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
@@ -559,8 +559,8 @@ Highcharts.chart('container2', {
 
 </script>
 <script type="text/javascript">
-    
-	$(document).ready(function(){
+ 
+$(document).ready(function(){
 
 		$("li").on("click",function(){
 

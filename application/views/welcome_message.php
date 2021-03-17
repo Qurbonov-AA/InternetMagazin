@@ -7,7 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Navoiy Internet Magazine</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
-    <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32"">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/owl.carousel.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/owl.theme.green.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/animate.css');?>">
 	<link rel="icon" type="image/png" href="basket.png" sizes="32x32">
 	<link rel="apple-touch-icon" sizes="32x32" href="basket.png">
 </head>
@@ -157,6 +160,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     </div>
 </header>
+<!--                container for reclame                                    -->
+<div class="topshop owl-carousel owl-theme">
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>1</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>2</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>3</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>4</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>5</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>6</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>7</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>8</h4></div> 
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>9</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>10</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>11</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>12</h4></div>
+
+</div>
+
 
 <div id="myvue">
     <div class="container-fluid">
@@ -246,7 +266,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="<?php echo base_url('assets/js/owl.carousel.js');?>"></script>
+<script type="text/javascript">
+    $('.topshop').owlCarousel({
+    animateOut: 'animate__fadeOut',
+    animateIn: 'animate__fadeIn',
+    items:4,
+    margin:30,
+    loop:true,
+    stagePadding:30,
+    smartSpeed:450,
+    autoplay:true,
+    autoplayTimeout:5000,
+    autoplayHoverPause:true
+});
+</script>
 <script type="text/javascript">
        Vue.component("modal", {
         
