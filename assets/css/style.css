@@ -235,9 +235,6 @@ a
 header{
     position: sticky;
     top: 0px;
-    background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #1B1B22, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #1B1B22, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 100%;
     z-index: 1000;
 }
@@ -309,8 +306,8 @@ section{
 
 .btn{
     display: inline-block;
-    padding: .5rem 1.3rem;
-    font-size: .8rem;
+    margin-top: -5px;
+    font-size: 0.6rem;
     border: 2px solid #fff;
     border-radius: 2rem;
     line-height: 1;
@@ -320,6 +317,7 @@ section{
 }
 
 .btn.solid, .btn.transparent:hover{
+    
     background-color:darkred;
     background: #52c234;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #061700, #52c234);  /* Chrome 10-25, Safari 5.1-6 */
@@ -327,8 +325,12 @@ section{
 
 
 }
+.btn:not(:disabled):not(.disabled) {
+    cursor:wait;
+}
 
 .btn.transparent, .btn.solid:hover {
+  
     background: #00b09b; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #96c93d, #00b09b); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -673,9 +675,9 @@ section{
     .log-sign{
         flex: initial;
         width: 100%;
-        padding: 1.5rem 1.9rem;
+        
         justify-content: flex-start;
-        opacity: 0;
+        
         transform: translateY(15px);
     }
    
@@ -687,3 +689,15 @@ section{
     position: fixed; z-index:1; background-color: #bcaeae; width: 100%;
     font-size : 16pt;
 }
+/*hamburg new start-*/
+.navbar-brand{
+    font-size: 24px;
+    color: #bcaeae;
+}
+.navbar{
+    background-color: #343A40;
+}
+  
+    .navbar.navbar-7 .navbar-toggler-icon {
+    background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger9.svg?color=FF2C00');
+    }

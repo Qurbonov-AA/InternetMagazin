@@ -16,15 +16,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <!-- Menu items                   -->
-<header style="opacity: 0.85;" id="mymenu">
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid" >
-    <a class="navbar-brand" href="<?php echo base_url();?>" style="font-size: 2em; color:#fff;">Gazzon.uz</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+<header  id="mymenu" style="opacity: 0.8;">
+
+
+    
+        <!--Navbar-->
+<nav class="navbar navbar-light navbar-1 white">
+<div class="container-fluid" >
+    
+
+<!-- Navbar brand -->
+<a class="navbar-brand" href=" <?php echo base_url();?>">Gazzon.Uz</a>
+
+<!-- Collapse button -->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+  aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+<!-- Collapsible content -->
+<div class="collapse navbar-collapse" id="navbarSupportedContent15">
+
+  <!-- Links -->
+  <ul class="navbar-nav mr-auto">
+  <ul class="navbar-nav">
         <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
@@ -53,9 +66,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            
 
-            <li class="nav-link" style="--i: .85s">
+            <ul class="navbar-nav">
+        <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
                         {
@@ -83,35 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '3' and $q['id_parent'] == '44')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
-                            {
 
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
-
-
-                        }
-
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-            <li class="nav-link" style="--i: .85s">
+            <ul class="navbar-nav">
+        <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
                         {
@@ -139,12 +126,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            
-            
-      </ul>
-    </div>
-  </div>
 
+  </ul>
+  <!-- Links -->
+
+</div>
+<!-- Collapsible content -->
+
+
+<!--/.Navbar-->
     
 
     <div class="log-sign" style="--i: 1.8s" >
