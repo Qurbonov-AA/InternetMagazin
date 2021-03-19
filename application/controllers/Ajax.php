@@ -890,7 +890,7 @@ public function get_services()
             echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
           }
   }
-<<<<<<< HEAD
+
  public function get_xarajat_turi()
   {
     $xarajat_nomi         = $this->input->post('xarajat_nomi');
@@ -908,15 +908,20 @@ public function get_services()
  Public function xarajat_upd()
   {
     $xarajat_turi         = $this->input->post('xarajat_turi');
+    $id                   = $this->input->post('id');
     $data['xarajat_turi'] = $this->db->query('SELECT * FROM xarajat_turi')->result_array();
-      echo "<option>".$xarajat_turi."</option>";
+      echo "<option value='".$id."'>".$xarajat_turi."</option>";
       foreach($data['xarajat_turi'] as $h)
           {
-            echo "<option value='".$h['id']."'>".$h['xarajat_turi']."</option>";
+            if ($id <> $h['id'])
+            {
+                echo "<option value='".$h['id']."'>".$h['xarajat_turi']."</option>";
+            }
+            
+            
           }
   }
-=======
->>>>>>> d06537b0ad78a4f9c514b1903925e9d44e4d2f61
+
 
 /*                        update knopkalar finish               */
 
