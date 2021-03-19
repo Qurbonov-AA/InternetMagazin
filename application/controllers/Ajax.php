@@ -189,28 +189,45 @@ class Ajax extends CI_Controller {
     }
     else if($menu == "hisob")
     {
-       $data['hisob']=$this->db->query("SELECT * from ".$menu)->result_array();
+       $data['hisob']        =$this->db->query("SELECT h.*,x.xarajat_turi from ".$menu." h, xarajat_turi x where h.xarajat_nomi= x.id ")->result_array();
+       $data['xarajat_turi'] = $this->db->query("SELECT * from xarajat_turi")->result_array();
        echo "<table class='table table-hover'>";
        echo "<thead>";
-       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th></tr>";
+       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th><th>Sanasi</th></tr>";
        echo "</thead>";
        echo "<tbody>";
-       echo "<tr><td><select class='form-control' id='name_hisob'>";
-          foreach($data['hisob'] as $s)
+       echo "<tr><td><select class='form-control' id='xarajat_nomi'>";
+          foreach($data['xarajat_turi'] as $x)
           {
-              echo "<option value='".$s['id']."'>".$s['name_hisob']."</option>";
-          }
-          
-            echo "<td><input type='number'></td><td><button class='btn btn-outline-success'>Save</button></td>"; 
-          
+               echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
+          }  
+            echo "<td><input type='number' class='form-control' id='xarajat_summ'></td><td><button class='btn btn-outline-success' id='btn_hisob_save'>Save</button></td>"; 
       echo "</tr>";
             foreach ($data['hisob'] as $b)
                 {
                   echo "<tr id='".$b['id']."'>";
-                  echo "<td>".$b['name_hisob']."</td><td>".$b['hisob_summ']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_basket' name='".$b['id']."' >Edit</button><button class='btn btn-success updbasket' name='".$b['id']."'>Update</button></div></td>";
+                  echo "<td>".$b['xarajat_turi']."</td><td>".$b['xarajat_summ']."</td><td>".$b['data']."</td><td><div class='edit_upd'><button class='btn btn-outline-info edit_hisob' name='".$b['id']."'>Edit</button><button class='btn btn-success updhisob' name='".$b['id']."'>Update</button></div></td>";
                   echo "</tr>";
                 }
 
+       echo "</tbody>";
+       echo "</table>";
+    }
+    else if($menu == "xarajat_turi")
+    {
+       $data['xarajat_turi']=$this->db->query("SELECT * from ".$menu)->result_array();
+       echo "<table class='table table-hover'>";
+       echo "<thead>";
+       echo "<tr><th>Xarajat_turi</th></tr>";
+       echo "</thead>";
+       echo "<tbody>";
+       echo "<td><input type='text' class='form-control' id='xarajat_turi'></td><td><button class='btn btn-outline-success' id='btn_xarajat_turi_save'>Save</button></td>";
+            foreach ($data['xarajat_turi'] as $b)
+                {
+                  echo "<tr id='".$b['id']."'>";
+                  echo "<td>".$b['xarajat_turi']."</td><td><button class='btn btn-outline-danger' id='btn_xarajat_turi' name=".$b['id'].">Delete</button></td><td><div class='edit_upd'><button class='btn btn-outline-info edit_xarajat_turi' name='".$b['id']."' >Edit</button><button class='btn btn-success updxarajat_turi' name='".$b['id']."'>Update</button></div></td>";
+                  echo "</tr>";
+                }
        echo "</tbody>";
        echo "</table>";
     }
@@ -1007,6 +1024,6 @@ Public function get_basket_goods()
             $res['sub_cat'] = $this->db->query("SELECt * FROM types WHERE id in (SELECT id_type from goods WHERE t_name like '%".$data['name']."%'  or t_name_ru like '%".$data['name']."%')")->result_array();
             echo json_encode($res);
         }
-  
+    
 
 }

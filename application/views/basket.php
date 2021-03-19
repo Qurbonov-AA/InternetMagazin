@@ -190,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </tr> 
           </thead>
           <tbody>
-              <tr v-for="upd in basket_update" >
+              <tr v-for="upd in basket_update" class="upd_tr" >
                 <template class="lang" v-if="lang==='uz'">
                 <td> {{upd.t_name}}</td>
                 </template>
@@ -203,25 +203,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <td> {{ upd.status }} </td>
                 <td><button class="btn btn-info" @click="fn_save(upd.id)">Save</button></td>
               </tr>
+              <tr>
+                <td>  </td><td> {{totalQuantity}} </td> <td> {{ totalPrice }} </td><td></td><td></td>
+              </tr>
               <tr v-for="(good,i) in basket_goods">
-                <template class="lang" v-if="lang==='uz'">
-                <td> {{ good.t_name }}</td>
-                </template>
-                <template class="lang" v-else="lang==='ru'">
-                <td> {{ good.t_name_ru }}</td>
-                </template>
+                <template class="lang" v-if="good.status === tabs">
+                <td v-if="lang==='uz'"> {{ good.t_name }}</td>
+                <td v-else="lang==='ru'"> {{ good.t_name_ru }}</td>
                 <td> {{ good.price }} </td>
                 <td> {{ good.count }} </td>
                 <td> {{ good.dates }} </td>
                 <td> {{ good.status }} </td>
                 <td><button class="btn btn-outline-danger" @click = "fn_delete(i)">Delete</button></td><td><button class='btn btn-outline-info edit_basket' @click="fn_edit(i)">Edit</button></td>
+                </template>
               </tr>          
           </tbody>             
        </table> 
        </div>                
     </div>
 </div>
-
 
 
 
@@ -265,14 +265,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 return this.basket_goods.filter(c => c.status == this.tabs)
                 },
             totalQuantity: function(){
-                console.log(this.basket_goods);
                 return this.filteredClients.reduce(function(total, item)
                 {
-                        return Number(total) + Number(item.price);
+                        return Number(total) + Number(item.price*item.count);
                 },0);
               }, 
             totalPrice: function(){
-                console.log(this.basket_goods);
                 return this.filteredClients.reduce(function(total, item)
                 {
                     return Number(total) + Number(item.count);

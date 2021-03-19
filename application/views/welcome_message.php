@@ -7,21 +7,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Navoiy Internet Magazine</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
-    <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32"">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/owl.carousel.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/owl.theme.green.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/animate.css');?>">
 	<link rel="icon" type="image/png" href="basket.png" sizes="32x32">
 	<link rel="apple-touch-icon" sizes="32x32" href="basket.png">
 </head>
 <body>
 <!-- Menu items                   -->
-<header style="opacity: 0.85;" id="mymenu">
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid" >
-    <a class="navbar-brand" href="<?php echo base_url();?>" style="font-size: 2em; color:#fff;">Gazzon.uz</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+<header  id="mymenu" style="opacity: 0.8;">
+
+
+    
+        <!--Navbar-->
+<nav class="navbar navbar-light navbar-1 white">
+<div class="container-fluid" >
+    
+
+<!-- Navbar brand -->
+<a class="navbar-brand" href=" <?php echo base_url();?>">Gazzon.Uz</a>
+
+<!-- Collapse button -->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+  aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+<!-- Collapsible content -->
+<div class="collapse navbar-collapse" id="navbarSupportedContent15">
+
+  <!-- Links -->
+  <ul class="navbar-nav mr-auto">
+  <ul class="navbar-nav">
         <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
@@ -50,9 +66,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            
 
-            <li class="nav-link" style="--i: .85s">
+            <ul class="navbar-nav">
+        <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
                         {
@@ -80,35 +96,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '3' and $q['id_parent'] == '44')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
-                            {
 
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
-
-
-                        }
-
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-            <li class="nav-link" style="--i: .85s">
+            <ul class="navbar-nav">
+        <li class="nav-link" style="--i: .85s">
                         <?php
                         foreach($menu as $q)
                         {
@@ -136,12 +126,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             </li>
-            
-            
-      </ul>
-    </div>
-  </div>
 
+  </ul>
+  <!-- Links -->
+
+</div>
+<!-- Collapsible content -->
+
+
+<!--/.Navbar-->
     
 
     <div class="log-sign" style="--i: 1.8s" >
@@ -157,6 +150,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     </div>
 </header>
+<!--                container for reclame                                    -->
+<div class="topshop owl-carousel owl-theme">
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>1</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>2</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>3</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>4</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>5</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>6</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>7</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>8</h4></div> 
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>9</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>10</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>11</h4></div>
+    <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>12</h4></div>
+
+</div>
+
 
 <div id="myvue">
     <div class="container-fluid">
@@ -246,7 +256,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="<?php echo base_url('assets/js/owl.carousel.js');?>"></script>
+<script type="text/javascript">
+    $('.topshop').owlCarousel({
+    animateOut: 'animate__fadeOut',
+    animateIn: 'animate__fadeIn',
+    items:4,
+    margin:30,
+    loop:true,
+    stagePadding:30,
+    smartSpeed:450,
+    autoplay:true,
+    autoplayTimeout:5000,
+    autoplayHoverPause:true
+});
+</script>
 <script type="text/javascript">
        Vue.component("modal", {
         
@@ -520,5 +544,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         mixins: [Vue2Filters.mixin],
     });
 </script>
+<footer class="footer-distributed">
+
+<div class="footer-left">
+
+    <h3>About<span>Gazzon.Uz</span></h3>
+
+    <p class="footer-links">
+        <a href="#">Home</a>
+        |
+        <a href="#">Blog</a>
+        |
+        <a href="#">About</a>
+        |
+        <a href="#">Contact</a>
+    </p>
+
+    <p class="footer-company-name">© 2021 Copyright: Gazzon.Uz </p>
+</div>
+
+<div class="footer-center">
+    <div>
+        <i class="fa fa-map-marker"></i>
+          <p><span>Manzil eski shaxar  va Gum savdo majmuasi</p>
+    </div>
+
+    <div>
+        <i class="fa fa-phone"></i>
+        <p>+9989***********</p>
+    </div>
+    <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:support@eduonix.com">Gazzonuz@gmail.com</a></p>
+    </div>
+</div>
+<div class="footer-right">
+    <p class="footer-company-about">
+        <span>About the company</span>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta veniam dignissimos corporis nihil accusamus numquam nisi et perferendis.</p>
+    <div class="footer-icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-youtube"></i></a>
+    </div>
+</div>
+</footer>
 </body>
 </html>
