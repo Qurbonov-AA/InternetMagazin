@@ -218,7 +218,7 @@ class Ajax extends CI_Controller {
        $data['xarajat_turi']=$this->db->query("SELECT * from ".$menu)->result_array();
        echo "<table class='table table-hover'>";
        echo "<thead>";
-       echo "<tr><th>Xarajat_turi</th></tr>";
+       echo "<tr><th>Xarajat turining nomi</th></tr>";
        echo "</thead>";
        echo "<tbody>";
        echo "<td><input type='text' class='form-control' id='xarajat_turi'></td><td><button class='btn btn-outline-success' id='btn_xarajat_turi_save'>Save</button></td>";
@@ -890,6 +890,33 @@ public function get_services()
             echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
           }
   }
+<<<<<<< HEAD
+ public function get_xarajat_turi()
+  {
+    $xarajat_nomi         = $this->input->post('xarajat_nomi');
+    $data['xarajat_turi'] = $this->db->query("SELECT id, xarajat_turi FROM xarajat_turi")->result_array();
+      echo "<option>".$xarajat_nomi."</option>";
+      foreach($data['xarajat_turi'] as $x)
+          {
+           //if($x == $xarajat_nomi)
+           //{
+            echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
+           //}
+          }
+  }
+ 
+ Public function xarajat_upd()
+  {
+    $xarajat_turi         = $this->input->post('xarajat_turi');
+    $data['xarajat_turi'] = $this->db->query('SELECT * FROM xarajat_turi')->result_array();
+      echo "<option>".$xarajat_turi."</option>";
+      foreach($data['xarajat_turi'] as $h)
+          {
+            echo "<option value='".$h['id']."'>".$h['xarajat_turi']."</option>";
+          }
+  }
+=======
+>>>>>>> d06537b0ad78a4f9c514b1903925e9d44e4d2f61
 
 /*                        update knopkalar finish               */
 

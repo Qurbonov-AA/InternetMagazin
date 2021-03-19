@@ -27,14 +27,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	li
 		{
 			border-radius: 10em;
-			transition: 1s all;
+			transition: 1.5s all;
 		}
 	li:hover
 		{
 			background-color: #14295e;
 			color:white;		
 			transform: translateX(4%);
-			transition: 1s all;
+			transition: 1.5s all;
 			text-align: center;
 		}
 	li:active
@@ -1169,7 +1169,17 @@ $(document).ready(function(){
         $('body').on('click','.edit_xarajat_turi',function(){
             var id           = $(this).attr('name'),
                 xarajat_turi = $("#"+id+" td:eq(0)").text();
-            $("#"+id+" td:eq(0)").html("<input class='form-control' id='xarajat_turi"+id+"' value='"+xarajat_turi+"'>");
+            var url_xarajat_upd = "<?php echo base_url('index.php/ajax/xarajat_upd')?>";
+              $.ajax({
+              	url   : url_xarajat_upd,
+              	type  : "POST",
+              	data  : {'id':id,
+                         'xarajat_turi':xarajat_turi},
+                success: function(xarajat_turi_upd)
+                	{
+                        $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_turi"+id+"' >"+xarajat_turi_upd+"</select>");
+                	}
+              });
         });
 
         $('body').on('click','.updxarajat_turi',function(){
@@ -1186,9 +1196,6 @@ $(document).ready(function(){
                         alert(xarajat_upd);
                     }
             });
-
-        
-
         });
 
 /*                     xarajat_turi update finish                     */
@@ -1197,7 +1204,7 @@ $(document).ready(function(){
 		$("body").on("click", ".edit_basket", function(){
         	var id      = $(this).attr('name');
         	var status    = $("#"+id+" td:eq(5)").text();
-        	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Yangi zakaz</option><option value='Active'>Qabul qilindi</option><option value='Success'>Yuborildi</option></select>");
+        	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
         });
 
         $("body").on("click",".updbasket",function(){
