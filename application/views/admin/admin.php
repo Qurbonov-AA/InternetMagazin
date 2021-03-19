@@ -55,25 +55,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-   <div class="admin-navbar">
-   <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
-       <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-       <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
-   </div>
-	     <div class="row">
+    <div class="admin-navbar">
+        <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
+        <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+        <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
+    </div>
+	    <div class="row">
 			<div class="col-md-3 col-lg-3 col-xl-3 col-3">
 				<ul class="list-group">
-				  <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
-				  <li class="list-group-item" name="brands">Brandlar</li>
-				  <li class="list-group-item" name='kategories'>Kategoriya</li>
-				  <li class="list-group-item" name='types'>Sub kategoriya</li>
-				  <li class="list-group-item" name="groups">Groups</li>
-				  <li class="list-group-item" name='menu'>Menu</li>
-				  <li class="list-group-item" name="services">Xizmatlar</li>
-				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
-                  <li class="list-group-item" name='hisob'>Xarajatlar</li>
-                  <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
-				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
+				    <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
+				    <li class="list-group-item" name="brands">Brandlar</li>
+				    <li class="list-group-item" name='kategories'>Kategoriya</li>
+				    <li class="list-group-item" name='types'>Sub kategoriya</li>
+				    <li class="list-group-item" name="groups">Groups</li>
+				    <li class="list-group-item" name='menu'>Menu</li>
+				    <li class="list-group-item" name="services">Xizmatlar</li>
+				    <li class="list-group-item" name='goods'>Mahsulotlar</li>
+                    <li class="list-group-item" name='hisob'>Xarajatlar</li>
+                    <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
+				    <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
 		
 			</div>
@@ -125,10 +125,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- end -->
 		<div class="row">
 		    <div id="container" class="col-md-12 col-lg-12 col-12 col-sm-12">
-		        
-		      
 		    </div>
-		 </div>
+		</div>
 
 
 
@@ -139,11 +137,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
 
     var data_kat ;
-  
 
-
-  
- var chart = Highcharts.stockChart('container3', {
+var chart = Highcharts.stockChart('container3', {
 
 
         rangeSelector: {
@@ -161,7 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 foreach($get_kat as $q)
                 {
-                  echo '["'.$q['t_name'].'",'.$q['all_summ'].','.$q['price'].'],';
+                echo '["'.$q['t_name'].'",'.$q['all_summ'].','.$q['price'].'],';
                 }
                 echo "['dates',0,0]";
                 
@@ -260,10 +255,10 @@ Highcharts.chart('container2', {
         type: 'column'
     },
     title: {
-        text: 'Browser market shares. January, 2018'
+        text: 'Oylar bo`yicha xarajatlar'
     },
     subtitle: {
-        text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
+        text: 'Grafik bo`yicha savollar: <a href="http://t.me/Ok_dev_n" target="_blank">Telegram account</a>'
     },
     accessibility: {
         announceNewData: {
@@ -275,7 +270,7 @@ Highcharts.chart('container2', {
     },
     yAxis: {
         title: {
-            text: 'Total percent market share'
+            text: 'Xarajatlarning umumiy summasi'
         }
 
     },
@@ -287,25 +282,25 @@ Highcharts.chart('container2', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y:.1f}%'
+                format: '{point.y:.1f} summ'
             }
         }
     },
 
     tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f} summ</b> jami<br/>'
     },
 
     series: [
         {
-            name: "Browsers",
+            name: "Xarajat turi",
             colorByPoint: true,
             data: [
                 {
-                    name: "Chrome",
+                    name: "Ishchilar maoshi",         // xarajat nomi
                     y: 62.74,
-                    drilldown: "Chrome"
+                    drilldown: "Ishchilar maoshi"     //xarajat id si stringda kelishi kerak
                 },
                 {
                     name: "Firefox",
@@ -343,80 +338,53 @@ Highcharts.chart('container2', {
     drilldown: {
         series: [
             {
-                name: "Chrome",
-                id: "Chrome",
+                name: "Ishchilar maoshi",    // xarajat nomi
+                id: "Ishchilar maoshi",      //xarajat id si stringda kelishi kerak
                 data: [
+                    ["Yan",10],              //["sana", summa] kelishi kerak, sana string kelsin
                     [
-                        "v65.0",
-                        0.1
+                        "Fev",
+                        13
                     ],
                     [
-                        "v64.0",
-                        1.3
+                        "Mart",
+                        52
                     ],
                     [
-                        "v63.0",
-                        53.02
+                        "Apr",
+                        14
                     ],
                     [
-                        "v62.0",
-                        1.4
+                        "May",
+                        88
                     ],
                     [
-                        "v61.0",
-                        0.88
+                        "Iyun",
+                        56
                     ],
                     [
-                        "v60.0",
-                        0.56
+                        "Iyul",
+                        45
                     ],
                     [
-                        "v59.0",
-                        0.45
+                        "Avg",
+                        49
                     ],
                     [
-                        "v58.0",
-                        0.49
+                        "Sen",
+                        32
                     ],
                     [
-                        "v57.0",
-                        0.32
+                        "Okt",
+                        29
                     ],
                     [
-                        "v56.0",
-                        0.29
+                        "Noy",
+                        79
                     ],
                     [
-                        "v55.0",
-                        0.79
-                    ],
-                    [
-                        "v54.0",
-                        0.18
-                    ],
-                    [
-                        "v51.0",
-                        0.13
-                    ],
-                    [
-                        "v49.0",
-                        2.16
-                    ],
-                    [
-                        "v48.0",
-                        0.13
-                    ],
-                    [
-                        "v47.0",
-                        0.11
-                    ],
-                    [
-                        "v43.0",
-                        0.17
-                    ],
-                    [
-                        "v29.0",
-                        0.26
+                        "Dek",
+                        18
                     ]
                 ]
             },
@@ -564,7 +532,6 @@ Highcharts.chart('container2', {
 
 </script>
 <script type="text/javascript">
- 
 $(document).ready(function(){
 
 		$("li").on("click",function(){
@@ -591,36 +558,36 @@ $(document).ready(function(){
 
 /*                  create user start                */
 
-       $('body').on('click', '.btn-outline-info', function(){
+        $('body').on('click', '.btn-outline-info', function(){
        	 $('.btn-success').css('opacity','100');
-       });
+    });
 
 
-       $('body').on('click','#btn_users_save', function()
-       {
+    $('body').on('click','#btn_users_save', function()
+    {
        	 var first_name = $("#first_name").val(),
        	     last_name  = $("#last_name").val(),
        	     company    = $("#Company_name").val(),
        	     email      = $("#user_email").val(),
        	     phone      = $("#user_mobile").val(),
        	     password   = $("#user_password").val();
-         var url_user_create="<?php echo base_url('index.php/ajax/user_create')?>";
-           $.ajax({
-	          url   : url_user_create,
-	          type  :'POST',
-	          data  :{'firstname':first_name,
-	                  'lastname':last_name, 
-	                  'company':company,
-	                  'email':email,
-	                  'phone':phone,
-	                  'password':password},
-	          success:function(form)
-	             	{
-	             		alert(form);
+        var url_user_create="<?php echo base_url('index.php/ajax/user_create')?>";
+            $.ajax({
+	            url   : url_user_create,
+	            type  :'POST',
+	            data  :{'firstname':first_name,
+	                    'lastname':last_name, 
+	                    'company':company,
+	                    'email':email,
+	                    'phone':phone,
+	                    'password':password},
+	            success:function(form)
+	                {
+	                    alert(form);
 	             		//location.reload();
-	             	}       
+	                }       
 	        });
-       });
+    });
 
 /*                    create user finish         */
 
@@ -645,7 +612,7 @@ $(document).ready(function(){
 		});
 
 		$("body").on('click','#btn_kat_save',function(){
-          var   kat_name    = $("#kat_name").val(),
+            var kat_name    = $("#kat_name").val(),
                 kat_name_ru = $("#kat_name_ru").val(),
 			    d_create    = $("#kat_c_date").val(),
 			    img         = $("#kat_image_path").val();
@@ -719,10 +686,10 @@ $(document).ready(function(){
         	$.ajax({
         		url    : url_menu,
         		type   : "POST",
-        		data   : {'menu':menu,
-        		          'menu_ru':menu_ru, 
-        		          'parent':parent, 
-        		          'id_parent':id_parent},
+        		data   : {  'menu':menu,
+        		            'menu_ru':menu_ru, 
+        		            'parent':parent, 
+        		            'id_parent':id_parent},
         		success: function(get_menu)
         			{
         				alert(get_menu);
@@ -750,7 +717,7 @@ $(document).ready(function(){
 		});
 
 	    $("body").on('click','#btn_goods_save', function(){
-           var  goods_name      = $('#goods_name').val(),
+            var  goods_name      = $('#goods_name').val(),
                 goods_name_ru   = $('#goods_name_ru').val(),
         	    goods_subkat    = $('#goods_subkat').val(),
         	    goods_brand     = $('#goods_brand').val(),
@@ -762,14 +729,14 @@ $(document).ready(function(){
         	$.ajax({
         		url    : url_goods,
         		type   : "POST",
-        		data   : {'t_name'     :goods_name,
-        		          't_name_ru'  :goods_name_ru,
-        		          'id_type'    :goods_subkat,
-        		          'id_brand'   :goods_brand,
-        		          'price'      :goods_price,
-        		          'id_services':goods_service,
-        		          'title'      :goods_title,
-        		          'title_ru'   :title_ru},
+        		data   : {  't_name'     :goods_name,
+        		            't_name_ru'  :goods_name_ru,
+        		            'id_type'    :goods_subkat,
+        		            'id_brand'   :goods_brand,
+        		            'price'      :goods_price,
+        		            'id_services':goods_service,
+        		            'title'      :goods_title,
+        		            'title_ru'   :title_ru},
         		success: function(get_good)
         			{
         				alert(get_good);
@@ -781,16 +748,16 @@ $(document).ready(function(){
             var xarajat_nomi = $('#xarajat_nomi').val(),
                 xarajat_summ = $('#xarajat_summ').val();
             var url_xarajat ="<?php echo base_url('index.php/ajax/hisob_ins')?>";
-              $.ajax({
+                $.ajax({
                 url  : url_xarajat,
                 type :"Post",
-                data :{'xarajat_nomi': xarajat_nomi,
-                       'xarajat_summ':xarajat_summ},
+                data :{ 'xarajat_nomi': xarajat_nomi,
+                        'xarajat_summ':xarajat_summ},
                 success:function(get_hisob)
                     {
                         alert(get_hisob);
                     }                 
-              });
+            });
         });
 
         $("body").on('click','#btn_xarajat_turi_save',function(){
@@ -834,12 +801,12 @@ $(document).ready(function(){
 			    $.ajax({
 			    	url : url_users_upd,
         		    type: "POST",
-        		    data: {'id':id, 
-        		           'first_name'  :first_name,
-        		           'last_name'   :last_name,
-        		           'company_name':company_name,
-        		           'email'       :email,
-        		           'phone'       :phone},
+        		    data: { 'id':id, 
+        		            'first_name'  :first_name,
+        		            'last_name'   :last_name,
+        		            'company_name':company_name,
+        		            'email'       :email,
+        		            'phone'       :phone},
         		    success: function(user_upd)
         			{
         				alert(user_upd);
@@ -850,13 +817,13 @@ $(document).ready(function(){
 
 /*                        brands  update  starts         */
 		$('body').on('click','.edit_brands',function(){
-      var id= $(this).attr('name');
-      var brand_name   = $("#"+id+" td:eq(0)").text(),
-          republic     = $("#"+id+" td:eq(1)").text(),
-          end_date     = $("#"+id+" td:eq(2)").text();
-      $("#"+id+" td:eq(0)").html("<input class='form-control' id='brand_name"+id+"' value='"+brand_name+"'>");
-      $("#"+id+" td:eq(1)").html("<input class='form-control' id='republic"+id+"' value='"+republic+"'>");
-      $("#"+id+" td:eq(2)").html("<input class='form-control' id='end_date"+id+"' value='"+end_date+"' >");      
+        var id= $(this).attr('name');
+        var brand_name   = $("#"+id+" td:eq(0)").text(),
+            republic     = $("#"+id+" td:eq(1)").text(),
+            end_date     = $("#"+id+" td:eq(2)").text();
+        $("#"+id+" td:eq(0)").html("<input class='form-control' id='brand_name"+id+"' value='"+brand_name+"'>");
+        $("#"+id+" td:eq(1)").html("<input class='form-control' id='republic"+id+"' value='"+republic+"'>");
+        $("#"+id+" td:eq(2)").html("<input class='form-control' id='end_date"+id+"' value='"+end_date+"' >");      
     });
 
     $('body').on('click','.updbrands',function(){
