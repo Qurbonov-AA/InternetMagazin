@@ -261,7 +261,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $('.topshop').owlCarousel({
     animateOut: 'animate__fadeOut',
     animateIn: 'animate__fadeIn',
-    items:4,
+    items:1,
     margin:30,
     loop:true,
     stagePadding:30,
