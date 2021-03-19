@@ -55,7 +55,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-		<div class="row">
+   <div class="admin-navbar">
+   <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
+       <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+       <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
+   </div>
+	     <div class="row">
 			<div class="col-md-3 col-lg-3 col-xl-3 col-3">
 				<ul class="list-group">
 				  <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
@@ -70,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
 				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
-				
+		
 			</div>
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
@@ -559,8 +564,8 @@ Highcharts.chart('container2', {
 
 </script>
 <script type="text/javascript">
-    
-	$(document).ready(function(){
+ 
+$(document).ready(function(){
 
 		$("li").on("click",function(){
 

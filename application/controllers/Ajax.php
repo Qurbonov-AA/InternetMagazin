@@ -538,56 +538,6 @@ class Ajax extends CI_Controller {
          }  
   }
 
- Public function hisob_ins()
-  {
-    $xarajat_nomi = $this->input->post('xarajat_nomi');
-    $xarajat_summ = $this->input->post('xarajat_summ');
-    if( strlen($xarajat_summ)>0)
-    {
-      $data_ins = array(
-        'xarajat_nomi'=> $xarajat_nomi,
-        'xarajat_summ'=> $xarajat_summ,
-        'data'        => Date('Y-m-d H:i:s')
-      );
-      $error =$this->db->insert('hisob', $data_ins);
-        if ($error == 1)
-          {
-            echo "Ma'lumotlar bazaga yozildi";
-          }
-        else
-          {
-            echo "Ma'lumotlarni yozishda xatolik bor";
-          }
-      }
-      else
-      {
-        echo "Hamma qatorlarni to`ldirish shart!";
-      }
-  }
-
-Public function xarajat_turi_ins()
-  {
-    $xarajat_turi = $this->input->post('xarajat_turi');
-    if(strlen($xarajat_turi)>0)
-    {
-      $data_ins = array(
-        'xarajat_turi'  => $xarajat_turi,
-      );
-      $error = $this->db->insert('xarajat_turi',$data_ins);
-      if ($error == 1)
-          {
-            echo "Ma'lumotlar bazaga yozildi";
-          }
-        else
-          {
-            echo "Ma'lumotlarni yozishda xatolik bor";
-          }
-    }
-    else
-    {
-      echo "Hamma qatorlarni to`ldirish shart!";
-    }
-  }
 
 /*                       delete knopkalar start           */
  public function users_btn_del()
@@ -711,21 +661,7 @@ Public function xarajat_turi_ins()
         echo "Ma`lumotni o`chirishda xatolik bor";
       }
   }
- 
- Public function btn_xarajat_turi_del()
-  {
-    $id = $this->input->post('id');
-    $this->db->where('id',$id);
-    $error=$this->db->delete('xarajat_turi');
-    if($error == 1)
-    {
-      echo "Ma`lumot bazadan o`chirildi";
-    }
-    else
-    {
-      echo "Ma`lumotni o`chirishda xatolik bor";
-    }
-  }
+
 
 /*                       delete knopkalar finish             */
 
@@ -925,37 +861,8 @@ public function groups_upd()
         echo "O'zgartirishda xatolik bor!";
       }
   }
- Public function hisob_upd()
-  {
-    $id  =$this->input->post('id');
-    $xarajat_nomi = $this->input->post('xarajat_nomi');
-       $error = $this->db->query('UPDATE hisob SET xarajat_nomi = "'.$xarajat_nomi.'" where id = "'.$id.'"');
-       if($error =1)
-       {
-        echo "Ma'lumot muvofaqiyatli o'zgartirildi!";
-       }
-       else
-       {
-        echo "O'zgartirishda xatolik bor!";
-       }
-  }
 
- Public function xarajat_turi_upd()
-  {
-    $id = $this->input->post('id');
-    $xarajat_turi = $this->input->post('xarajat_turi');
-       $error = $this->db->query('UPDATE xarajat_turi SET xarajat_turi = "'.$xarajat_turi.'" where id="'.$id.'"');
-       if($error ==1)
-         {
-          echo "Ma'lumot muvofaqiyatli o'zgartirildi!";
-         }
-       else
-         {
-          echo "O'zgartirishda xatolik bor!";
-         }
-  }
-
- Public function get_types()
+Public function get_types()
   {
       $data['types'] = $this->db->query("SELECT * from types ")->result_array();
          
@@ -983,6 +890,7 @@ public function get_services()
             echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
           }
   }
+<<<<<<< HEAD
  public function get_xarajat_turi()
   {
     $xarajat_nomi         = $this->input->post('xarajat_nomi');
@@ -1007,6 +915,8 @@ public function get_services()
             echo "<option value='".$h['id']."'>".$h['xarajat_turi']."</option>";
           }
   }
+=======
+>>>>>>> d06537b0ad78a4f9c514b1903925e9d44e4d2f61
 
 /*                        update knopkalar finish               */
 
@@ -1141,6 +1051,6 @@ Public function get_basket_goods()
             $res['sub_cat'] = $this->db->query("SELECt * FROM types WHERE id in (SELECT id_type from goods WHERE t_name like '%".$data['name']."%'  or t_name_ru like '%".$data['name']."%')")->result_array();
             echo json_encode($res);
         }
-  
+    
 
 }
