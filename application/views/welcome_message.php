@@ -222,6 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h4>{{ good.t_name }}</h4>
                         <br>
                         <p> narxi : {{  good.price}} s</p>
+                        <img class="goodsimg" src="<? echo base_url('assets/imgs/chokopay.jpg')?>" alt="goods img">
                         <br>
                         <button id="show-modal" @click="modal_view(good.id)"  class="btn btn-outline-success">Batafsil</button>
                         </template>
@@ -261,7 +262,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $('.topshop').owlCarousel({
     animateOut: 'animate__fadeOut',
     animateIn: 'animate__fadeIn',
-    items:4,
+    items:1,
     margin:30,
     loop:true,
     stagePadding:30,
@@ -548,7 +549,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="footer-left">
 
-    <h3>About<span>Gazzon.Uz</span></h3>
+    <h3><span>Gazzon.Uz</span></h3>
 
     <p class="footer-links">
         <a href="#">Home</a>
@@ -566,16 +567,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="footer-center">
     <div>
         <i class="fa fa-map-marker"></i>
-          <p><span>Manzil eski shaxar  va Gum savdo majmuasi</p>
+          <p><span>Manzil eski shaxar  va GUM savdo majmuasi</p>
     </div>
 
     <div>
         <i class="fa fa-phone"></i>
-        <p>+9989***********</p>
+        <p>+998943700808</p>
     </div>
     <div>
         <i class="fa fa-envelope"></i>
-        <p><a href="mailto:support@eduonix.com">Gazzonuz@gmail.com</a></p>
+        <p><a href="mailto:support@eduonix.com">barattojiyev@gmail.com</a></p>
     </div>
 </div>
 <div class="footer-right">
