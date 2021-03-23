@@ -377,7 +377,7 @@ Highcharts.chart('container2', {
         type: 'column'
     },
     title: {
-        text: 'Browser market shares. January, 2018'
+        text: 'Харажатлар'
     },
     subtitle: {
         text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -392,7 +392,7 @@ Highcharts.chart('container2', {
     },
     yAxis: {
         title: {
-            text: 'Total percent market share'
+            text: 'Уммумий харажатлар суммда'
         }
 
     },
@@ -404,55 +404,35 @@ Highcharts.chart('container2', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y:.1f}%'
+                format: '{point.y:.1f} сумм'
             }
         }
     },
 
     tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f} сумм</b> жами<br/>'
     },
 
     series: [
         {
-            name: "Browsers",
+            name: "Харажат",
             colorByPoint: true,
             data: [
+
+            	<?php 
+            		foreach($xarajat_turi as $x)
+            		{
+            			echo "{";
+            			echo  " name : '".$x['xarajat_turi']."'  , y : ".intval($x['price']).",  drilldown : '".$x['xarajat_turi']."'";
+            			echo "},";
+            		}
+            		
+            	?>
                 {
-                    name: "Chrome",
+                    name: "Ишчилар маоши",
                     y: 62.74,
-                    drilldown: "Chrome"
-                },
-                {
-                    name: "Firefox",
-                    y: 10.57,
-                    drilldown: "Firefox"
-                },
-                {
-                    name: "Internet Explorer",
-                    y: 7.23,
-                    drilldown: "Internet Explorer"
-                },
-                {
-                    name: "Safari",
-                    y: 5.58,
-                    drilldown: "Safari"
-                },
-                {
-                    name: "Edge",
-                    y: 4.02,
-                    drilldown: "Edge"
-                },
-                {
-                    name: "Opera",
-                    y: 1.92,
-                    drilldown: "Opera"
-                },
-                {
-                    name: "Other",
-                    y: 7.62,
-                    drilldown: null
+                    drilldown: "Ишчилар маоши"
                 }
             ]
         }
@@ -460,81 +440,58 @@ Highcharts.chart('container2', {
     drilldown: {
         series: [
             {
-                name: "Chrome",
-                id: "Chrome",
+                name: "Ишчилар маоши",
+                id: "Ишчилар маоши",
                 data: [
                     [
-                        "v65.0",
-                        0.1
+                        "янв",
+                        10
                     ],
                     [
-                        "v64.0",
-                        1.3
+                        "фев",
+                        13
                     ],
                     [
-                        "v63.0",
-                        53.02
+                        "март",
+                        32
                     ],
                     [
-                        "v62.0",
-                        1.4
+                        "апр",
+                        14
                     ],
                     [
-                        "v61.0",
-                        0.88
+                        "май",
+                        88
                     ],
                     [
-                        "v60.0",
-                        0.56
+                        "июн",
+                        56
                     ],
                     [
-                        "v59.0",
-                        0.45
+                        "июл",
+                        45
                     ],
                     [
-                        "v58.0",
-                        0.49
+                        "авг",
+                        4
                     ],
                     [
-                        "v57.0",
-                        0.32
+                        "сен",
+                        32
                     ],
                     [
-                        "v56.0",
-                        0.29
+                        "окт",
+                        9
                     ],
                     [
-                        "v55.0",
-                        0.79
+                        "ноябр",
+                        79
                     ],
                     [
-                        "v54.0",
-                        0.18
-                    ],
-                    [
-                        "v51.0",
-                        0.13
-                    ],
-                    [
-                        "v49.0",
-                        2.16
-                    ],
-                    [
-                        "v48.0",
-                        0.13
-                    ],
-                    [
-                        "v47.0",
-                        0.11
-                    ],
-                    [
-                        "v43.0",
-                        0.17
-                    ],
-                    [
-                        "v29.0",
-                        0.26
+                        "дек",
+                        18
                     ]
+                    
                 ]
             },
             {
