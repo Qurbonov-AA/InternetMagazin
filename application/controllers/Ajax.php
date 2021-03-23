@@ -12,8 +12,20 @@ class Ajax extends CI_Controller {
       $data['users']= $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
       echo "<thead>";
-      echo "<tr><th>Ismi</th><th>Familiyasi</th><th>Manzil</th><th>Email</th><th>Telefon raqami</th><th>Password</th><th>Settings</th></tr></thead>";
+      if ($this->input->post("lang") == 'uz')
+      {
+        echo "<tr><th>Ismi</th><th>Familiyasi</th><th>Manzil</th><th>Email</th><th>Telefon raqami</th><th>Password</th><th>Settings</th></tr>";
+         
+      }
+      else
+      {
+        echo "<tr><th>Имя</th><th>Фамилия</th><th>Адрес</th><th>Электронное почта</th><th>Телефонный номер</th><th>Password</th><th>Settings</th></tr>";
+         
+      }
+      
+      echo "</thead>";
       echo "<tbody>";
+
       echo "<tr><td><input type='text' class='form-control' id='first_name'></td><td><input type='text' class='form-control' id='last_name'></td><td><input type='text' class='form-control' id='Company_name'></td><td><input type='email' class='form-control' id='user_email'></td><td><input type='text' class='form-control' id='user_mobile'></td><td><input type='password' class='form-control' id='user_password'></td> <td><button class='btn btn-outline-success' id='btn_users_save'>Save </button></td></tr></tr>";
        foreach ($data['users'] as $u) 
        {
@@ -22,6 +34,7 @@ class Ajax extends CI_Controller {
               echo "<td><button type='button' class='btn btn-outline-danger' id='btn_users_del' name='".$u['id']."'>Delete</button></td><td><div class='edit_upd'><button type='button' class='btn btn-outline-info edit_users' name='".$u['id']."' >Edit</button><button class='btn btn-success updusers' name='".$u['id']."'>Update</button></div></td>"; 
         echo "</tr>";
        }
+
       echo "</tbody>";
       echo "</table>";
 
@@ -30,7 +43,14 @@ class Ajax extends CI_Controller {
      {
       $data['brand'] = $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
-      echo "<thead> <tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
+      echo "<thead>" ;
+      if ($this->input->post("lang") == 'uz'){
+       echo" <tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
+      }
+      else{
+        echo" <tr> <th>  Имя бренда </th><th> Государство </th> <th> Продолжительность</th> <th> Settings </th> </tr></thead>";
+      }
+      
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='brand_name'></td><td><input type='text' class='form-control' id='republic'></td><td><input type='text' class='form-control' id='end_date'></td><td><button class='btn btn-outline-success' id='btn_brands_save'>Save </button></td></tr>";
       foreach($data['brand'] as $b)
