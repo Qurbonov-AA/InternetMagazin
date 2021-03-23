@@ -951,7 +951,8 @@ $(document).ready(function(){
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
-        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
+        	var id = $(this).attr('name'),
+                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -960,7 +961,8 @@ $(document).ready(function(){
             	$.ajax({
             		url    : url_types_section,
             		type   :"POST",
-            		data   :{'id':id},
+            		data   :{'id':id,
+                             'id_kat':id_kat},
             		success:function(types)
             			{
             				$("#"+id+" td:eq(0)").html("<select class='form-control' id='id_kat"+id+"'>"+types+"</select>");
@@ -1060,6 +1062,7 @@ $(document).ready(function(){
         	var t_name     = $("#"+id+" td:eq(0)").text(),
         	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
         	    id_type    = $("#"+id+" td:eq(2)").text(),
+                id_brand   = $("#"+id+" td:eq(3)").text(),
         	    price      = $("#"+id+" td:eq(4)").text(),
         	    id_services= $("#"+id+" td:eq(5)").text(),
         	    title      = $("#"+id+" td:eq(6)").text(),
@@ -1068,7 +1071,8 @@ $(document).ready(function(){
         	    $.ajax({
         	    	url : url_type,
         	    	type : "POST",
-        	    	data : {'id' :id},
+        	    	data : {'id' :id,
+                            'id_type':id_type},
         	    	success: function(types)
         	    		{
         	    			$("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
@@ -1078,7 +1082,8 @@ $(document).ready(function(){
         	    $.ajax({
         	    	url : url_brand,
         	    	type : "POST",
-        	    	data : {'id' :id},
+        	    	data : {'id' :id,
+                            'id_brand':id_brand},
         	    	success: function(brands)
         	    		{
         	    			$("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
@@ -1087,7 +1092,8 @@ $(document).ready(function(){
         	     $.ajax({
         	     	url   : url_services,
         	     	type  : "POST",
-        	     	data  : {"id":id},
+        	     	data  : {"id":id,
+                             'id_services':id_services},
         	     	success : function(services)
         	     		{
         	     			$("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
@@ -1143,14 +1149,23 @@ $(document).ready(function(){
                             'xarajat_nomi':xarajat_nomi},
                     success: function(xarajat_turi)
                         {
-                            $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            // if (xarajat_turi.length == 0)
+                            // {
+                            //     alert("edit knopkasini ikki marta bosdiz! :)");
+                            // }
+                            // else
+                            //{
+                                $("#"+id+" td:eq(0)").html(" ");
+                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            //}
+                            
                         }
             });
         });
 
         $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
-                xarajat_nomi = $('#xarajat_nomi'+id).val();
+                xarajat_nomi = $("#xarajat_nomi"+id).val(); 
             var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
             $.ajax({
                 url    : url_hisob_upd,
@@ -1177,7 +1192,8 @@ $(document).ready(function(){
                          'xarajat_turi':xarajat_turi},
                 success: function(xarajat_turi_upd)
                 	{
-                        $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_turi"+id+"' >"+xarajat_turi_upd+"</select>");
+                        console.log(xarajat_turi_upd);
+                        $("#"+id+" td:eq(0)").html(xarajat_turi_upd);
                 	}
               });
         });
