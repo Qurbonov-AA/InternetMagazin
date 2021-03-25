@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 </head>
+<!-- body start   -->
 <body>
 
     <div id="main_menu">
@@ -411,7 +412,7 @@ Highcharts.chart('container2', {
             	?>
                 {
                     name: "Ишчилар маоши",
-                    y: 62.74,
+                    y: 6207040,
                     drilldown: "Ишчилар маоши"
                 }
             ]
@@ -425,193 +426,55 @@ Highcharts.chart('container2', {
                 data: [
                     [
                         "янв",
-                        10
+                        1000000
                     ],
                     [
                         "фев",
-                        13
+                        1030000
                     ],
                     [
                         "март",
-                        32
+                        3200000
                     ],
                     [
                         "апр",
-                        14
+                        1400000
                     ],
                     [
                         "май",
-                        88
+                        6800000
                     ],
                     [
                         "июн",
-                        56
+                        5600000
                     ],
                     [
                         "июл",
-                        45
+                        4500000
                     ],
                     [
                         "авг",
-                        4
+                        4000000
                     ],
                     [
                         "сен",
-                        32
+                        3200000
                     ],
                     [
                         "окт",
-                        9
+                        9000000
                     ],
                     [
                         "ноябр",
-                        79
+                        7900000
                     ],
                     [
                         "дек",
-                        18
+                        1800000
                     ]
                     
                 ]
             },
-            {
-                name: "Firefox",
-                id: "Firefox",
-                data: [
-                    [
-                        "v58.0",
-                        1.02
-                    ],
-                    [
-                        "v57.0",
-                        7.36
-                    ],
-                    [
-                        "v56.0",
-                        0.35
-                    ],
-                    [
-                        "v55.0",
-                        0.11
-                    ],
-                    [
-                        "v54.0",
-                        0.1
-                    ],
-                    [
-                        "v52.0",
-                        0.95
-                    ],
-                    [
-                        "v51.0",
-                        0.15
-                    ],
-                    [
-                        "v50.0",
-                        0.1
-                    ],
-                    [
-                        "v48.0",
-                        0.31
-                    ],
-                    [
-                        "v47.0",
-                        0.12
-                    ]
-                ]
-            },
-            {
-                name: "Internet Explorer",
-                id: "Internet Explorer",
-                data: [
-                    [
-                        "v11.0",
-                        6.2
-                    ],
-                    [
-                        "v10.0",
-                        0.29
-                    ],
-                    [
-                        "v9.0",
-                        0.27
-                    ],
-                    [
-                        "v8.0",
-                        0.47
-                    ]
-                ]
-            },
-            {
-                name: "Safari",
-                id: "Safari",
-                data: [
-                    [
-                        "v11.0",
-                        3.39
-                    ],
-                    [
-                        "v10.1",
-                        0.96
-                    ],
-                    [
-                        "v10.0",
-                        0.36
-                    ],
-                    [
-                        "v9.1",
-                        0.54
-                    ],
-                    [
-                        "v9.0",
-                        0.13
-                    ],
-                    [
-                        "v5.1",
-                        0.2
-                    ]
-                ]
-            },
-            {
-                name: "Edge",
-                id: "Edge",
-                data: [
-                    [
-                        "v16",
-                        2.6
-                    ],
-                    [
-                        "v15",
-                        0.92
-                    ],
-                    [
-                        "v14",
-                        0.4
-                    ],
-                    [
-                        "v13",
-                        0.1
-                    ]
-                ]
-            },
-            {
-                name: "Opera",
-                id: "Opera",
-                data: [
-                    [
-                        "v50.0",
-                        0.96
-                    ],
-                    [
-                        "v49.0",
-                        0.82
-                    ],
-                    [
-                        "v12.1",
-                        0.14
-                    ]
-                ]
-            }
         ]
     }
 });
@@ -985,7 +848,9 @@ Highcharts.chart('container2', {
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
-        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
+        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
+        	var id = $(this).attr('name'),
+                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -1026,6 +891,7 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
             $("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
+
         });
 
         $("body").on("click",".updtypes",function(){
@@ -1110,8 +976,11 @@ Highcharts.chart('container2', {
 /*                       service     update   finish             */
 
 /*                       goods     update   start             */
-        $("body").on("click", ".edit_goods", function(){
-        	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+        $("body").on("click", ".edit_goods", function()
+        {
+        	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
         	var t_name     = $("#"+id+" td:eq(0)").text(),
         	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
         	    id_type    = $("#"+id+" td:eq(2)").text(),
@@ -1152,11 +1021,11 @@ Highcharts.chart('container2', {
         	     			$("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
         	     		}
         	     });
-        	$("#"+id+" td:eq(0)").html("<input class='form-control' id='t_name"+id+"' value='"+t_name+"'>");
-        	$("#"+id+" td:eq(1)").html("<input class='form-control' id='t_name_ru"+id+"' value='"+t_name_ru+"'>");
-        	$("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
-        	$("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
-        	$("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
+                    $("#"+id+" td:eq(0)").html("<input class='form-control' id='t_name"+id+"' value='"+t_name+"'>");
+                    $("#"+id+" td:eq(1)").html("<input class='form-control' id='t_name_ru"+id+"' value='"+t_name_ru+"'>");
+                    $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
+                    $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
+                    $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
         });
 
         $("body").on("click",".updgoods",function(){
@@ -1210,13 +1079,18 @@ Highcharts.chart('container2', {
                             $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
                         }
 
+
                 });
                 $.ajax({
                     url : url_brand,
                     type : "POST",
                     data : {'id' :id},
                     success: function(brands)
+
                     {
+
+                        {
+
 
                             // if (xarajat_turi.length == 0)
                             // {
@@ -1235,6 +1109,8 @@ Highcharts.chart('container2', {
                 });
             });
 */
+                       
+
         $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
@@ -1248,12 +1124,12 @@ Highcharts.chart('container2', {
                     {
                        alert(hisob_upd)
                     }
-            });              
+            });            
             $.ajax({
-                url   : url_services,
-                type  : "POST",
-                data  : {"id":id},
-                success : function(services)
+                    url   : url_services,
+                    type  : "POST",
+                    data  : {"id":id},
+                    success : function(services)
                         {
                             $("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
                         }
