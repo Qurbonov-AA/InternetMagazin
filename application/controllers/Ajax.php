@@ -1059,7 +1059,7 @@ public function get_services()
   }
 
 
-/*                        update knopkalar finish               */
+/*                        update knopkalar finish              */
 
 Public function get_categories()
    {
