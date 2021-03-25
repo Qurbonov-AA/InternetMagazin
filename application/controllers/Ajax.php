@@ -6,7 +6,7 @@ class Ajax extends CI_Controller {
   Public function menu()
   {
     $menu = $this->input->post("menu");
-
+/* users start   */
      if($menu == 'users')
     {
       $data['users']= $this->db->query("SELECT * from ".$menu)->result_array();
