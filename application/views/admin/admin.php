@@ -985,9 +985,7 @@ Highcharts.chart('container2', {
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
-<<<<<<< HEAD
-        	var id = $(this).attr('name'),
-                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
+        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -1008,7 +1006,6 @@ Highcharts.chart('container2', {
         	$("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
         	$("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
         	$("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
-=======
             var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
             var id_kat        = $("#"+id+" td:eq(0)").text(),
                 type_name     = $("#"+id+" td:eq(1)").text(),
@@ -1029,7 +1026,6 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
             $("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
         });
 
         $("body").on("click",".updtypes",function(){
@@ -1115,7 +1111,6 @@ Highcharts.chart('container2', {
 
 /*                       goods     update   start             */
         $("body").on("click", ".edit_goods", function(){
-<<<<<<< HEAD
         	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
         	var t_name     = $("#"+id+" td:eq(0)").text(),
         	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
@@ -1193,9 +1188,11 @@ Highcharts.chart('container2', {
         			}
         	});
         });
-/*                       goods     update   finish             */
-=======
-            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+/*                       goods     update   finish             
+
+            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
             var t_name     = $("#"+id+" td:eq(0)").text(),
                 t_name_ru  = $("#"+id+" td:eq(1)").text(),
                 id_type    = $("#"+id+" td:eq(2)").text(),
@@ -1212,7 +1209,6 @@ Highcharts.chart('container2', {
                         {
                             $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
                         }
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
 
                 });
                 $.ajax({
@@ -1220,8 +1216,8 @@ Highcharts.chart('container2', {
                     type : "POST",
                     data : {'id' :id},
                     success: function(brands)
-                        {
-<<<<<<< HEAD
+                    {
+
                             // if (xarajat_turi.length == 0)
                             // {
                             //     alert("edit knopkasini ikki marta bosdiz! :)");
@@ -1232,12 +1228,13 @@ Highcharts.chart('container2', {
                                 $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
                             //}
                             
-=======
-                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
-                        }
 
-<<<<<<< HEAD
+                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
+
+                    }
+                });
+            });
+*/
         $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
@@ -1251,15 +1248,12 @@ Highcharts.chart('container2', {
                     {
                        alert(hisob_upd)
                     }
-            });
-=======
-
-                });
-                 $.ajax({
-                    url   : url_services,
-                    type  : "POST",
-                    data  : {"id":id},
-                    success : function(services)
+            });              
+            $.ajax({
+                url   : url_services,
+                type  : "POST",
+                data  : {"id":id},
+                success : function(services)
                         {
                             $("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
                         }
@@ -1269,7 +1263,7 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
             $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
             $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
+
         });
 
 /*                     xarajat_turi update start                     */
