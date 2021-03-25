@@ -22,9 +22,14 @@ body
 }
 .goods
 {
+    width: 100%;
+    height: auto;
     background-color:#c5bebe;
     margin: 1rem;
     border-radius: 4px;;
+}
+.goods>h3 p h4{
+    text-align: center;
 }
 .modal-mask {
     position: fixed;
@@ -116,8 +121,15 @@ body
   {
       cursor: pointer;
   }
+  .col-md-4 h4, p, h3{
+        margin-left: 20px;
+
+  }
+
   .col-md-4
   {
+          
+          word-wrap: break-word;
           margin-top: 2rem;
           margin-bottom: 2rem;     
   }
@@ -695,11 +707,10 @@ header{
     background-image: url('https://mdbcdn.b-cdn.net/img/svg/hamburger9.svg?color=FF2C00');
     }
 
-    /*footer{
-        position: fixed;
-        bottom: 0;
+    footer{
+     background-color: #343A40;
     }
-    */
+  
     
     @media (max-height:800px){
         footer { position: static; }
@@ -872,3 +883,62 @@ header{
         }
     
     }
+    /*godssss img----------------------------*/
+    .goodsimg{
+        z-index: 1;
+        width: 180px;
+        margin: 10px 0 0 120px;
+        border-radius: 14%;
+
+
+    }
+
+    @media (max-width: 920px){
+        .goodsimg{
+            width:180px ;
+            height: auto;
+            border-radius: 10%;
+            margin: 30px 0 0 70px;
+        }
+    @media (max-width: 880px){
+        .goodsimg{
+                width:150px ;
+                height: auto;
+                border-radius: 13%;
+                margin: 20px 0 0 50px;
+        }
+        @media (max-width: 720px){
+            .goodsimg{
+                    width:180px ;
+                    height:auto;
+                    border-radius: 10%;
+                    margin: 10px 0 0 50px;
+                    
+            }  
+        @media (max-width: 600px){
+            .goodsimg{
+                width:180px ;
+                height:auto;
+                border-radius: 10%;
+                margin: 10px 0 0 60px;
+                        
+                }  
+        @media (min-width: 320px){
+            .goodsimg{
+                        width:145px ;
+                        height:auto;
+                        border-radius: 10%;
+                        margin: 10px 0 0 60px;
+                                
+                        }  
+         @media (max-width: 320px){
+                .goodsimg{
+                    width:180px ;
+                    height:auto;
+                    border-radius: 10%;
+                    margin: 10px 0 0 40px;
+                                        
+                    }  
+                            
+                            
+            
