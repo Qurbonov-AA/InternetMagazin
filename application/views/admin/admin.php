@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 </head>
+<!-- body start   -->
 <body>
 
     <div id="main_menu">
