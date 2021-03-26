@@ -73,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
                   <li class="list-group-item" name='hisob'>Xarajatlar</li>
                   <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
+                  <li class="list-group-item" name='buyurtma_holati'>Buyurtma holati</li>
 				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
 				</ul>
 		
@@ -807,6 +808,20 @@ $(document).ready(function(){
             });
         });
 
+        $("body").on('click','#btn_buyurtma_holati_save',function(){
+            var buyurtma_holati = $('#buyurtma_holati').val();
+            var url_buyurtma = "<?php echo base_url('index.php/ajax/buyurtma_ins')?>";
+             $.ajax({
+                url   :  url_buyurtma,
+                type  :  "POST",
+                data  :  {'buyurtma_holati': buyurtma_holati},
+                success: function(buyurtma_get)
+                    {
+                        alert(buyurtma_get);
+                    }  
+             }); 
+        });
+
         
 /*                        users  update  starts         */
 		$('body').on('click','.edit_users',function(){
@@ -951,7 +966,8 @@ $(document).ready(function(){
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
-        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
+        	var id = $(this).attr('name'),
+                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -960,7 +976,8 @@ $(document).ready(function(){
             	$.ajax({
             		url    : url_types_section,
             		type   :"POST",
-            		data   :{'id':id},
+            		data   :{'id':id,
+                             'id_kat':id_kat},
             		success:function(types)
             			{
             				$("#"+id+" td:eq(0)").html("<select class='form-control' id='id_kat"+id+"'>"+types+"</select>");
@@ -1060,6 +1077,7 @@ $(document).ready(function(){
         	var t_name     = $("#"+id+" td:eq(0)").text(),
         	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
         	    id_type    = $("#"+id+" td:eq(2)").text(),
+                id_brand   = $("#"+id+" td:eq(3)").text(),
         	    price      = $("#"+id+" td:eq(4)").text(),
         	    id_services= $("#"+id+" td:eq(5)").text(),
         	    title      = $("#"+id+" td:eq(6)").text(),
@@ -1068,7 +1086,8 @@ $(document).ready(function(){
         	    $.ajax({
         	    	url : url_type,
         	    	type : "POST",
-        	    	data : {'id' :id},
+        	    	data : {'id' :id,
+                            'id_type':id_type},
         	    	success: function(types)
         	    		{
         	    			$("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
@@ -1078,7 +1097,8 @@ $(document).ready(function(){
         	    $.ajax({
         	    	url : url_brand,
         	    	type : "POST",
-        	    	data : {'id' :id},
+        	    	data : {'id' :id,
+                            'id_brand':id_brand},
         	    	success: function(brands)
         	    		{
         	    			$("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
@@ -1087,7 +1107,8 @@ $(document).ready(function(){
         	     $.ajax({
         	     	url   : url_services,
         	     	type  : "POST",
-        	     	data  : {"id":id},
+        	     	data  : {"id":id,
+                             'id_services':id_services},
         	     	success : function(services)
         	     		{
         	     			$("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
@@ -1143,14 +1164,23 @@ $(document).ready(function(){
                             'xarajat_nomi':xarajat_nomi},
                     success: function(xarajat_turi)
                         {
-                            $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            // if (xarajat_turi.length == 0)
+                            // {
+                            //     alert("edit knopkasini ikki marta bosdiz! :)");
+                            // }
+                            // else
+                            //{
+                                $("#"+id+" td:eq(0)").html(" ");
+                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            //}
+                            
                         }
             });
         });
 
         $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
-                xarajat_nomi = $('#xarajat_nomi'+id).val();
+                xarajat_nomi = $("#xarajat_nomi"+id).val(); 
             var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
             $.ajax({
                 url    : url_hisob_upd,
@@ -1177,7 +1207,7 @@ $(document).ready(function(){
                          'xarajat_turi':xarajat_turi},
                 success: function(xarajat_turi_upd)
                 	{
-                        $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_turi"+id+"' >"+xarajat_turi_upd+"</select>");
+                        $("#"+id+" td:eq(0)").html(xarajat_turi_upd);
                 	}
               });
         });
@@ -1202,9 +1232,20 @@ $(document).ready(function(){
 
 /*                       service     update   start             */
 		$("body").on("click", ".edit_basket", function(){
-        	var id      = $(this).attr('name');
-        	var status    = $("#"+id+" td:eq(5)").text();
-        	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
+        	var id      = $(this).attr('name'),
+        	    status    = $("#"+id+" td:eq(5)").text();
+            var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/buyurtma_holati')?>";
+            $.ajax({
+                url   :  url_buyurtma_holati,
+                type  : 'POST',
+                data  : {'id': id,
+                         'status' : status},
+                success:function(buyurtma_holati)
+                    {
+                       $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"'>"+buyurtma_holati+"</select>"); 
+                    }
+            });
+        	
         });
 
         $("body").on("click",".updbasket",function(){
@@ -1223,7 +1264,56 @@ $(document).ready(function(){
         			}
         	})
         });
+
+        $("body").on("click", ".edit_buyurtma_holati", function(){
+            var id      = $(this).attr('name');
+            var buyurtma_holati   = $("#"+id+" td:eq(0)").text();
+                $("#"+id+" td:eq(0)").html("<input class='form-control' id='buyurtma_holati"+id+"' value='"+buyurtma_holati+"'>");        
+        });
+
+        $("body").on("click",".updbuyurtma_holati",function(){
+            var id = $(this).attr('name');
+            var buyurtma_holati    = $("#buyurtma_holati"+id).val();
+            var url_buyurtma_holat_upd = "<?php echo base_url('index.php/ajax/buyurtma_holati_upd'); ?>";
+            $.ajax({
+                url : url_buyurtma_holat_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'buyurtma_holati':buyurtma_holati},
+                success: function(basket_upd)
+                    {
+                        alert(basket_upd);
+                        //location.reload();
+                    }
+            })
+        });
 /*                       service     update   finish             */
+
+$("body").on("click", ".edit_service", function(){
+            var id      = $(this).attr('name');
+            var name    = $("#"+id+" td:eq(0)").text(),
+                name_ru = $("#"+id+" td:eq(1)").text();
+            $("#"+id+" td:eq(0)").html("<input class='form-control' id='service_save"+id+"' value='"+name+"'>");
+            $("#"+id+" td:eq(1)").html("<input class='form-control' id='service_save_ru"+id+"' value='"+name_ru+"'>");
+        });
+
+        $("body").on("click",".updservice",function(){
+            var id = $(this).attr('name');
+            var save_name    = $("#service_save"+id).val(),
+                save_name_ru = $("#service_save_ru"+id).val();
+            var url_service_upd = "<?php echo base_url('index.php/ajax/service_upd'); ?>";
+            $.ajax({
+                url : url_service_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'ser_name':save_name,
+                       'ser_name_ru':save_name_ru},
+                success: function(service_upd)
+                    {
+                        alert(service_upd);
+                    }
+            })
+        }); 
 
 /*                       Delete knopkalari  start                */
 
@@ -1351,18 +1441,19 @@ $(document).ready(function(){
        	});
        }); 
  
-      $('body').on('click','#btn_xarajat_turi',function(){
+
+      $("body").on('click','#btn_buyurtma_holati', function(){
         var id = $(this).attr('name');
-        var url_xarajat_turi = "<?php echo base_url('index.php/ajax/btn_xarajat_turi_del')?>";
+        var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/btn_buyurtma_holati_del')?>";
         $.ajax({
-            url  : url_xarajat_turi,
-            type : "POST",
-            data : {'id':id},
-            success:function(xarajat_turi_del)
+            url   :   url_buyurtma_holati,
+            type  :   "POST",
+            data  :   {'id':id},
+            success:function(buyurtma_holat)
                 {
-                    alert(xarajat_turi_del);
+                    alert(buyurtma_holat);
                 }
-        }); 
+        });
       });
 
 /*                 Delete knopkalari  finish                 */
