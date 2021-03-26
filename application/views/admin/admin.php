@@ -412,7 +412,7 @@ Highcharts.chart('container2', {
                 {
                     name: "Ишчилар маоши",
                     y: 62.74,
-                    drilldown: "Ишчилар маоши"
+                    drilldown: "a"
                 }
             ]
         }
@@ -421,12 +421,9 @@ Highcharts.chart('container2', {
         series: [
             {
                 name: "Ишчилар маоши",
-                id: "Ишчилар маоши",
+                id: "a",
                 data: [
-                    [
-                        "янв",
-                        10
-                    ],
+                    ["янв",10],
                     [
                         "фев",
                         13

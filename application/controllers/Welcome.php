@@ -17,13 +17,13 @@ class Welcome extends CI_Controller {
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())		
 			    {
-			      redirect('auth/login');
+			    	redirect('auth/login');
 			    }
 		else
 				{					
 					$data['get_kat'] = $this->db->query("SELECT g.t_name , b.count*b.price  as all_summ, b.dates, b.price FROM `basket` b , goods g
-                       WHERE g.id = b.id_good
-                       group by g.id")->result_array();
+                    	WHERE g.id = b.id_good
+                    	group by g.id")->result_array();
 					$data['xarajat_turi'] = $this->db->query("SELECT x.xarajat_turi, sum(h.xarajat_summ) as price FROM hisob as h, xarajat_turi as x
 
 														WHERE x.id = h.xarajat_nomi
