@@ -6,7 +6,7 @@ class Ajax extends CI_Controller {
   Public function menu()
   {
     $menu = $this->input->post("menu");
-
+/* users start   */
      if($menu == 'users')
     {
       $data['users']= $this->db->query("SELECT * from ".$menu)->result_array();
@@ -19,6 +19,7 @@ class Ajax extends CI_Controller {
       else
       {
          echo "<tr><th>Ismi</th><th>Familiyasi</th><th>Manzil</th><th>Email</th><th>Telefon raqami</th><th>Password</th><th>Settings</th></tr>";
+
       }
       
       echo "</thead>";
@@ -52,6 +53,7 @@ class Ajax extends CI_Controller {
       { 
         echo "<tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
       }
+
 
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='brand_name'></td><td><input type='text' class='form-control' id='republic'></td><td><input type='text' class='form-control' id='end_date'></td><td><button class='btn btn-outline-success' id='btn_brands_save'>Save </button></td></tr>";
@@ -623,6 +625,56 @@ class Ajax extends CI_Controller {
          }  
   }
 
+  Public function hisob_ins()
+  {
+    $xarajat_nomi = $this->input->post('xarajat_nomi');
+    $xarajat_summ = $this->input->post('xarajat_summ');
+    if( strlen($xarajat_summ)>0)
+    {
+      $data_ins = array(
+        'xarajat_nomi'=> $xarajat_nomi,
+        'xarajat_summ'=> $xarajat_summ,
+        'data'        => Date('Y-m-d H:i:s')
+      );
+      $error =$this->db->insert('hisob', $data_ins);
+        if ($error == 1)
+          {
+            echo "Ma'lumotlar bazaga yozildi";
+          }
+        else
+          {
+            echo "Ma'lumotlarni yozishda xatolik bor";
+          }
+      }
+      else
+      {
+        echo "Hamma qatorlarni to`ldirish shart!";
+      }
+  }
+
+  Public function xarajat_turi_ins()
+  {
+    $xarajat_turi = $this->input->post('xarajat_turi');
+    if(strlen($xarajat_turi)>0)
+    {
+      $data_ins = array(
+        'xarajat_turi'  => $xarajat_turi,
+      );
+      $error = $this->db->insert('xarajat_turi',$data_ins);
+      if ($error == 1)
+          {
+            echo "Ma'lumotlar bazaga yozildi";
+          }
+        else
+          {
+            echo "Ma'lumotlarni yozishda xatolik bor";
+          }
+    }
+    else
+    {
+      echo "Hamma qatorlarni to`ldirish shart!";
+    }
+  }
 
 /*                       delete knopkalar start           */
  public function users_btn_del()
@@ -854,13 +906,20 @@ public function groups_upd()
 
  Public function get_id_types()
   {
+    $id_kat            = $this->input->post('id_kat');
+    $id                = $this->input->post('id');
     $data['kategories']= $this->db->query("SELECT id,kat_name FROM kategories")->result_array();
-
+      echo "<option value='".$id."'>".$id_kat."</option>";
        foreach( $data['kategories'] as $k)
           {
-             echo "<option value='".$k['id']."'>".$k['kat_name']."</option>";
+             if($id <> $k['id'] and $id_kat <> $k['kat_name']) 
+              { 
+                echo "<option value='".$k['id']."'>".$k['kat_name']."</option>";
+              }
+
           }
   }
+
 
  Public function menu_upd() 
  {
@@ -947,68 +1006,127 @@ public function groups_upd()
       }
   }
 
+  Public function hisob_upd()
+  {
+    $id  =$this->input->post('id');
+    $xarajat_nomi = $this->input->post('xarajat_nomi');
+       $error = $this->db->query('UPDATE hisob SET xarajat_nomi = "'.$xarajat_nomi.'" where id = "'.$id.'"');
+       if($error =1)
+       {
+        echo "Ma'lumot muvofaqiyatli o'zgartirildi!";
+       }
+       else
+       {
+        echo "O'zgartirishda xatolik bor!";
+       }
+  }
+
+ Public function xarajat_turi_upd()
+  {
+    $id = $this->input->post('id');
+    $xarajat_turi = $this->input->post('xarajat_turi');
+    if (strlen($xarajat_turi)>0)
+    {
+       $error = $this->db->query('UPDATE xarajat_turi SET xarajat_turi = "'.$xarajat_turi.'" where id="'.$id.'"');
+       if($error ==1)
+         {
+          echo "Ma'lumot muvofaqiyatli o'zgartirildi!";
+         }
+       else
+         {
+          echo "O'zgartirishda xatolik bor!";
+         }
+    }
+    else
+    {
+      echo "Ma'lumotlarni to'liq kiritish shart";
+    }
+  }
+
 Public function get_types()
   {
+      $id            = $this->input->post('id');
+      $id_type       = $this->input->post('id_type');
+      echo "<option value='".$id."'>".$id_type."</option>";
       $data['types'] = $this->db->query("SELECT * from types ")->result_array();
-         
          foreach ($data['types'] as $q) 
          {
-             echo "<option value='".$q['id']."'>".$q['type_name']."</option>";
+             if( $id<> $q['id'] and $id_type<>$q['type_name'])
+              {
+                echo "<option value='".$q['id']."'>".$q['type_name']."</option>";
+              }
          }
   }
 Public function get_brands()
   {
-
+       $id             = $this->input->post('id');
+       $id_brand       = $this->input->post('id_brand');
        $data['brands'] = $this->db->query("SELECT id, brand_name from brands")->result_array();
-         
+        echo "<option value='".$id."'>".$id_brand."</option>"; 
          foreach ($data['brands'] as $q) 
          {
-             echo "<option value='".$q['id']."'>".$q['brand_name']."</option>";
+            if($id <> $q['id'] and $id_brand<>$q['brand_name']) 
+              {
+                echo "<option value='".$q['id']."'>".$q['brand_name']."</option>";
+              }     
          }
   }
 public function get_services()
   {
+      $id               = $this->input->post('id');
+      $id_services      = $this->input->post('id_services');
       $data['services'] = $this->db->query("SELECT id, service_name FROM services")->result_array();
-
+       echo "<option value='".$id."'>".$id_services."</option>";
        foreach ($data['services'] as $s)
           {
-            echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
+            if($id <> $s['id'] and $id_services <> $s['service_name']) echo "<option value='".$s['id']."'>".$s['service_name']."</option>";
           }
   }
+
 
  public function get_xarajat_turi()
   {
+    $id                   = $this->input->post('id');
     $xarajat_nomi         = $this->input->post('xarajat_nomi');
     $data['xarajat_turi'] = $this->db->query("SELECT id, xarajat_turi FROM xarajat_turi")->result_array();
-      echo "<option>".$xarajat_nomi."</option>";
-      foreach($data['xarajat_turi'] as $x)
-          {
-           //if($x == $xarajat_nomi)
-           //{
-            echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
-           //}
-          }
+     // if (strlen($xarajat_nomi) > 50 )
+     //  {
+     //      echo "Edit knopkasini ikki marta bosdiz :)";
+     //  }
+     //  else
+     //  {
+        echo "<option value='".$id."'>".$xarajat_nomi."</option>";
+        foreach($data['xarajat_turi'] as $x)
+            {
+              if($id <> $x['id'] and $xarajat_nomi<>$x['xarajat_turi']) 
+                {
+                  echo "<option value='".$x['id']."'>".$x['xarajat_turi']."</option>";
+                }
+            }
+      //}
   }
  
+
  Public function xarajat_upd()
   {
     $xarajat_turi         = $this->input->post('xarajat_turi');
     $id                   = $this->input->post('id');
     $data['xarajat_turi'] = $this->db->query('SELECT * FROM xarajat_turi')->result_array();
-      echo "<option value='".$id."'>".$xarajat_turi."</option>";
-      foreach($data['xarajat_turi'] as $h)
+      echo "<input value='".$xarajat_turi."' id='xarajat_turi".$id."' class='form-control'></option>";
+      /*foreach($data['xarajat_turi'] as $h)
           {
             if ($id <> $h['id'])
             {
-                echo "<option value='".$h['id']."'>".$h['xarajat_turi']."</option>";
+                echo "<option value='".$h['id']."'><input type='text' value='".$h['xarajat_turi']."'></option>";
             }
             
             
           }
+          */
   }
 
 
-/*                        update knopkalar finish               */
+/*                        update knopkalar finish              */
 
 Public function get_categories()
    {

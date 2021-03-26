@@ -79,18 +79,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Admin panel</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/calc.css');?>">
+
 
 </head>
+<!-- body start   -->
 <body>
 
     <div id="main_menu">
     
 
                      <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
+
                         <i class="fa fa-2x fa-home"> </i></button> </a> 
                      <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
                      <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>      
+          
+
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-3">
                  
@@ -237,9 +241,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     var data_kat ;
   
-
-
-  
  var chart = Highcharts.stockChart('container3', {
 
 
@@ -357,7 +358,7 @@ Highcharts.chart('container2', {
         type: 'column'
     },
     title: {
-        text: 'Browser market shares. January, 2018'
+        text: 'Харажатлар'
     },
     subtitle: {
         text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -372,7 +373,7 @@ Highcharts.chart('container2', {
     },
     yAxis: {
         title: {
-            text: 'Total percent market share'
+            text: 'Уммумий харажатлар суммда'
         }
 
     },
@@ -384,55 +385,35 @@ Highcharts.chart('container2', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y:.1f}%'
+                format: '{point.y:.1f} сумм'
             }
         }
     },
 
     tooltip: {
         headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f} сумм</b> жами<br/>'
     },
 
     series: [
         {
-            name: "Browsers",
+            name: "Харажат",
             colorByPoint: true,
             data: [
+
+            	<?php 
+            		foreach($xarajat_turi as $x)
+            		{
+            			echo "{";
+            			echo  " name : '".$x['xarajat_turi']."'  , y : ".intval($x['price']).",  drilldown : '".$x['xarajat_turi']."'";
+            			echo "},";
+            		}
+            		
+            	?>
                 {
-                    name: "Chrome",
-                    y: 62.74,
-                    drilldown: "Chrome"
-                },
-                {
-                    name: "Firefox",
-                    y: 10.57,
-                    drilldown: "Firefox"
-                },
-                {
-                    name: "Internet Explorer",
-                    y: 7.23,
-                    drilldown: "Internet Explorer"
-                },
-                {
-                    name: "Safari",
-                    y: 5.58,
-                    drilldown: "Safari"
-                },
-                {
-                    name: "Edge",
-                    y: 4.02,
-                    drilldown: "Edge"
-                },
-                {
-                    name: "Opera",
-                    y: 1.92,
-                    drilldown: "Opera"
-                },
-                {
-                    name: "Other",
-                    y: 7.62,
-                    drilldown: null
+                    name: "Ишчилар маоши",
+                    y: 6207040,
+                    drilldown: "Ишчилар маоши"
                 }
             ]
         }
@@ -440,221 +421,60 @@ Highcharts.chart('container2', {
     drilldown: {
         series: [
             {
-                name: "Chrome",
-                id: "Chrome",
+                name: "Ишчилар маоши",
+                id: "Ишчилар маоши",
                 data: [
                     [
-                        "v65.0",
-                        0.1
+                        "янв",
+                        1000000
                     ],
                     [
-                        "v64.0",
-                        1.3
+                        "фев",
+                        1030000
                     ],
                     [
-                        "v63.0",
-                        53.02
+                        "март",
+                        3200000
                     ],
                     [
-                        "v62.0",
-                        1.4
+                        "апр",
+                        1400000
                     ],
                     [
-                        "v61.0",
-                        0.88
+                        "май",
+                        6800000
                     ],
                     [
-                        "v60.0",
-                        0.56
+                        "июн",
+                        5600000
                     ],
                     [
-                        "v59.0",
-                        0.45
+                        "июл",
+                        4500000
                     ],
                     [
-                        "v58.0",
-                        0.49
+                        "авг",
+                        4000000
                     ],
                     [
-                        "v57.0",
-                        0.32
+                        "сен",
+                        3200000
                     ],
                     [
-                        "v56.0",
-                        0.29
+                        "окт",
+                        9000000
                     ],
                     [
-                        "v55.0",
-                        0.79
+                        "ноябр",
+                        7900000
                     ],
                     [
-                        "v54.0",
-                        0.18
-                    ],
-                    [
-                        "v51.0",
-                        0.13
-                    ],
-                    [
-                        "v49.0",
-                        2.16
-                    ],
-                    [
-                        "v48.0",
-                        0.13
-                    ],
-                    [
-                        "v47.0",
-                        0.11
-                    ],
-                    [
-                        "v43.0",
-                        0.17
-                    ],
-                    [
-                        "v29.0",
-                        0.26
+                        "дек",
+                        1800000
                     ]
+                    
                 ]
             },
-            {
-                name: "Firefox",
-                id: "Firefox",
-                data: [
-                    [
-                        "v58.0",
-                        1.02
-                    ],
-                    [
-                        "v57.0",
-                        7.36
-                    ],
-                    [
-                        "v56.0",
-                        0.35
-                    ],
-                    [
-                        "v55.0",
-                        0.11
-                    ],
-                    [
-                        "v54.0",
-                        0.1
-                    ],
-                    [
-                        "v52.0",
-                        0.95
-                    ],
-                    [
-                        "v51.0",
-                        0.15
-                    ],
-                    [
-                        "v50.0",
-                        0.1
-                    ],
-                    [
-                        "v48.0",
-                        0.31
-                    ],
-                    [
-                        "v47.0",
-                        0.12
-                    ]
-                ]
-            },
-            {
-                name: "Internet Explorer",
-                id: "Internet Explorer",
-                data: [
-                    [
-                        "v11.0",
-                        6.2
-                    ],
-                    [
-                        "v10.0",
-                        0.29
-                    ],
-                    [
-                        "v9.0",
-                        0.27
-                    ],
-                    [
-                        "v8.0",
-                        0.47
-                    ]
-                ]
-            },
-            {
-                name: "Safari",
-                id: "Safari",
-                data: [
-                    [
-                        "v11.0",
-                        3.39
-                    ],
-                    [
-                        "v10.1",
-                        0.96
-                    ],
-                    [
-                        "v10.0",
-                        0.36
-                    ],
-                    [
-                        "v9.1",
-                        0.54
-                    ],
-                    [
-                        "v9.0",
-                        0.13
-                    ],
-                    [
-                        "v5.1",
-                        0.2
-                    ]
-                ]
-            },
-            {
-                name: "Edge",
-                id: "Edge",
-                data: [
-                    [
-                        "v16",
-                        2.6
-                    ],
-                    [
-                        "v15",
-                        0.92
-                    ],
-                    [
-                        "v14",
-                        0.4
-                    ],
-                    [
-                        "v13",
-                        0.1
-                    ]
-                ]
-            },
-            {
-                name: "Opera",
-                id: "Opera",
-                data: [
-                    [
-                        "v50.0",
-                        0.96
-                    ],
-                    [
-                        "v49.0",
-                        0.82
-                    ],
-                    [
-                        "v12.1",
-                        0.14
-                    ]
-                ]
-            }
         ]
     }
 });
@@ -665,7 +485,7 @@ Highcharts.chart('container2', {
     var lang ='uz'; 
     function lang_change(language)
     {
-       lang = language;   
+       lang = language; 
     }
 
     $(document).ready(function(){
@@ -687,7 +507,11 @@ Highcharts.chart('container2', {
                 success : function(get_menu)
                     {
                         $("#dinamic_menu").html(get_menu);
+
                         console.log(get_menu);
+
+                       
+
                     }
                 });
 
@@ -740,7 +564,8 @@ Highcharts.chart('container2', {
                 type : "POST",
                 data : {'b_name' : brand_name,
                         'b_republic' : republic, 
-                        'b_end_date' : end_date },
+                        'b_end_date' : end_date,
+                        'lang':lang },
                 success :  function(get_ins)
                     {
                         alert(get_ins);
@@ -1026,6 +851,29 @@ Highcharts.chart('container2', {
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
+        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
+        	var id = $(this).attr('name'),
+                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
+        	var id_kat        = $("#"+id+" td:eq(0)").text(),
+        	    type_name     = $("#"+id+" td:eq(1)").text(),
+        	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
+        	    d_create_save = $("#"+id+" td:eq(3)").text(),
+        	    data_delete   = $("#"+id+" td:eq(4)").text();
+            	$.ajax({
+            		url    : url_types_section,
+            		type   :"POST",
+            		data   :{'id':id,
+                             'id_kat':id_kat},
+            		success:function(types)
+            			{
+            				$("#"+id+" td:eq(0)").html("<select class='form-control' id='id_kat"+id+"'>"+types+"</select>");
+            			}
+            	});
+        	
+        	$("#"+id+" td:eq(1)").html("<input class='form-control' id='types_save"+id+"' value='"+type_name+"'>");
+        	$("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
+        	$("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
+        	$("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
             var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
             var id_kat        = $("#"+id+" td:eq(0)").text(),
                 type_name     = $("#"+id+" td:eq(1)").text(),
@@ -1046,6 +894,7 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
             $("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
+
         });
 
         $("body").on("click",".updtypes",function(){
@@ -1130,8 +979,92 @@ Highcharts.chart('container2', {
 /*                       service     update   finish             */
 
 /*                       goods     update   start             */
-        $("body").on("click", ".edit_goods", function(){
-            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+        $("body").on("click", ".edit_goods", function()
+        {
+        	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+        	var t_name     = $("#"+id+" td:eq(0)").text(),
+        	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
+        	    id_type    = $("#"+id+" td:eq(2)").text(),
+                id_brand   = $("#"+id+" td:eq(3)").text(),
+        	    price      = $("#"+id+" td:eq(4)").text(),
+        	    id_services= $("#"+id+" td:eq(5)").text(),
+        	    title      = $("#"+id+" td:eq(6)").text(),
+        	    title_ru   = $("#"+id+" td:eq(7)").text();
+        	    select_type= '';
+        	    $.ajax({
+        	    	url : url_type,
+        	    	type : "POST",
+        	    	data : {'id' :id,
+                            'id_type':id_type},
+        	    	success: function(types)
+        	    		{
+        	    			$("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
+        	    		}
+
+        	    });
+        	    $.ajax({
+        	    	url : url_brand,
+        	    	type : "POST",
+        	    	data : {'id' :id,
+                            'id_brand':id_brand},
+        	    	success: function(brands)
+        	    		{
+        	    			$("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
+        	    		}
+        	    });
+        	     $.ajax({
+        	     	url   : url_services,
+        	     	type  : "POST",
+        	     	data  : {"id":id,
+                             'id_services':id_services},
+        	     	success : function(services)
+        	     		{
+        	     			$("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
+        	     		}
+        	     });
+                    $("#"+id+" td:eq(0)").html("<input class='form-control' id='t_name"+id+"' value='"+t_name+"'>");
+                    $("#"+id+" td:eq(1)").html("<input class='form-control' id='t_name_ru"+id+"' value='"+t_name_ru+"'>");
+                    $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
+                    $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
+                    $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
+        });
+
+        $("body").on("click",".updgoods",function(){
+            var id = $(this).attr('name');
+        	var t_name     = $("#t_name"+id).val(),
+        	    t_name_ru  = $("#t_name_ru"+id).val(),
+        	    id_type    = $("#id_type"+id).val(),
+        	    id_brand   = $("#id_brand"+id).val(),
+        	    id_services= $("#id_services"+id).val(),
+        	    price      = $("#price"+id).val(),
+        	    title      = $("#title"+id).val(),
+        	    title_ru   = $("#title_ru"+id).val();
+        	var url_goods_upd = "<?php echo base_url('index.php/ajax/goods_upd');?>";
+        	$.ajax({
+        		url : url_goods_upd,
+        		type: "POST",
+        		data: {'id':id, 
+        		       't_name'   	 :t_name,
+        		       't_name_ru'	 :t_name_ru,
+        		       'id_type'   	 :id_type,
+        		       'id_brand'    :id_brand,
+        		       'id_services' :id_services,
+        		       'price'       :price,
+        		       'title'       :title,
+        		       'title_ru'    :title_ru},
+        		success: function(types_upd)
+        			{
+        				alert(types_upd);
+        			}
+        	});
+        });
+/*                       goods     update   finish             
+
+            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
             var t_name     = $("#"+id+" td:eq(0)").text(),
                 t_name_ru  = $("#"+id+" td:eq(1)").text(),
                 id_type    = $("#"+id+" td:eq(2)").text(),
@@ -1149,19 +1082,57 @@ Highcharts.chart('container2', {
                             $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
                         }
 
+
                 });
                 $.ajax({
                     url : url_brand,
                     type : "POST",
                     data : {'id' :id},
                     success: function(brands)
+
+                    {
+
                         {
+
+
+                            // if (xarajat_turi.length == 0)
+                            // {
+                            //     alert("edit knopkasini ikki marta bosdiz! :)");
+                            // }
+                            // else
+                            //{
+                                $("#"+id+" td:eq(0)").html(" ");
+                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            //}
+                            
+
                             $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
-                        }
 
+<<<<<<< HEAD
 
+=======
+                    }
+>>>>>>> 2b2a8616ed966a0e69b9306c7c19577250fb0fc6
                 });
-                 $.ajax({
+            });
+*/
+                       
+
+        $('body').on('click','.updhisob',function(){
+            var id =$(this).attr('name'),
+                xarajat_nomi = $("#xarajat_nomi"+id).val(); 
+            var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
+            $.ajax({
+                url    : url_hisob_upd,
+                type   : 'POST',
+                data   : {'id'          : id,
+                          'xarajat_nomi': xarajat_nomi},
+                success:function(hisob_upd)
+                    {
+                       alert(hisob_upd)
+                    }
+            });            
+            $.ajax({
                     url   : url_services,
                     type  : "POST",
                     data  : {"id":id},
@@ -1189,7 +1160,8 @@ Highcharts.chart('container2', {
                          'xarajat_turi':xarajat_turi},
                 success: function(xarajat_turi_upd)
                 	{
-                        $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_turi"+id+"' >"+xarajat_turi_upd+"</select>");
+                        console.log(xarajat_turi_upd);
+                        $("#"+id+" td:eq(0)").html(xarajat_turi_upd);
                 	}
               });
 
