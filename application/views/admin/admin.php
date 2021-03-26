@@ -89,10 +89,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
 
                      <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
-                        <i class="fa fa-2x fa-home"> </i></button> </a>
-                        <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button> 
-                        <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-                           
+
+                        <i class="fa fa-2x fa-home"> </i></button> </a> 
+                     <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+                     <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>      
+          
+
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-3">
                  
@@ -225,6 +227,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             { 
                 app.lang = lang;
                 lang_change(lang);
+                activecolor : 'red';
             }
         }
 
@@ -237,9 +240,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
 
     var data_kat ;
-  
-
-
   
  var chart = Highcharts.stockChart('container3', {
 
@@ -486,7 +486,6 @@ Highcharts.chart('container2', {
     function lang_change(language)
     {
        lang = language; 
-        
     }
 
     $(document).ready(function(){
@@ -508,7 +507,11 @@ Highcharts.chart('container2', {
                 success : function(get_menu)
                     {
                         $("#dinamic_menu").html(get_menu);
+
+                        console.log(get_menu);
+
                        
+
                     }
                 });
 
@@ -1105,7 +1108,11 @@ Highcharts.chart('container2', {
 
                             $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
 
+<<<<<<< HEAD
+
+=======
                     }
+>>>>>>> 2b2a8616ed966a0e69b9306c7c19577250fb0fc6
                 });
             });
 */
@@ -1139,7 +1146,6 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
             $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
             $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
-
         });
 
 /*                     xarajat_turi update start                     */

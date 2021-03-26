@@ -12,15 +12,14 @@ class Ajax extends CI_Controller {
       $data['users']= $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
       echo "<thead>";
-      if ($this->input->post("lang") == 'uz')
+      if ($this->input->post("lang") == 'ru')
       {
-        echo "<tr><th>Ismi</th><th>Familiyasi</th><th>Manzil</th><th>Email</th><th>Telefon raqami</th><th>Password</th><th>Settings</th></tr>";
-         
+          echo "<tr><th>Имя</th><th>Фамилия</th><th>Адрес</th><th>Электронное письмо</th><th>Телефонный номер</th><th>Password</th><th>Settings</th></tr>";
       }
       else
       {
-        echo "<tr><th>Имя</th><th>Фамилия</th><th>Адрес</th><th>Электронное почта</th><th>Телефонный номер</th><th>Password</th><th>Settings</th></tr>";
-         
+         echo "<tr><th>Ismi</th><th>Familiyasi</th><th>Manzil</th><th>Email</th><th>Telefon raqami</th><th>Password</th><th>Settings</th></tr>";
+
       }
       
       echo "</thead>";
@@ -43,14 +42,19 @@ class Ajax extends CI_Controller {
      {
       $data['brand'] = $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
-      echo "<thead>" ;
-      if ($this->input->post("lang") == 'uz'){
-       echo" <tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
+      echo "<thead>";
+      if ($this->input->post("lang") == 'ru')
+
+      { 
+        echo "<tr> <th> Имя бренда </th><th> Государство </th> <th> Продолжительность </th></tr></thead>";
       }
-      else{
-        echo" <tr> <th>  Имя бренда </th><th> Государство </th> <th> Продолжительность</th> <th> Settings </th> </tr></thead>";
+
+      else
+      { 
+        echo "<tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
       }
-      
+
+
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='brand_name'></td><td><input type='text' class='form-control' id='republic'></td><td><input type='text' class='form-control' id='end_date'></td><td><button class='btn btn-outline-success' id='btn_brands_save'>Save </button></td></tr>";
       foreach($data['brand'] as $b)
@@ -67,7 +71,15 @@ class Ajax extends CI_Controller {
     {
       $data['kategories'] = $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
-      echo "<thead> <tr> <th> Kategoriya nomi </th><th>Kategoriya nomi(ru)</th><th>Kategoriya yaratilgan sana </th> <th> rasm url i </th> <th> Settings </th> </tr></thead>";
+      echo "<thead>";
+      if ($this->input->post("lang") == 'ru') 
+      {
+         echo "<tr> <th>Название категории </th><th>Название категории(ru)</th><th>Дата создания категории </th> <th>рисунок url</th></tr></thead>";
+      }
+        else
+         { 
+       echo "<tr> <th> Kategoriya nomi </th><th>Kategoriya nomi(ru)</th><th>Kategoriya yaratilgan sana </th> <th> rasm url i </th> <th> Settings </th> </tr></thead>";
+       }
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='kat_name'></td><td><input type='text' class='form-control' id='kat_name_ru'></td><td><input type='text' class='form-control' id='kat_c_date'></td><td><input type='text' class='form-control' id='kat_image_path'></td><td><button class='btn btn-outline-success' id='btn_kat_save'>Save </button></td></tr>";
              foreach($data['kategories'] as $k)
@@ -85,7 +97,16 @@ class Ajax extends CI_Controller {
       $data['kats'] = $this->db->query("SELECT * from kategories")->result_array();
       $data['types'] = $this->db->query("SELECT k.kat_name as id_kat, t.type_name,t.type_name_ru,t.d_create,t.d_delete,t.state,t.id   from ".$menu." t, kategories k WHERE t.id_kat = k.id ")->result_array();
       echo "<table class='table table-hover'>";
-      echo "<thead> <tr> <th> Kategoriya </th> <th> Sub kategoriya </th><th> Sub kategoriya(ru) </th> <th> Yaratilgan sana </th><th>O`chirilgan sana</th><th>State</th> <th>Settings</th></tr></thead>";
+      echo "<thead>";
+      if ($this->input->post("lang") == 'ru')
+      {
+         echo "<tr> <th> Категория </th> <th> Суб Категория </th><th> Суб Категория(ru) </th> <th> Дата создания</th><th>Дата удаления</th><th>State</th></tr></thead>";
+      }
+      else
+        { 
+          echo "<tr> <th> Kategoriya </th> <th> Sub kategoriya </th><th> Sub kategoriya(ru) </th> <th> Yaratilgan sana </th><th>O`chirilgan sana</th><th>State</th> <th>Settings</th></tr></thead>";
+        }
+
       echo "<tbody>";
       echo "<tr><td><select class='form-control' id='sub_kat_id'>";
           foreach($data['kats'] as $k)
@@ -108,7 +129,15 @@ class Ajax extends CI_Controller {
       $data['groups']= $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
       echo "<thead>";
-      echo "<tr><th>Name</th><th>Description</th><th>Settings</th></tr></thead>";
+
+      if ($this->input->post("lang") == 'ru')
+        {
+          echo "<tr><th>Имя</th><th>Описание</th></tr></thead>"; 
+        }
+        else
+        { 
+      echo "<tr><th>Name</th><th>Description</th></tr></thead>";
+        }
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='groups_name'></td><td><input type='text' class='form-control' id='groups_Description'></td><td><button class='btn btn-outline-success' id='btn_groups_save'>Save</button></td></tr>";
           foreach ($data['groups'] as $g) 
@@ -125,7 +154,15 @@ class Ajax extends CI_Controller {
       $data['menu']= $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
       echo "<thead>";
-      echo "<tr><th>Menu</th><th>Menu(ru)</th></tr></thead>";
+      if ($this->input->post("lang") == 'ru')
+      {
+        echo "<tr><th>Меню</th><th>Меню(ru)</th></tr>";
+      }
+      else
+      {
+         echo "<tr><th>Menu</th><th>Menu(ru)</th></tr></thead>";
+      }
+      
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='menu_name'></td><td><input type='text' class='form-control' id='menu_name_ru'></td><td><input type='number' class='form-control' id='menu_parent'></td><td><input type='number' class='form-control' id='menu_id_parent'></td><td><button class='btn btn-outline-success' id='btn_menu_save'>Save</button></td></tr>";
           foreach  ($data['menu'] as $m)
@@ -142,7 +179,14 @@ class Ajax extends CI_Controller {
       $data['service']= $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
       echo "<thead>";
-      echo "<tr><th>Xizmat turi</th><th>Xizmat turi(ru)</th><th>Settings</th></tr></thead>";
+      if ($this->input->post("lang") =='ru')
+      {
+        echo "<tr><th>Тип сервиса</th><th>Тип сервиса(ru)</th><th>Settings</th></tr>";
+      }
+      else
+      { 
+        echo "<tr><th>Xizmat turi</th><th>Xizmat turi(ru)</th><th>Settings</th></tr></thead>";
+      }
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='service_name'></td><td><input type='text' class='form-control' id='service_name_ru'></td><td><button class='btn btn-outline-success' id='btn_service_save'>Save</button></td></tr>";
 
@@ -164,7 +208,15 @@ class Ajax extends CI_Controller {
       FROM ".$menu." g, types t, brands b, services s   where t.id = g.id_type and b.id = g.id_brand and s.id = g.id_services")->result_array();
       echo "<table class='table table-hover'>"; 
       echo "<thead>";
-      echo "<tr><th>Mahsulot nomi</th><th>Mahsulot nomi(ru)</th><th>Sub kategoriya</th><th>Brandlar</th><th>Narxi</th><th>xizmatlar</th><th>Ma'lumot</th><th>Ma'lumot(ru)</th></tr></thead>";
+      if ($this->input->post("lang") =='ru')
+        { 
+          echo "<tr><th>Наименование товара</th><th>Наименование товара(ru)</th><th>Суб категория</th><th>Бренды</th><th>Цена</th><th>Сервисы</th><th>Информация</th><th>Информация(ru)</th></tr>";
+        }
+        else
+        {
+           echo "<tr><th>Mahsulot nomi</th><th>Mahsulot nomi(ru)</th><th>Sub kategoriya</th><th>Brandlar</th><th>Narxi</th><th>xizmatlar</th><th>Ma'lumot</th><th>Ma'lumot(ru)</th></tr></thead>";
+        }
+      
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='goods_name'></td><td><input type='text' class='form-control' id='goods_name_ru'></td><td><select class='form-control' id='goods_subkat'>";
           foreach($data['type'] as $t)
@@ -195,7 +247,14 @@ class Ajax extends CI_Controller {
        $data['basket']=$this->db->query("SELECT * from ".$menu)->result_array();
        echo "<table class='table table-hover'>";
        echo "<thead>";
-       echo "<tr><th>Tovar id si</th><th>Narxi</th><th>Soni</th><th>Foydalanuvchi</th><th>Sanasi</th><th>Holati</th></tr>";
+       if ($this->input->post("lang") == 'ru')
+       {
+          echo "<tr><th>Идентификатор бренда</th><th>Цена</th><th>Soni</th><th>Стандарт</th><th>Сана</th><th>Условие</th></tr>";
+       }
+       else
+       {
+          echo "<tr><th>Tovar id si</th><th>Narxi</th><th>Soni</th><th>Foydalanuvchi</th><th>Sanasi</th><th>Holati</th></tr>";
+       }
        echo "</thead>";
        echo "<tbody>";
             foreach ($data['basket'] as $b)
@@ -213,7 +272,15 @@ class Ajax extends CI_Controller {
        $data['xarajat_turi'] = $this->db->query("SELECT * from xarajat_turi")->result_array();
        echo "<table class='table table-hover'>";
        echo "<thead>";
-       echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th><th>Sanasi</th></tr>";
+       if ($this->input->post("lang") == 'ru')
+       {
+          echo "<tr><th>Название стоимости</th><th>Сумма затрат</th><th>Дата</th></tr>";
+       }
+       else
+       {
+          echo "<tr><th>Xarajat nomi</th><th>Xarajat summasi</th><th>Sanasi</th></tr>";
+       }
+       
        echo "</thead>";
        echo "<tbody>";
        echo "<tr><td><select class='form-control' id='xarajat_nomi'>";
