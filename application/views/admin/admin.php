@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .edit_upd button
         {
             margin-left: 0.5rem;
-<<<<<<< HEAD
+
         }
     ul
         {
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             border-radius: 25px;
         }
-=======
+
 		}
 	ul
 		{
@@ -74,9 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#user,#basket
 		{
 			border-radius: 25px;
-		}
->>>>>>> c23b09b3cc328fd6472f93bb90026e0d625131bc
-</style>
+		}</style>
 <head>
     <meta charset="utf-8">
     <title>Admin panel</title>
@@ -85,11 +83,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 <body>
-<<<<<<< HEAD
+
     <div id="main_menu">
     
 
-                     <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
+                     <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
+                        <i class="fa fa-2x fa-home"> </i></button> </a> 
                      <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
                      <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>      
         <div class="row">
@@ -140,29 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- end -->
 
             <!-- barchart -->
-=======
-   <div class="admin-navbar">
-   <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
-       <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-       <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
-   </div>
-	     <div class="row">
-			<div class="col-md-3 col-lg-3 col-xl-3 col-3">
-				<ul class="list-group">
-				  <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
-				  <li class="list-group-item" name="brands">Brandlar</li>
-				  <li class="list-group-item" name='kategories'>Kategoriya</li>
-				  <li class="list-group-item" name='types'>Sub kategoriya</li>
-				  <li class="list-group-item" name="groups">Groups</li>
-				  <li class="list-group-item" name='menu'>Menu</li>
-				  <li class="list-group-item" name="services">Xizmatlar</li>
-				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
-                  <li class="list-group-item" name='hisob'>Xarajatlar</li>
-                  <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
-				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
-				</ul>
-		
-			</div>
+   
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
 				
@@ -173,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<!-- end -->
 
 			<!-- barchart -->
->>>>>>> c23b09b3cc328fd6472f93bb90026e0d625131bc
+
             <figure class="highcharts-figure">
                     <div id="container2"></div>
                     <p class="highcharts-description">
@@ -233,6 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             url_goods : "<?php echo base_url('index.php/ajax/get_admin_goods');?>",
             url_delete: "<?php echo base_url('index.php/ajax/admin_delete');?>",
             url_update: "<?php echo base_url('index.php/ajax/admin_update');?>",
+           
         },   
          methods: {
             main_menu:function()
@@ -244,6 +222,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             change_language: function(lang)
             { 
                 app.lang = lang;
+                lang_change(lang);
+                activecolor : 'red';
             }
         }
 
@@ -681,7 +661,13 @@ Highcharts.chart('container2', {
 
 </script>
 <script type="text/javascript">
-    
+     
+    var lang ='uz'; 
+    function lang_change(language)
+    {
+       lang = language;   
+    }
+
     $(document).ready(function(){
 
         $("li").on("click",function(){
@@ -692,7 +678,7 @@ Highcharts.chart('container2', {
             $.ajax({
                 url  : url_menu,
                 type : "POST",
-                data :{'menu' : menu},
+                data :{'menu' : menu, 'lang':lang},
                 beforeSend: function() 
                 {
                     $("#dinamic_menu").html("<img src=<?php echo base_url('img/loader/loader.gif');?> >");
@@ -702,7 +688,8 @@ Highcharts.chart('container2', {
                     {
                         $("#dinamic_menu").html(get_menu);
                         console.log(get_menu);
-                    } 
+                    }
+                });
 
             });
         });
@@ -742,8 +729,8 @@ Highcharts.chart('container2', {
 
 /*                    create user finish         */
 
-        $("body").on("click","#btn_brands_save", function()
-        {
+        $("body").on("click","#btn_brands_save", function(){
+        
             var brand_name = $("#brand_name").val();
             var republic   = $("#republic").val();
             var end_date   = $("#end_date").val();
@@ -1172,7 +1159,7 @@ Highcharts.chart('container2', {
                             $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
                         }
 
-<<<<<<< HEAD
+
                 });
                  $.ajax({
                     url   : url_services,
@@ -1188,7 +1175,8 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
             $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
             $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
-=======
+        });
+
 /*                     xarajat_turi update start                     */
         $('body').on('click','.edit_xarajat_turi',function(){
             var id           = $(this).attr('name'),
@@ -1204,7 +1192,7 @@ Highcharts.chart('container2', {
                         $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_turi"+id+"' >"+xarajat_turi_upd+"</select>");
                 	}
               });
->>>>>>> c23b09b3cc328fd6472f93bb90026e0d625131bc
+
         });
 
         $("body").on("click",".updgoods",function(){
@@ -1239,17 +1227,18 @@ Highcharts.chart('container2', {
 /*                       goods     update   finish             */
 
 /*                       service     update   start             */
-<<<<<<< HEAD
+
         $("body").on("click", ".edit_basket", function(){
             var id      = $(this).attr('name');
             var status    = $("#"+id+" td:eq(5)").text();
             $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Yangi zakaz</option><option value='Active'>Qabul qilindi</option><option value='Success'>Yuborildi</option></select>");
-=======
-		$("body").on("click", ".edit_basket", function(){
+         });
+		
+        $("body").on("click", ".edit_basket", function(){
         	var id      = $(this).attr('name');
         	var status    = $("#"+id+" td:eq(5)").text();
         	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
->>>>>>> c23b09b3cc328fd6472f93bb90026e0d625131bc
+
         });
 
         $("body").on("click",".updbasket",function(){
@@ -1266,7 +1255,7 @@ Highcharts.chart('container2', {
                         alert(basket_upd);
                         location.reload();
                     }
-            })
+            });
         });
 /*                       service     update   finish             */
 
@@ -1389,17 +1378,16 @@ Highcharts.chart('container2', {
             type  :'POST',
             data  :{'id':id},
             success: function(goods_del)
-                {
-                    alert(goods_del);
-                    location.reload();
-                }
+            {
+                alert(goods_del);
+            }
         });
        }); 
 
 
 /*                 Delete knopkalari  finish                 */
 
-    });
+
 </script>
 </body>
 </html>
