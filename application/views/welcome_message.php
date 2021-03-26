@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <title>Navoiy Internet Magazine</title>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32">
@@ -13,32 +15,98 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/animate.css');?>">
 	<link rel="icon" type="image/png" href="basket.png" sizes="32x32">
 	<link rel="apple-touch-icon" sizes="32x32" href="basket.png">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <style>
+      .dropdown {
+
+  display: inline-block;
+}
+      
+.dropdown-content {
+  display: none;
+  
+  background-color: #111;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:active .dropdown-content {
+  display: block;
+}
+
+      body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000000;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+.navbar{
+  background-color: #111;
+}
+    </style>
 </head>
 <body>
-<!-- Menu items                   -->
-<header  id="mymenu" style="opacity: 0.8;">
-
-
-    
-        <!--Navbar-->
-<nav class="navbar navbar-light navbar-1 white">
-<div class="container-fluid" >
-    
-
-<!-- Navbar brand -->
-<a class="navbar-brand" href=" <?php echo base_url();?>">Gazzon.Uz</a>
-
-<!-- Collapse button -->
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
-  aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-
-<!-- Collapsible content -->
-<div class="collapse navbar-collapse" id="navbarSupportedContent15">
-
-  <!-- Links -->
-  <ul class="navbar-nav mr-auto">
-  <ul class="navbar-nav">
-        <li class="nav-link" style="--i: .85s">
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <div class="dropdown">
+        
                         <?php
                         foreach($menu as $q)
                         {
@@ -50,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             elseif ($q['parent'] == '1' and $q['id_parent'] == '0')
                             {
 
-                                echo '  <li class="dropdown-link">';
+                                echo '  <li class="dropdown-content">';
                                 echo '    <a href="">'.$q['menu'].'</a>
                                               </li>';
 
@@ -62,82 +130,93 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
 
                         ?>
-                </ul>
-            </div>
+                </div>
+  </div>
+  <div class="dropdown">
+        
+        <?php
+        foreach($menu as $q)
+        {
+            if ($q['parent'] == '30' and $q['id_parent'] == '20')
+            {
+                echo "<a href='#'>".$q['menu']."</a>";
+                echo '<div class="dropdown"><ul>';
+            }
+            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
+            {
 
-            </li>
-
-            <ul class="navbar-nav">
-        <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '30' and $q['id_parent'] == '20')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
-                            {
-
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
+                echo '  <li class="dropdown-content">';
+                echo '    <a href="">'.$q['menu'].'</a>
+                              </li>';
 
 
-                            }
+            }
 
 
 
-                        }
+        }
 
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-
-            <ul class="navbar-nav">
-        <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '25' and $q['id_parent'] == '26')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
-                            {
-
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
-
-
-                        }
-
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-
-  </ul>
-  <!-- Links -->
-
+        ?>
 </div>
-<!-- Collapsible content -->
+</div>
+<div class="dropdown">
+        
+        <?php
+        foreach($menu as $q)
+        {
+            if ($q['parent'] == '25' and $q['id_parent'] == '26')
+            {
+                echo "<a href='#'>".$q['menu']."</a>";
+                echo '<div class="dropdown"><ul>';
+            }
+            elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
+            {
+
+                echo '  <li class="dropdown-content">';
+                echo '    <a href="">'.$q['menu'].'</a>
+                              </li>';
 
 
-<!--/.Navbar-->
-    
+            }
 
-    <div class="log-sign" style="--i: 1.8s" >
+
+
+        }
+
+        ?>
+</div>
+</div><br>
+<div class="dropdown">
+        
+        <?php
+        foreach($menu as $q)
+        {
+            if ($q['parent'] == '3' and $q['id_parent'] == '44')
+            {
+                echo "<a href='#'>".$q['menu']."</a>";
+                echo '<div class="dropdown"><ul>';
+            }
+            elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
+            {
+
+                echo '  <li class="dropdown-content">';
+                echo '    <a href="">'.$q['menu'].'</a>
+                              </li>';
+
+
+            }
+
+
+
+        }
+
+        ?>
+</div>
+</div>
+</div>
+<nav class="navbar ">
+<button class="openbtn" onclick="openNav()">☰ Gazzon.Uz</button> 
+<div class="log-sign" style="--i: 1.8s" id="mymenu" >
         <a href="<?php echo base_url('index.php/welcome/admin');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-unlock" aria-hidden="true"></i></button> </a>        
         <a href="<?php echo base_url('index.php/basket');?>"><button  class="btn btn-outline-success"><i class="fa fa-2x fa-shopping-cart"> {{basket_count}} </i> </button>  </a>
         <a href="<?php echo base_url('auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
@@ -146,10 +225,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="#"><button @click="change_language('uz')" class="btn btn-outline-success "><i class="fa fa-2x"> UZ </i></button></a>
  
  </div>
- </nav>
-    </div>
-    </div>
-</header>
+</nav>
 <!--                container for reclame                                    -->
 <div class="topshop owl-carousel owl-theme">
     <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>1</h4></div>
@@ -166,9 +242,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="item animate__animated"><img src="<?php echo base_url('assets/reclame/reclame.png'); ?>" class="img-bordered"><h4>12</h4></div>
 
 </div>
+ 
 
-
-<div id="myvue">
+<div id="myvue" class="main" >
     <div class="container-fluid">
      <div class="row" v-if="show_cat">       
         <div class="col-md-6 col-lg-3 col-sm-6 col-6" v-for="cat in categories">
@@ -248,7 +324,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h3 slot="header">custom header</h3>
     </modal>                    
 </div>
+<script>
+  function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
 
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script type="text/javascript" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js');?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
@@ -592,5 +679,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 </footer>
+<script>
+    $(function() {
+
+$("[data-drilldown-button]").click(function() {
+  $('[data-drilldown-sub]').addClass("open");
+  $("[data-drilldown-item], [data-drilldown-button]").addClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub]').outerHeight())
+  return false;
+});
+
+$("[data-drilldown-back]").click(function() {
+  $('[data-drilldown-sub]').removeClass("open");
+  $("[data-drilldown-item], [data-drilldown-button]").removeClass("close");
+
+  $(".wrapper").css("height", "auto");
+  return false;
+});
+
+$("[data-drilldown-button-2]").click(function() {
+  $('[data-drilldown-sub-2]').addClass("open-sub-2");
+  $("[data-drilldown-sub], [data-drilldown-button-2]").addClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub-2]').outerHeight());
+  return false;
+});
+
+$("[data-drilldown-back-2]").click(function() {
+  $('[data-drilldown-sub-2]').removeClass("open-sub-2");
+  $("[data-drilldown-sub], [data-drilldown-button-2]").removeClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub]').outerHeight());
+  return false;
+});
+
+});
+</script>
 </body>
 </html>

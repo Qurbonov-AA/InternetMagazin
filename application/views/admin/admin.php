@@ -82,16 +82,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 </head>
+<!-- body start   -->
 <body>
+<<<<<<< HEAD
+   <div class="admin-navbar">
+   <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
+       <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+       <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
+   </div>
+	     <div class="row">
+			<div class="col-md-3 col-lg-3 col-xl-3 col-3">
+				<ul class="list-group">
+				  <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
+				  <li class="list-group-item" name="brands">Brandlar</li>
+				  <li class="list-group-item" name='kategories'>Kategoriya</li>
+				  <li class="list-group-item" name='types'>Sub kategoriya</li>
+				  <li class="list-group-item" name="groups">Groups</li>
+				  <li class="list-group-item" name='menu'>Menu</li>
+				  <li class="list-group-item" name="services">Xizmatlar</li>
+				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
+                  <li class="list-group-item" name='hisob'>Xarajatlar</li>
+                  <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
+                  <li class="list-group-item" name='buyurtma_holati'>Buyurtma holati</li>
+				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
+				</ul>
+		
+			</div>
+=======
 
     <div id="main_menu">
     
 
                      <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
-                        <i class="fa fa-2x fa-home"> </i></button> </a>
-                        <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button> 
-                        <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-                           
+
+                        <i class="fa fa-2x fa-home"> </i></button> </a> 
+                     <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+                     <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>      
+          
+
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-3">
                  
@@ -141,6 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <!-- barchart -->
    
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
 				
@@ -224,6 +253,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             { 
                 app.lang = lang;
                 lang_change(lang);
+                activecolor : 'red';
             }
         }
 
@@ -236,9 +266,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
 
     var data_kat ;
-  
-
-
   
  var chart = Highcharts.stockChart('container3', {
 
@@ -411,8 +438,13 @@ Highcharts.chart('container2', {
             	?>
                 {
                     name: "Ишчилар маоши",
+<<<<<<< HEAD
                     y: 62.74,
                     drilldown: "a"
+=======
+                    y: 6207040,
+                    drilldown: "Ишчилар маоши"
+>>>>>>> 0bc72c497fe45c9ae91b6442b4d9eadb44545fbf
                 }
             ]
         }
@@ -423,192 +455,61 @@ Highcharts.chart('container2', {
                 name: "Ишчилар маоши",
                 id: "a",
                 data: [
+<<<<<<< HEAD
                     ["янв",10],
+=======
+                    [
+                        "янв",
+                        1000000
+                    ],
+>>>>>>> 0bc72c497fe45c9ae91b6442b4d9eadb44545fbf
                     [
                         "фев",
-                        13
+                        1030000
                     ],
                     [
                         "март",
-                        32
+                        3200000
                     ],
                     [
                         "апр",
-                        14
+                        1400000
                     ],
                     [
                         "май",
-                        88
+                        6800000
                     ],
                     [
                         "июн",
-                        56
+                        5600000
                     ],
                     [
                         "июл",
-                        45
+                        4500000
                     ],
                     [
                         "авг",
-                        4
+                        4000000
                     ],
                     [
                         "сен",
-                        32
+                        3200000
                     ],
                     [
                         "окт",
-                        9
+                        9000000
                     ],
                     [
                         "ноябр",
-                        79
+                        7900000
                     ],
                     [
                         "дек",
-                        18
+                        1800000
                     ]
                     
                 ]
             },
-            {
-                name: "Firefox",
-                id: "Firefox",
-                data: [
-                    [
-                        "v58.0",
-                        1.02
-                    ],
-                    [
-                        "v57.0",
-                        7.36
-                    ],
-                    [
-                        "v56.0",
-                        0.35
-                    ],
-                    [
-                        "v55.0",
-                        0.11
-                    ],
-                    [
-                        "v54.0",
-                        0.1
-                    ],
-                    [
-                        "v52.0",
-                        0.95
-                    ],
-                    [
-                        "v51.0",
-                        0.15
-                    ],
-                    [
-                        "v50.0",
-                        0.1
-                    ],
-                    [
-                        "v48.0",
-                        0.31
-                    ],
-                    [
-                        "v47.0",
-                        0.12
-                    ]
-                ]
-            },
-            {
-                name: "Internet Explorer",
-                id: "Internet Explorer",
-                data: [
-                    [
-                        "v11.0",
-                        6.2
-                    ],
-                    [
-                        "v10.0",
-                        0.29
-                    ],
-                    [
-                        "v9.0",
-                        0.27
-                    ],
-                    [
-                        "v8.0",
-                        0.47
-                    ]
-                ]
-            },
-            {
-                name: "Safari",
-                id: "Safari",
-                data: [
-                    [
-                        "v11.0",
-                        3.39
-                    ],
-                    [
-                        "v10.1",
-                        0.96
-                    ],
-                    [
-                        "v10.0",
-                        0.36
-                    ],
-                    [
-                        "v9.1",
-                        0.54
-                    ],
-                    [
-                        "v9.0",
-                        0.13
-                    ],
-                    [
-                        "v5.1",
-                        0.2
-                    ]
-                ]
-            },
-            {
-                name: "Edge",
-                id: "Edge",
-                data: [
-                    [
-                        "v16",
-                        2.6
-                    ],
-                    [
-                        "v15",
-                        0.92
-                    ],
-                    [
-                        "v14",
-                        0.4
-                    ],
-                    [
-                        "v13",
-                        0.1
-                    ]
-                ]
-            },
-            {
-                name: "Opera",
-                id: "Opera",
-                data: [
-                    [
-                        "v50.0",
-                        0.96
-                    ],
-                    [
-                        "v49.0",
-                        0.82
-                    ],
-                    [
-                        "v12.1",
-                        0.14
-                    ]
-                ]
-            }
         ]
     }
 });
@@ -620,7 +521,6 @@ Highcharts.chart('container2', {
     function lang_change(language)
     {
        lang = language; 
-        
     }
 
     $(document).ready(function(){
@@ -642,7 +542,11 @@ Highcharts.chart('container2', {
                 success : function(get_menu)
                     {
                         $("#dinamic_menu").html(get_menu);
+
+                        console.log(get_menu);
+
                        
+
                     }
                 });
 
@@ -838,6 +742,20 @@ Highcharts.chart('container2', {
             });
         });
 
+        $("body").on('click','#btn_buyurtma_holati_save',function(){
+            var buyurtma_holati = $('#buyurtma_holati').val();
+            var url_buyurtma = "<?php echo base_url('index.php/ajax/buyurtma_ins')?>";
+             $.ajax({
+                url   :  url_buyurtma,
+                type  :  "POST",
+                data  :  {'buyurtma_holati': buyurtma_holati},
+                success: function(buyurtma_get)
+                    {
+                        alert(buyurtma_get);
+                    }  
+             }); 
+        });
+
         
 /*                        users  update  starts         */
         $('body').on('click','.edit_users',function(){
@@ -985,6 +903,11 @@ Highcharts.chart('container2', {
 <<<<<<< HEAD
         	var id = $(this).attr('name'),
                 url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
+=======
+        	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
+        	var id = $(this).attr('name'),
+                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -1005,7 +928,6 @@ Highcharts.chart('container2', {
         	$("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
         	$("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
         	$("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
-=======
             var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
             var id_kat        = $("#"+id+" td:eq(0)").text(),
                 type_name     = $("#"+id+" td:eq(1)").text(),
@@ -1026,7 +948,7 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(2)").html("<input class='form-control' id='types_save_ru"+id+"' value='"+type_name_ru+"'>");
             $("#"+id+" td:eq(3)").html("<input class='form-control' id='d_create_save"+id+"' value='"+d_create_save+"'>");
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='data_delete"+id+"' value='"+data_delete+"'>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
+
         });
 
         $("body").on("click",".updtypes",function(){
@@ -1111,9 +1033,11 @@ Highcharts.chart('container2', {
 /*                       service     update   finish             */
 
 /*                       goods     update   start             */
-        $("body").on("click", ".edit_goods", function(){
-<<<<<<< HEAD
-        	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+        $("body").on("click", ".edit_goods", function()
+        {
+        	var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
         	var t_name     = $("#"+id+" td:eq(0)").text(),
         	    t_name_ru  = $("#"+id+" td:eq(1)").text(),
         	    id_type    = $("#"+id+" td:eq(2)").text(),
@@ -1154,11 +1078,11 @@ Highcharts.chart('container2', {
         	     			$("#"+id+" td:eq(5)").html("<select class='form-control' id='id_services"+id+"'>"+services+"</select>");
         	     		}
         	     });
-        	$("#"+id+" td:eq(0)").html("<input class='form-control' id='t_name"+id+"' value='"+t_name+"'>");
-        	$("#"+id+" td:eq(1)").html("<input class='form-control' id='t_name_ru"+id+"' value='"+t_name_ru+"'>");
-        	$("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
-        	$("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
-        	$("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
+                    $("#"+id+" td:eq(0)").html("<input class='form-control' id='t_name"+id+"' value='"+t_name+"'>");
+                    $("#"+id+" td:eq(1)").html("<input class='form-control' id='t_name_ru"+id+"' value='"+t_name_ru+"'>");
+                    $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
+                    $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
+                    $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
         });
 
         $("body").on("click",".updgoods",function(){
@@ -1190,9 +1114,11 @@ Highcharts.chart('container2', {
         			}
         	});
         });
-/*                       goods     update   finish             */
-=======
-            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", url_services="<?php echo base_url('index.php/ajax/get_services');?>";
+/*                       goods     update   finish             
+
+            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
+            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
+            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
             var t_name     = $("#"+id+" td:eq(0)").text(),
                 t_name_ru  = $("#"+id+" td:eq(1)").text(),
                 id_type    = $("#"+id+" td:eq(2)").text(),
@@ -1207,17 +1133,6 @@ Highcharts.chart('container2', {
                     data : {'id' :id},
                     success: function(types)
                         {
-                            $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
-                        }
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
-
-                });
-                $.ajax({
-                    url : url_brand,
-                    type : "POST",
-                    data : {'id' :id},
-                    success: function(brands)
-                        {
 <<<<<<< HEAD
                             // if (xarajat_turi.length == 0)
                             // {
@@ -1230,11 +1145,46 @@ Highcharts.chart('container2', {
                             //}
                             
 =======
-                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
+                            $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
                         }
 
+
+                });
+                $.ajax({
+                    url : url_brand,
+                    type : "POST",
+                    data : {'id' :id},
+                    success: function(brands)
+
+                    {
+
+                        {
+
+
+                            // if (xarajat_turi.length == 0)
+                            // {
+                            //     alert("edit knopkasini ikki marta bosdiz! :)");
+                            // }
+                            // else
+                            //{
+                                $("#"+id+" td:eq(0)").html(" ");
+                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                            //}
+                            
+
+                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
+
 <<<<<<< HEAD
+
+=======
+                    }
+>>>>>>> 2b2a8616ed966a0e69b9306c7c19577250fb0fc6
+                });
+            });
+*/
+                       
+
         $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
@@ -1248,11 +1198,8 @@ Highcharts.chart('container2', {
                     {
                        alert(hisob_upd)
                     }
-            });
-=======
-
-                });
-                 $.ajax({
+            });            
+            $.ajax({
                     url   : url_services,
                     type  : "POST",
                     data  : {"id":id},
@@ -1266,7 +1213,6 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
             $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
             $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
->>>>>>> fceebfcbf5b844377034a199e51ae292eb96f158
         });
 
 /*                     xarajat_turi update start                     */
@@ -1281,7 +1227,10 @@ Highcharts.chart('container2', {
                          'xarajat_turi':xarajat_turi},
                 success: function(xarajat_turi_upd)
                 	{
+<<<<<<< HEAD
+=======
                         console.log(xarajat_turi_upd);
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
                         $("#"+id+" td:eq(0)").html(xarajat_turi_upd);
                 	}
               });
@@ -1320,6 +1269,23 @@ Highcharts.chart('container2', {
 /*                       goods     update   finish             */
 
 /*                       service     update   start             */
+<<<<<<< HEAD
+		$("body").on("click", ".edit_basket", function(){
+        	var id      = $(this).attr('name'),
+        	    status    = $("#"+id+" td:eq(5)").text();
+            var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/buyurtma_holati')?>";
+            $.ajax({
+                url   :  url_buyurtma_holati,
+                type  : 'POST',
+                data  : {'id': id,
+                         'status' : status},
+                success:function(buyurtma_holati)
+                    {
+                       $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"'>"+buyurtma_holati+"</select>"); 
+                    }
+            });
+        	
+=======
 
         $("body").on("click", ".edit_basket", function(){
             var id      = $(this).attr('name');
@@ -1332,6 +1298,7 @@ Highcharts.chart('container2', {
         	var status    = $("#"+id+" td:eq(5)").text();
         	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
 
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
         });
 
         $("body").on("click",".updbasket",function(){
@@ -1350,7 +1317,56 @@ Highcharts.chart('container2', {
                     }
             });
         });
+
+        $("body").on("click", ".edit_buyurtma_holati", function(){
+            var id      = $(this).attr('name');
+            var buyurtma_holati   = $("#"+id+" td:eq(0)").text();
+                $("#"+id+" td:eq(0)").html("<input class='form-control' id='buyurtma_holati"+id+"' value='"+buyurtma_holati+"'>");        
+        });
+
+        $("body").on("click",".updbuyurtma_holati",function(){
+            var id = $(this).attr('name');
+            var buyurtma_holati    = $("#buyurtma_holati"+id).val();
+            var url_buyurtma_holat_upd = "<?php echo base_url('index.php/ajax/buyurtma_holati_upd'); ?>";
+            $.ajax({
+                url : url_buyurtma_holat_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'buyurtma_holati':buyurtma_holati},
+                success: function(basket_upd)
+                    {
+                        alert(basket_upd);
+                        //location.reload();
+                    }
+            })
+        });
 /*                       service     update   finish             */
+
+$("body").on("click", ".edit_service", function(){
+            var id      = $(this).attr('name');
+            var name    = $("#"+id+" td:eq(0)").text(),
+                name_ru = $("#"+id+" td:eq(1)").text();
+            $("#"+id+" td:eq(0)").html("<input class='form-control' id='service_save"+id+"' value='"+name+"'>");
+            $("#"+id+" td:eq(1)").html("<input class='form-control' id='service_save_ru"+id+"' value='"+name_ru+"'>");
+        });
+
+        $("body").on("click",".updservice",function(){
+            var id = $(this).attr('name');
+            var save_name    = $("#service_save"+id).val(),
+                save_name_ru = $("#service_save_ru"+id).val();
+            var url_service_upd = "<?php echo base_url('index.php/ajax/service_upd'); ?>";
+            $.ajax({
+                url : url_service_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'ser_name':save_name,
+                       'ser_name_ru':save_name_ru},
+                success: function(service_upd)
+                    {
+                        alert(service_upd);
+                    }
+            })
+        }); 
 
 /*                       Delete knopkalari  start                */
 
@@ -1464,6 +1480,36 @@ Highcharts.chart('container2', {
        });
 
        $('body').on('click','#btn_goods_del', function(){
+<<<<<<< HEAD
+       	var id= $(this).attr('name');
+       	var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
+       	$.ajax({
+       		url   :  url_goods_del,
+       		type  :'POST',
+       		data  :{'id':id},
+       		success: function(goods_del)
+       			{
+       				alert(goods_del);
+       				//location.reload();
+       			}
+       	});
+       }); 
+ 
+
+      $("body").on('click','#btn_buyurtma_holati', function(){
+        var id = $(this).attr('name');
+        var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/btn_buyurtma_holati_del')?>";
+        $.ajax({
+            url   :   url_buyurtma_holati,
+            type  :   "POST",
+            data  :   {'id':id},
+            success:function(buyurtma_holat)
+                {
+                    alert(buyurtma_holat);
+                }
+        });
+      });
+=======
         var id= $(this).attr('name');
         var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
         $.ajax({
@@ -1477,6 +1523,7 @@ Highcharts.chart('container2', {
         });
        }); 
 
+>>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 
 /*                 Delete knopkalari  finish                 */
 
