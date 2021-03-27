@@ -693,8 +693,8 @@ class Ajax extends CI_Controller {
       echo "Hamma qatorlarni to`ldirish shart!";
     }
   }
-<<<<<<< HEAD
-
+  
+  
   Public function buyurtma_ins()
     {
       $buyurtma_holati = $this->input->post('buyurtma_holati');
@@ -718,8 +718,6 @@ class Ajax extends CI_Controller {
       echo "Hamma qatorlarni to`ldirish shart!";
     }
     }
-=======
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 
 /*                       delete knopkalar start           */
  public function users_btn_del()
@@ -1101,8 +1099,7 @@ public function groups_upd()
       echo "Ma'lumotlarni to'liq kiritish shart";
     }
   }
-<<<<<<< HEAD
-  
+
   Public function buyurtma_holati_upd()
     {
         $id = $this->input->post('id');
@@ -1124,8 +1121,7 @@ public function groups_upd()
           echo "Ma'lumotlarni to'liq kiritish shart";
         }
     }
-=======
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
+
 
 Public function get_types()
   {
@@ -1202,18 +1198,17 @@ public function get_services()
             if ($id <> $h['id'])
             {
                 echo "<option value='".$h['id']."'><input type='text' value='".$h['xarajat_turi']."'></option>";
-<<<<<<< HEAD
+
             }  
-=======
+
             }
             
             
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
+
           }
           */
   }
 
-<<<<<<< HEAD
  Public function buyurtma_holati()
   {
     $id      = $this->input->post('id');
@@ -1229,10 +1224,6 @@ public function get_services()
           }
   }
 /*                        update knopkalar finish               */
-=======
-
-/*                        update knopkalar finish              */
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 
 Public function get_categories()
    {

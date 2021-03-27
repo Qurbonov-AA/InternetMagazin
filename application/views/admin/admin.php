@@ -84,32 +84,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <!-- body start   -->
 <body>
-<<<<<<< HEAD
-   <div class="admin-navbar">
-   <a href="http://InternetMagazin/"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a> 
-       <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-       <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>
-   </div>
-	     <div class="row">
-			<div class="col-md-3 col-lg-3 col-xl-3 col-3">
-				<ul class="list-group">
-				  <li class="list-group-item" name="users" id="user">Foydalanuvchi yaratish</li>
-				  <li class="list-group-item" name="brands">Brandlar</li>
-				  <li class="list-group-item" name='kategories'>Kategoriya</li>
-				  <li class="list-group-item" name='types'>Sub kategoriya</li>
-				  <li class="list-group-item" name="groups">Groups</li>
-				  <li class="list-group-item" name='menu'>Menu</li>
-				  <li class="list-group-item" name="services">Xizmatlar</li>
-				  <li class="list-group-item" name='goods'>Mahsulotlar</li>
-                  <li class="list-group-item" name='hisob'>Xarajatlar</li>
-                  <li class="list-group-item" name='xarajat_turi'>Xarajat turi</li>
-                  <li class="list-group-item" name='buyurtma_holati'>Buyurtma holati</li>
-				  <li class="list-group-item" name='basket' id="basket">Savatcha</li>
-				</ul>
-		
-			</div>
-=======
-
     <div id="main_menu">
     
 
@@ -168,8 +142,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- end -->
 
             <!-- barchart -->
-   
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
 				
@@ -438,13 +410,8 @@ Highcharts.chart('container2', {
             	?>
                 {
                     name: "Ишчилар маоши",
-<<<<<<< HEAD
-                    y: 62.74,
-                    drilldown: "a"
-=======
                     y: 6207040,
                     drilldown: "Ишчилар маоши"
->>>>>>> 0bc72c497fe45c9ae91b6442b4d9eadb44545fbf
                 }
             ]
         }
@@ -455,14 +422,11 @@ Highcharts.chart('container2', {
                 name: "Ишчилар маоши",
                 id: "a",
                 data: [
-<<<<<<< HEAD
                     ["янв",10],
-=======
                     [
                         "янв",
                         1000000
                     ],
->>>>>>> 0bc72c497fe45c9ae91b6442b4d9eadb44545fbf
                     [
                         "фев",
                         1030000
@@ -900,14 +864,9 @@ Highcharts.chart('container2', {
 /*                        subkategoriya update start     */
 
         $("body").on("click", ".edit_types", function(){
-<<<<<<< HEAD
-        	var id = $(this).attr('name'),
-                url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>"
-=======
         	var id = $(this).attr('name'), url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
         	var id = $(this).attr('name'),
                 url_types_section="<?php echo base_url('index.php/ajax/get_id_types')?>";
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
         	var id_kat        = $("#"+id+" td:eq(0)").text(),
         	    type_name     = $("#"+id+" td:eq(1)").text(),
         	    type_name_ru  = $("#"+id+" td:eq(2)").text(),
@@ -1114,78 +1073,7 @@ Highcharts.chart('container2', {
         			}
         	});
         });
-/*                       goods     update   finish             
-
-            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
-            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
-            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
-            var t_name     = $("#"+id+" td:eq(0)").text(),
-                t_name_ru  = $("#"+id+" td:eq(1)").text(),
-                id_type    = $("#"+id+" td:eq(2)").text(),
-                price      = $("#"+id+" td:eq(4)").text(),
-                id_services= $("#"+id+" td:eq(5)").text(),
-                title      = $("#"+id+" td:eq(6)").text(),
-                title_ru   = $("#"+id+" td:eq(7)").text();
-                select_type= '';
-                $.ajax({
-                    url : url_type,
-                    type : "POST",
-                    data : {'id' :id},
-                    success: function(types)
-                        {
-<<<<<<< HEAD
-                            // if (xarajat_turi.length == 0)
-                            // {
-                            //     alert("edit knopkasini ikki marta bosdiz! :)");
-                            // }
-                            // else
-                            //{
-                                $("#"+id+" td:eq(0)").html(" ");
-                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
-                            //}
-                            
-=======
-                            $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
-                        }
-
-
-                });
-                $.ajax({
-                    url : url_brand,
-                    type : "POST",
-                    data : {'id' :id},
-                    success: function(brands)
-
-                    {
-
-                        {
-
-
-                            // if (xarajat_turi.length == 0)
-                            // {
-                            //     alert("edit knopkasini ikki marta bosdiz! :)");
-                            // }
-                            // else
-                            //{
-                                $("#"+id+" td:eq(0)").html(" ");
-                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
-                            //}
-                            
-
-                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
-
-<<<<<<< HEAD
-
-=======
-                    }
->>>>>>> 2b2a8616ed966a0e69b9306c7c19577250fb0fc6
-                });
-            });
-*/
-                       
-
-        $('body').on('click','.updhisob',function(){
+     $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
             var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
@@ -1227,10 +1115,7 @@ Highcharts.chart('container2', {
                          'xarajat_turi':xarajat_turi},
                 success: function(xarajat_turi_upd)
                 	{
-<<<<<<< HEAD
-=======
                         console.log(xarajat_turi_upd);
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
                         $("#"+id+" td:eq(0)").html(xarajat_turi_upd);
                 	}
               });
@@ -1269,7 +1154,6 @@ Highcharts.chart('container2', {
 /*                       goods     update   finish             */
 
 /*                       service     update   start             */
-<<<<<<< HEAD
 		$("body").on("click", ".edit_basket", function(){
         	var id      = $(this).attr('name'),
         	    status    = $("#"+id+" td:eq(5)").text();
@@ -1284,24 +1168,9 @@ Highcharts.chart('container2', {
                        $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"'>"+buyurtma_holati+"</select>"); 
                     }
             });
-        	
-=======
-
-        $("body").on("click", ".edit_basket", function(){
-            var id      = $(this).attr('name');
-            var status    = $("#"+id+" td:eq(5)").text();
-            $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Yangi zakaz</option><option value='Active'>Qabul qilindi</option><option value='Success'>Yuborildi</option></select>");
-         });
-		
-        $("body").on("click", ".edit_basket", function(){
-        	var id      = $(this).attr('name');
-        	var status    = $("#"+id+" td:eq(5)").text();
-        	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
-
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
         });
-
-        $("body").on("click",".updbasket",function(){
+        	
+       $("body").on("click",".updbasket",function(){
             var id = $(this).attr('name');
             var status    = $("#status"+id).val();
             var url_basket_upd = "<?php echo base_url('index.php/ajax/basket_upd'); ?>";
@@ -1480,7 +1349,6 @@ $("body").on("click", ".edit_service", function(){
        });
 
        $('body').on('click','#btn_goods_del', function(){
-<<<<<<< HEAD
        	var id= $(this).attr('name');
        	var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
        	$.ajax({
@@ -1507,23 +1375,10 @@ $("body").on("click", ".edit_service", function(){
                 {
                     alert(buyurtma_holat);
                 }
-        });
+            });
       });
-=======
-        var id= $(this).attr('name');
-        var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
-        $.ajax({
-            url   :  url_goods_del,
-            type  :'POST',
-            data  :{'id':id},
-            success: function(goods_del)
-            {
-                alert(goods_del);
-            }
-        });
-       }); 
+       
 
->>>>>>> 4a803086f13e1b2837b5648484176337a2af6556
 
 /*                 Delete knopkalari  finish                 */
 
