@@ -338,7 +338,7 @@ Highcharts.chart('container2', {
             	?>
                 {
                     name: "Ишчилар маоши",
-                    y: 6207040,
+                    y: 620704,
                     drilldown: "Ишчилар маоши"
                 }
             ]
@@ -348,60 +348,83 @@ Highcharts.chart('container2', {
         series: [
             {
                 name: "Ишчилар маоши",
-                id: "a",
+                id: "Ишчилар маоши",
                 data: [
                     ["янв",10],
                     [
                         "янв",
-                        1000000
+                        100000
                     ],
                     [
                         "фев",
-                        1030000
+                        103000
                     ],
                     [
                         "март",
-                        3200000
+                        320000
                     ],
                     [
                         "апр",
-                        1400000
+                        140000
                     ],
                     [
                         "май",
-                        6800000
+                        680000
                     ],
                     [
                         "июн",
-                        5600000
+                        560000
                     ],
                     [
                         "июл",
-                        4500000
+                        450000
                     ],
                     [
                         "авг",
-                        4000000
+                        400000
                     ],
                     [
                         "сен",
-                        3200000
+                        320000
                     ],
                     [
                         "окт",
-                        9000000
+                        900000
                     ],
                     [
                         "ноябр",
-                        7900000
+                        790000
                     ],
                     [
                         "дек",
-                        1800000
+                        180000
                     ]
                     
                 ]
             },
+            <?php 
+              foreach($xarajat_turi as $x)
+              {
+                echo "{"; 
+                echo " name : '".$x['xarajat_turi']."' ,"; 
+                echo " id : '".$x['xarajat_turi']."' ,";
+                echo " data : [";
+                    foreach($drilldown as $d)
+                    {
+                        if ($d['xarajat_turi'] === $x['xarajat_turi'] )
+                        {
+                            echo "[ '".$d['data']."', ".$d['xarajat_summ']." ],";
+                        }
+                        
+                    }
+                      
+                echo "]";
+                echo "},";
+              }
+              
+            ?>
+                       
+
         ]
     }
 });
@@ -520,6 +543,22 @@ Highcharts.chart('container2', {
                         location.reload();
                     }
             });
+        });
+
+        $("body").on('click','#btn_hisob_save', function(){
+            var xarajat_nomi = $('#xarajat_nomi').val(),
+                xarajat_summ = $('#xarajat_summ').val();
+            var url_xarajat ="<?php echo base_url('index.php/ajax/hisob_ins')?>";
+              $.ajax({
+                url  : url_xarajat,
+                type :"Post",
+                data :{'xarajat_nomi': xarajat_nomi,
+                       'xarajat_summ':xarajat_summ},
+                success:function(get_hisob)
+                    {
+                        alert(get_hisob);
+                    }                 
+              });
         });
 
         $("body").on("click", "#btn_sub_kat_save", function(){
@@ -1309,7 +1348,39 @@ $("body").on("click", ".edit_service", function(){
 
     });
 /*                 Delete knopkalari  finish                 */
+/*                     hisob update start                      */
+$('body').on('click','.edit_hisob', function(){
+            var id     = $(this).attr('name'),
+                xarajat_nomi = $("#"+id+" td:eq(0)").text();
+            var url_hisob = "<?php echo base_url('index.php/ajax/get_xarajat_turi');?>";
+            $.ajax({
+                    url : url_hisob,
+                    type : "POST",
+                    data : {'id' :id,
+                            'xarajat_nomi':xarajat_nomi},
+                    success: function(xarajat_turi)
+                        {
+                            $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                        }
+            });
+        });
 
+        $('body').on('click','.updhisob',function(){
+            var id =$(this).attr('name'),
+                xarajat_nomi = $('#xarajat_nomi'+id).val();
+            var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
+            $.ajax({
+                url    : url_hisob_upd,
+                type   : 'POST',
+                data   : {'id'          : id,
+                          'xarajat_nomi': xarajat_nomi},
+                success:function(hisob_upd)
+                    {
+                       alert(hisob_upd)
+                    }
+            });
+        });
+/*                     hisob update finish                     */
 
 </script>
 </body>
