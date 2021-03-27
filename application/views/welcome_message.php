@@ -6,7 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Navoiy Internet Magazine</title>
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
     <link rel="shortcut icon" href="<?php echo base_url('assets/img/basket.png');?>" sizes="32x32">
@@ -17,120 +16,122 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="icon" type="image/png" href="basket.png" sizes="32x32">
 	<link rel="apple-touch-icon" sizes="32x32" href="basket.png">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <style>
-     
-    </style>
+    
 </head>
 <body>
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <div class="dropdown">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class="dropdown">
         
-                        <?php
-                        foreach($menu as $q)
+                <?php
+                foreach($menu as $q)
+                {
+                    if ($q['parent'] == '0' and $q['id_parent'] == '1')
+                    {
+                        echo "<a href='#'>".$q['menu']."</a>";
+                        echo '<div class="dropdown"><ul>';
+                    }
+                    elseif ($q['parent'] == '1' and $q['id_parent'] == '0')
+                    {
+
+                        echo '  <li class="dropdown-content">';
+                        echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
+
+
+                    }
+
+
+
+                }
+
+                ?>
+            </div>
+
+            <div class="dropdown">
+        
+                <?php
+                foreach($menu as $q)
+                {
+                    if ($q['parent'] == '30' and $q['id_parent'] == '20')
+                    {
+                        echo "<a href='#'>".$q['menu']."</a>";
+                        echo '<div class="dropdown"><ul>';
+                    }
+                    elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
+                    {
+
+                        echo '  <li class="dropdown-content">';
+                        echo '    <a href="">'.$q['menu'].'</a>
+                                    </li>';
+
+
+                    }
+
+
+
+                }
+
+                ?>
+            </div>
+            <div class="dropdown">
+        
+                    <?php
+                    foreach($menu as $q)
+                    {
+                        if ($q['parent'] == '25' and $q['id_parent'] == '26')
                         {
-                            if ($q['parent'] == '0' and $q['id_parent'] == '1')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '1' and $q['id_parent'] == '0')
-                            {
+                            echo "<a href='#'>".$q['menu']."</a>";
+                            echo '<div class="dropdown"><ul>';
+                        }
+                        elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
+                        {
 
-                                echo '  <li class="dropdown-content">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
+                            echo '  <li class="dropdown-content">';
+                            echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
 
 
                         }
 
-                        ?>
-                </div>
+
+
+                    }
+
+                    ?>
+            </div>
+            <div class="dropdown">
+        
+                    <?php
+                    foreach($menu as $q)
+                    {
+                        if ($q['parent'] == '3' and $q['id_parent'] == '44')
+                        {
+                            echo "<a href='#'>".$q['menu']."</a>";
+                            echo '<div class="dropdown"><ul>';
+                        }
+                        elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
+                        {
+
+                            echo '  <li class="dropdown-content">';
+                            echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
+
+
+                        }
+
+
+
+                    }
+
+                    ?>
+            </div>
   </div>
-  <div class="dropdown">
-        
-        <?php
-        foreach($menu as $q)
-        {
-            if ($q['parent'] == '30' and $q['id_parent'] == '20')
-            {
-                echo "<a href='#'>".$q['menu']."</a>";
-                echo '<div class="dropdown"><ul>';
-            }
-            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
-            {
-
-                echo '  <li class="dropdown-content">';
-                echo '    <a href="">'.$q['menu'].'</a>
-                              </li>';
-
-
-            }
-
-
-
-        }
-
-        ?>
+ 
 </div>
-</div>
-<div class="dropdown">
-        
-        <?php
-        foreach($menu as $q)
-        {
-            if ($q['parent'] == '25' and $q['id_parent'] == '26')
-            {
-                echo "<a href='#'>".$q['menu']."</a>";
-                echo '<div class="dropdown"><ul>';
-            }
-            elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
-            {
 
-                echo '  <li class="dropdown-content">';
-                echo '    <a href="">'.$q['menu'].'</a>
-                              </li>';
-
-
-            }
-
-
-
-        }
-
-        ?>
-</div>
 </div><br>
-<div class="dropdown">
-        
-        <?php
-        foreach($menu as $q)
-        {
-            if ($q['parent'] == '3' and $q['id_parent'] == '44')
-            {
-                echo "<a href='#'>".$q['menu']."</a>";
-                echo '<div class="dropdown"><ul>';
-            }
-            elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
-            {
 
-                echo '  <li class="dropdown-content">';
-                echo '    <a href="">'.$q['menu'].'</a>
-                              </li>';
-
-
-            }
-
-
-
-        }
-
-        ?>
-</div>
 </div>
 </div>
 <nav class="navbar ">
@@ -212,23 +213,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="col-md-4 col-lg-3 col-sm-6 col-6" v-for="good in filterBy(goods, this.sfilter )" >  
                     <div class="goods" >
                         <template class="lang" v-if="lang==='uz'">                    
-                        <h3> {{ good.type_name }} </h3>
+                        <h3 class="goodtitle"> {{ good.type_name }} </h3>
+                        <img class="goodsimg" src="<? echo base_url('assets/imgs/chokopay.jpg')?>" alt="goods img">
                         <hr>
                         <h4>{{ good.t_name }}</h4>
                         <br>
-                        <p> narxi : {{  good.price}} s</p>
-                        <img class="goodsimg" src="<? echo base_url('assets/imgs/chokopay.jpg')?>" alt="goods img">
+                        <p> narxi : {{  good.price}} s</p>                        
                         <br>
-                        <button id="show-modal" @click="modal_view(good.id)"  class="btn btn-outline-success">Batafsil</button>
+                        <button id="show-modal" @click="modal_view(good.id)"  class="btn btn-outline-success goodbutton">Batafsil</button>
                         </template>
                         <template class="lang" v-else="lang==='ru'">                    
-                        <h3> {{ good.type_name_ru }} </h3>
+                        <h3 class="goodtitle"> {{ good.type_name_ru }} </h3>
+                        <img class="goodsimg" src="<? echo base_url('assets/imgs/chokopay.jpg')?>" alt="goods img">
                         <hr>
                         <h4>{{ good.t_name_ru }}</h4>
                         <br>
                         <p> цена : {{  good.price}} s</p>
                         <br>
-                        <button id="show-modal" @click="modal_view(good.id)"  class="btn btn-outline-success">более</button>
+                        <button id="show-modal" @click="modal_view(good.id)"  class="btn btn-outline-success goodbutton">более</button>
                         </template>
                     </div>        
                 </div>   
