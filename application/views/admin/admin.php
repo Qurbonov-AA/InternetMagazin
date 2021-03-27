@@ -2,83 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
-<style type="text/css">
-    thead tr
-        {
-            font-size: 90%;
-        }
-    .btn-success
-        {
-            opacity: 0;
-        }
-    .edit_upd
-        {
-            display:flex;
-            flex-direction: row;
-        }
-    .edit_upd button
-        {
-            margin-left: 0.5rem;
-
-        }
-    ul
-        {
-            padding-top: 15px;
-        }
-    li
-        {
-            border-radius: 10em;
-            transition: 1s all;
-        }
-    li:hover
-        {
-            background-color: #14295e;
-            color:white;        
-            transform: translateX(4%);
-            transition: 1s all;
-            text-align: center;
-        }
-    li:active
-        {
-            transform: translateY(3px);
-            box-shadow: 5px 3px 1px #e6e6e6;
-        }
-    #user,#basket
-        {
-            border-radius: 25px;
-        }
-
-		}
-	ul
-		{
-			padding-top: 15px;
-		}
-	li
-		{
-			border-radius: 10em;
-			transition: 1.5s all;
-		}
-	li:hover
-		{
-			background-color: #14295e;
-			color:white;		
-			transform: translateX(4%);
-			transition: 1.5s all;
-			text-align: center;
-		}
-	li:active
-		{
-			transform: translateY(3px);
-			box-shadow: 5px 3px 1px #e6e6e6;
-		}
-	#user,#basket
-		{
-			border-radius: 25px;
-		}</style>
 <head>
     <meta charset="utf-8">
     <title>Admin panel</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin.css');?>">
 
 
 </head>
@@ -515,7 +443,7 @@ Highcharts.chart('container2', {
                 });
 
             });
-        });
+       
 
 /*                  create user start                */
 
@@ -1379,7 +1307,7 @@ $("body").on("click", ".edit_service", function(){
       });
        
 
-
+    });
 /*                 Delete knopkalari  finish                 */
 
 

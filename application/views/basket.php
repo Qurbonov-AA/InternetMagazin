@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Navoiy Internet Magazine</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/menu.css');?>">
 </head>
 <body>
 <!--                    Menu items                   -->
