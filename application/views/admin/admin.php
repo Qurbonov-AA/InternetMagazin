@@ -2,25 +2,27 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="utf-8">
     <title>Admin panel</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin.css');?>">
 
-
 </head>
 <!-- body start   -->
 <body>
+
     <div id="main_menu">
     
 
                      <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
-
                         <i class="fa fa-2x fa-home"> </i></button> </a> 
                      <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-                     <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>      
+                     <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>    
           
+
 
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-3">
@@ -70,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- end -->
 
             <!-- barchart -->
+
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
 				
@@ -398,10 +401,12 @@ Highcharts.chart('container2', {
                     [
                         "дек",
                         180000
+
                     ]
                     
                 ]
             },
+
             <?php 
               foreach($xarajat_turi as $x)
               {
@@ -457,16 +462,15 @@ Highcharts.chart('container2', {
                 success : function(get_menu)
                     {
                         $("#dinamic_menu").html(get_menu);
-
-                        console.log(get_menu);
-
-                       
-
                     }
                 });
 
             });
+
+      
+
        
+
 
 /*                  create user start                */
 
@@ -521,7 +525,8 @@ Highcharts.chart('container2', {
                         alert(get_ins);
                         location.reload();
                     }
-            }); 
+            });      
+
         });
 
         $("body").on('click','#btn_kat_save',function(){
@@ -540,26 +545,49 @@ Highcharts.chart('container2', {
                 success :  function(get_ins)
                     {
                         alert(get_ins);
+                    }
+            });
+        });
+
+        $("body").on('click','#btn_menu_save', function(){
+            var menu      = $('#menu_name').val(),
+                menu_ru   = $('#menu_name_ru').val(),
+                parent    = $('#menu_parent').val(),
+                id_parent = $('#menu_id_parent').val();
+            var url_menu ="<?php echo base_url('index.php/ajax/menu_ins')?>";
+            $.ajax({
+                url    : url_menu,
+                type   : "POST",
+                data   : {'menu':menu,
+                          'menu_ru':menu_ru, 
+                          'parent':parent, 
+                          'id_parent':id_parent},
+                success: function(get_menu)
+                    {
+                        alert(get_menu);
                         location.reload();
                     }
             });
         });
 
-        $("body").on('click','#btn_hisob_save', function(){
-            var xarajat_nomi = $('#xarajat_nomi').val(),
-                xarajat_summ = $('#xarajat_summ').val();
-            var url_xarajat ="<?php echo base_url('index.php/ajax/hisob_ins')?>";
-              $.ajax({
-                url  : url_xarajat,
-                type :"Post",
-                data :{'xarajat_nomi': xarajat_nomi,
-                       'xarajat_summ':xarajat_summ},
-                success:function(get_hisob)
+
+        $("body").on("click","#btn_service_save",function(){
+            var ser_name    = $("#service_name").val(),
+                ser_name_ru = $("#service_name_ru").val();
+            var url_service = "<?php echo base_url('index.php/ajax/service_ins'); ?>";
+            $.ajax({
+                url : url_service,
+                type : "POST",
+                data : {'ser_name'    : ser_name,
+                        'ser_name_ru' : ser_name_ru,},
+                success : function(ser)
                     {
-                        alert(get_hisob);
-                    }                 
-              });
+                        alert(ser);
+                        location.reload();
+                    }
+            });
         });
+
 
         $("body").on("click", "#btn_sub_kat_save", function(){
 
@@ -644,6 +672,7 @@ Highcharts.chart('container2', {
                     }
             });
         });
+
 
         $("body").on('click','#btn_goods_save', function(){
            var  goods_name      = $('#goods_name').val(),
@@ -1040,6 +1069,7 @@ Highcharts.chart('container2', {
         			}
         	});
         });
+
      $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
@@ -1068,6 +1098,7 @@ Highcharts.chart('container2', {
             $("#"+id+" td:eq(4)").html("<input class='form-control' id='price"+id+"' value='"+price+"'>");
             $("#"+id+" td:eq(6)").html("<input class='form-control' id='title"+id+"' value='"+title+"'>");
             $("#"+id+" td:eq(7)").html("<input class='form-control' id='title_ru"+id+"' value='"+title_ru+"'>");
+
         });
 
 /*                     xarajat_turi update start                     */
@@ -1121,6 +1152,7 @@ Highcharts.chart('container2', {
 /*                       goods     update   finish             */
 
 /*                       service     update   start             */
+
 		$("body").on("click", ".edit_basket", function(){
         	var id      = $(this).attr('name'),
         	    status    = $("#"+id+" td:eq(5)").text();
@@ -1152,6 +1184,7 @@ Highcharts.chart('container2', {
                         location.reload();
                     }
             });
+
         });
 
         $("body").on("click", ".edit_buyurtma_holati", function(){
@@ -1175,6 +1208,7 @@ Highcharts.chart('container2', {
                         //location.reload();
                     }
             })
+
         });
 /*                       service     update   finish             */
 
@@ -1346,6 +1380,7 @@ $("body").on("click", ".edit_service", function(){
       });
        
 
+
     });
 /*                 Delete knopkalari  finish                 */
 /*                     hisob update start                      */
@@ -1381,6 +1416,7 @@ $('body').on('click','.edit_hisob', function(){
             });
         });
 /*                     hisob update finish                     */
+
 
 </script>
 </body>

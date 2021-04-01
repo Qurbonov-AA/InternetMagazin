@@ -42,6 +42,7 @@ class Ajax extends CI_Controller {
      {
       $data['brand'] = $this->db->query("SELECT * from ".$menu)->result_array();
       echo "<table class='table table-hover'>";
+
       echo "<thead>";
       if ($this->input->post("lang") == 'ru')
 
@@ -53,7 +54,6 @@ class Ajax extends CI_Controller {
       { 
         echo "<tr> <th> Brand nomi </th><th> ICH Davlati </th> <th> Muddati </th> <th> Settings </th> </tr></thead>";
       }
-
 
       echo "<tbody>";
       echo "<tr><td><input type='text' class='form-control' id='brand_name'></td><td><input type='text' class='form-control' id='republic'></td><td><input type='text' class='form-control' id='end_date'></td><td><button class='btn btn-outline-success' id='btn_brands_save'>Save </button></td></tr>";
@@ -693,31 +693,32 @@ class Ajax extends CI_Controller {
       echo "Hamma qatorlarni to`ldirish shart!";
     }
   }
-  
+
   
   Public function buyurtma_ins()
     {
       $buyurtma_holati = $this->input->post('buyurtma_holati');
       if(strlen($buyurtma_holati)>0)
-    {
-      $data_ins = array(
-        'buyurtma_holati'  => $buyurtma_holati,
-      );
-      $error = $this->db->insert('buyurtma_holati',$data_ins);
-      if ($error == 1)
-          {
-            echo "Ma'lumotlar bazaga yozildi";
-          }
-        else
-          {
-            echo "Ma'lumotlarni yozishda xatolik bor";
-          }
+      {
+        $data_ins = array(
+          'buyurtma_holati'  => $buyurtma_holati,
+        );
+        $error = $this->db->insert('buyurtma_holati',$data_ins);
+        if ($error == 1)
+            {
+              echo "Ma'lumotlar bazaga yozildi";
+            }
+          else
+            {
+              echo "Ma'lumotlarni yozishda xatolik bor";
+            }
+      }
+      else
+      {
+        echo "Hamma qatorlarni to`ldirish shart!";
+      }
     }
-    else
-    {
-      echo "Hamma qatorlarni to`ldirish shart!";
-    }
-    }
+
 
 /*                       delete knopkalar start           */
  public function users_btn_del()
@@ -1100,6 +1101,7 @@ public function groups_upd()
     }
   }
 
+
   Public function buyurtma_holati_upd()
     {
         $id = $this->input->post('id');
@@ -1193,21 +1195,11 @@ public function get_services()
     $id                   = $this->input->post('id');
     $data['xarajat_turi'] = $this->db->query('SELECT * FROM xarajat_turi')->result_array();
       echo "<input value='".$xarajat_turi."' id='xarajat_turi".$id."' class='form-control'></option>";
-      /*foreach($data['xarajat_turi'] as $h)
-          {
-            if ($id <> $h['id'])
-            {
-                echo "<option value='".$h['id']."'><input type='text' value='".$h['xarajat_turi']."'></option>";
-
-            }  
-
-            }
-            
-            
-
-          }
-          */
+     
   }
+
+
+/*                        update knopkalar finish              */
 
  Public function buyurtma_holati()
   {
@@ -1224,6 +1216,7 @@ public function get_services()
           }
   }
 /*                        update knopkalar finish               */
+
 
 Public function get_categories()
    {

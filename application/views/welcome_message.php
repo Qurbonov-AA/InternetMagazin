@@ -16,7 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="icon" type="image/png" href="basket.png" sizes="32x32">
 	<link rel="apple-touch-icon" sizes="32x32" href="basket.png">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    
 </head>
 <body>
 <div id="mySidebar" class="sidebar">
@@ -44,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                 }
+
 
                 ?>
             </div>
@@ -101,6 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     ?>
             </div>
             <div class="dropdown">
+
         
                     <?php
                     foreach($menu as $q)
@@ -124,6 +125,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     }
 
+
                     ?>
             </div>
   </div>
@@ -134,6 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 </div>
+
 <nav class="navbar ">
 <button class="openbtn" onclick="openNav()">☰ Gazzon.Uz</button> 
 <div class="log-sign" style="--i: 1.8s" id="mymenu" >

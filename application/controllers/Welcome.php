@@ -30,6 +30,7 @@ class Welcome extends CI_Controller {
 					$data['drilldown'] = $this->db->query("SELECT * FROM hisob h, xarajat_turi x
 					WHERE x.id = h.xarajat_nomi
 					ORDER BY h.xarajat_nomi")->result_array();
+
 					$this->load->view('admin/admin',$data);					
 				}
 	}
