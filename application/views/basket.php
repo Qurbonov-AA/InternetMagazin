@@ -7,146 +7,136 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <title>Navoiy Internet Magazine</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/menu.css');?>">
 </head>
 <body>
 <!--                    Menu items                   -->
-<header>
-<nav class="navbar navbar-expand-lg navbar-light " style="opacity: 0.8;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="font-size: 2em;">Gazzon.uz</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
+<div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <div class="dropdown">
+        
+                <?php
+                foreach($menu as $q)
+                {
+                    if ($q['parent'] == '0' and $q['id_parent'] == '1')
+                    {
+                        echo "<a href='#'>".$q['menu']."</a>";
+                        echo '<div class="dropdown"><ul>';
+                    }
+                    elseif ($q['parent'] == '1' and $q['id_parent'] == '0')
+                    {
+
+                        echo '  <li class="dropdown-content">';
+                        echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
+
+
+                    }
+
+
+
+                }
+
+                ?>
+            </div>
+
+            <div class="dropdown">
+        
+                <?php
+                foreach($menu as $q)
+                {
+                    if ($q['parent'] == '30' and $q['id_parent'] == '20')
+                    {
+                        echo "<a href='#'>".$q['menu']."</a>";
+                        echo '<div class="dropdown"><ul>';
+                    }
+                    elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
+                    {
+
+                        echo '  <li class="dropdown-content">';
+                        echo '    <a href="">'.$q['menu'].'</a>
+                                    </li>';
+
+
+                    }
+
+
+
+                }
+
+                ?>
+            </div>
+            <div class="dropdown">
+        
+                    <?php
+                    foreach($menu as $q)
+                    {
+                        if ($q['parent'] == '25' and $q['id_parent'] == '26')
                         {
-                            if ($q['parent'] == '0' and $q['id_parent'] == '1')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '1' and $q['id_parent'] == '0')
-                            {
+                            echo "<a href='#'>".$q['menu']."</a>";
+                            echo '<div class="dropdown"><ul>';
+                        }
+                        elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
+                        {
 
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
+                            echo '  <li class="dropdown-content">';
+                            echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
 
 
                         }
 
-                        ?>
-                </ul>
+
+
+                    }
+
+                    ?>
             </div>
-
-            </li>
-            
-
-            <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
+            <div class="dropdown">
+        
+                    <?php
+                    foreach($menu as $q)
+                    {
+                        if ($q['parent'] == '3' and $q['id_parent'] == '44')
                         {
-                            if ($q['parent'] == '30' and $q['id_parent'] == '20')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
-                            {
+                            echo "<a href='#'>".$q['menu']."</a>";
+                            echo '<div class="dropdown"><ul>';
+                        }
+                        elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
+                        {
 
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
+                            echo '  <li class="dropdown-content">';
+                            echo '    <a href="">'.$q['menu'].'</a>
+                                        </li>';
 
 
                         }
 
-                        ?>
-                </ul>
+
+
+                    }
+
+                    ?>
             </div>
-
-            </li>
-            <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '3' and $q['id_parent'] == '44')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '44' and $q['id_parent'] == '3')
-                            {
-
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
-
-
-                        }
-
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-            <li class="nav-link" style="--i: .85s">
-                        <?php
-                        foreach($menu as $q)
-                        {
-                            if ($q['parent'] == '25' and $q['id_parent'] == '26')
-                            {
-                                echo "<a href='#'>".$q['menu']."</a>";
-                                echo '<div class="dropdown"><ul>';
-                            }
-                            elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
-                            {
-
-                                echo '  <li class="dropdown-link">';
-                                echo '    <a href="">'.$q['menu'].'</a>
-                                              </li>';
-
-
-                            }
-
-
-
-                        }
-
-                        ?>
-                </ul>
-            </div>
-
-            </li>
-            
-            
-      </ul>
-    </div>
   </div>
+ 
+</div>
 
-  <div class="log-sign" style="--i: 1.8s margin-top:-2%;" id = "mymenu">                 
-                 <a href="<?php echo base_url('index.php/basket');?>"><button  class="btn btn-outline-success"><i class="fa fa-2x fa-shopping-cart"> {{basket_count}} </i> </button> </a>
-                 <a href="<?php echo base_url('index.php/auth/login');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
-                 <a href="<?php echo base_url('index.php/auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-user-plus"> </i></button></a> 
-                 <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'><i class="fa fa-2x fa-home"> </i></button> </a>    
-                 <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-                 <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>       
-  </div>
+</div><br>
+
+</div>
+</div>
+<nav class="navbar ">
+<button class="openbtn" onclick="openNav()">☰ Gazzon.Uz</button> 
+<div class="log-sign" style="--i: 1.8s" id="mymenu" >
+        <a href="<?php echo base_url('index.php/welcome/admin');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-unlock" aria-hidden="true"></i></button> </a>        
+        <a href="<?php echo base_url('index.php/basket');?>"><button  class="btn btn-outline-success"><i class="fa fa-2x fa-shopping-cart"> {{basket_count}} </i> </button>  </a>
+        <a href="<?php echo base_url('auth/create_user');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-in"> </i></button></a>
+        <a href="<?php echo base_url('index.php/auth/logout');?>"><button class="btn btn-outline-success"><i class="fa fa-2x fa-sign-out"> </i></button></a> 
+        <a href="#"><button @click="change_language('ru')" class="btn btn-outline-success "><i class="fa fa-2x"> RU </i></button></a>
+        <a href="#"><button @click="change_language('uz')" class="btn btn-outline-success "><i class="fa fa-2x"> UZ </i></button></a>
+ 
+ </div>
 </nav>
 
 
@@ -229,6 +219,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://kit.fontawesome.com/64d58efce2.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.js');?>"></script>
 <script>
       var app = new Vue({
          el : "#basket",
@@ -419,6 +411,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     })                    
+</script>
+<script>
+  function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+<script>
+
+ $(function() {
+
+$("[data-drilldown-button]").click(function() {
+  $('[data-drilldown-sub]').addClass("open");
+  $("[data-drilldown-item], [data-drilldown-button]").addClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub]').outerHeight())
+  return false;
+});
+
+$("[data-drilldown-back]").click(function() {
+  $('[data-drilldown-sub]').removeClass("open");
+  $("[data-drilldown-item], [data-drilldown-button]").removeClass("close");
+
+  $(".wrapper").css("height", "auto");
+  return false;
+});
+
+$("[data-drilldown-button-2]").click(function() {
+  $('[data-drilldown-sub-2]').addClass("open-sub-2");
+  $("[data-drilldown-sub], [data-drilldown-button-2]").addClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub-2]').outerHeight());
+  return false;
+});
+
+$("[data-drilldown-back-2]").click(function() {
+  $('[data-drilldown-sub-2]').removeClass("open-sub-2");
+  $("[data-drilldown-sub], [data-drilldown-button-2]").removeClass("close");
+
+  $(".wrapper").css("height", $('[data-drilldown-sub]').outerHeight());
+  return false;
+});
+
+});
+
 </script>
 </body>
 </html>

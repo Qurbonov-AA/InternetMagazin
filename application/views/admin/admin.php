@@ -2,84 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
-<style type="text/css">
-    thead tr
-        {
-            font-size: 90%;
-        }
-    .btn-success
-        {
-            opacity: 0;
-        }
-    .edit_upd
-        {
-            display:flex;
-            flex-direction: row;
-        }
-    .edit_upd button
-        {
-            margin-left: 0.5rem;
 
-        }
-    ul
-        {
-            padding-top: 15px;
-        }
-    li
-        {
-            border-radius: 10em;
-            transition: 1s all;
-        }
-    li:hover
-        {
-            background-color: #14295e;
-            color:white;        
-            transform: translateX(4%);
-            transition: 1s all;
-            text-align: center;
-        }
-    li:active
-        {
-            transform: translateY(3px);
-            box-shadow: 5px 3px 1px #e6e6e6;
-        }
-    #user,#basket
-        {
-            border-radius: 25px;
-        }
 
-		}
-	ul
-		{
-			padding-top: 15px;
-		}
-	li
-		{
-			border-radius: 10em;
-			transition: 1.5s all;
-		}
-	li:hover
-		{
-			background-color: #14295e;
-			color:white;		
-			transform: translateX(4%);
-			transition: 1.5s all;
-			text-align: center;
-		}
-	li:active
-		{
-			transform: translateY(3px);
-			box-shadow: 5px 3px 1px #e6e6e6;
-		}
-	#user,#basket
-		{
-			border-radius: 25px;
-		}</style>
 <head>
     <meta charset="utf-8">
     <title>Admin panel</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap.css');?>">
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/admin.css');?>">
 
 </head>
 <!-- body start   -->
@@ -89,10 +18,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
 
                      <a href="<?php echo base_url();?>"> <button @click="main_menu" class='btn btn-outline-success'>
-                        <i class="fa fa-2x fa-home"> </i></button> </a>
-                        <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button> 
-                        <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
-                           
+                        <i class="fa fa-2x fa-home"> </i></button> </a> 
+                     <button @click="change_language('ru')" class="fa fa-2x btn btn-outline-success">RU</button>
+                     <button @click="change_language('uz')" class="fa fa-2x btn btn-outline-success">UZ</button>    
+          
+
+
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-3">
                  
@@ -141,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- end -->
 
             <!-- barchart -->
-   
+
 			
 			<div class="col-md-9 col-lg-9 col-xl-9 col-9" id="dinamic_menu">
 				
@@ -225,6 +156,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             { 
                 app.lang = lang;
                 lang_change(lang);
+                activecolor : 'red';
             }
         }
 
@@ -237,9 +169,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script type="text/javascript">
 
     var data_kat ;
-  
-
-
   
  var chart = Highcharts.stockChart('container3', {
 
@@ -412,7 +341,7 @@ Highcharts.chart('container2', {
             	?>
                 {
                     name: "Ишчилар маоши",
-                    y: 6207040,
+                    y: 620704,
                     drilldown: "Ишчилар маоши"
                 }
             ]
@@ -424,57 +353,83 @@ Highcharts.chart('container2', {
                 name: "Ишчилар маоши",
                 id: "Ишчилар маоши",
                 data: [
+                    ["янв",10],
                     [
                         "янв",
-                        1000000
+                        100000
                     ],
                     [
                         "фев",
-                        1030000
+                        103000
                     ],
                     [
                         "март",
-                        3200000
+                        320000
                     ],
                     [
                         "апр",
-                        1400000
+                        140000
                     ],
                     [
                         "май",
-                        6800000
+                        680000
                     ],
                     [
                         "июн",
-                        5600000
+                        560000
                     ],
                     [
                         "июл",
-                        4500000
+                        450000
                     ],
                     [
                         "авг",
-                        4000000
+                        400000
                     ],
                     [
                         "сен",
-                        3200000
+                        320000
                     ],
                     [
                         "окт",
-                        9000000
+                        900000
                     ],
                     [
                         "ноябр",
-                        7900000
+                        790000
                     ],
                     [
                         "дек",
-                        1800000
+                        180000
+
                     ]
                     
                 ]
             },
+
+            <?php 
+              foreach($xarajat_turi as $x)
+              {
+                echo "{"; 
+                echo " name : '".$x['xarajat_turi']."' ,"; 
+                echo " id : '".$x['xarajat_turi']."' ,";
+                echo " data : [";
+                    foreach($drilldown as $d)
+                    {
+                        if ($d['xarajat_turi'] === $x['xarajat_turi'] )
+                        {
+                            echo "[ '".$d['data']."', ".$d['xarajat_summ']." ],";
+                        }
+                        
+                    }
+                      
+                echo "]";
+                echo "},";
+              }
+              
+            ?>
+                       
+
         ]
     }
 });
@@ -486,7 +441,6 @@ Highcharts.chart('container2', {
     function lang_change(language)
     {
        lang = language; 
-        
     }
 
     $(document).ready(function(){
@@ -508,12 +462,15 @@ Highcharts.chart('container2', {
                 success : function(get_menu)
                     {
                         $("#dinamic_menu").html(get_menu);
-                       
                     }
                 });
 
             });
-        });
+
+      
+
+       
+
 
 /*                  create user start                */
 
@@ -568,7 +525,8 @@ Highcharts.chart('container2', {
                         alert(get_ins);
                         location.reload();
                     }
-            }); 
+            });      
+
         });
 
         $("body").on('click','#btn_kat_save',function(){
@@ -587,10 +545,49 @@ Highcharts.chart('container2', {
                 success :  function(get_ins)
                     {
                         alert(get_ins);
+                    }
+            });
+        });
+
+        $("body").on('click','#btn_menu_save', function(){
+            var menu      = $('#menu_name').val(),
+                menu_ru   = $('#menu_name_ru').val(),
+                parent    = $('#menu_parent').val(),
+                id_parent = $('#menu_id_parent').val();
+            var url_menu ="<?php echo base_url('index.php/ajax/menu_ins')?>";
+            $.ajax({
+                url    : url_menu,
+                type   : "POST",
+                data   : {'menu':menu,
+                          'menu_ru':menu_ru, 
+                          'parent':parent, 
+                          'id_parent':id_parent},
+                success: function(get_menu)
+                    {
+                        alert(get_menu);
                         location.reload();
                     }
             });
         });
+
+
+        $("body").on("click","#btn_service_save",function(){
+            var ser_name    = $("#service_name").val(),
+                ser_name_ru = $("#service_name_ru").val();
+            var url_service = "<?php echo base_url('index.php/ajax/service_ins'); ?>";
+            $.ajax({
+                url : url_service,
+                type : "POST",
+                data : {'ser_name'    : ser_name,
+                        'ser_name_ru' : ser_name_ru,},
+                success : function(ser)
+                    {
+                        alert(ser);
+                        location.reload();
+                    }
+            });
+        });
+
 
         $("body").on("click", "#btn_sub_kat_save", function(){
 
@@ -676,6 +673,7 @@ Highcharts.chart('container2', {
             });
         });
 
+
         $("body").on('click','#btn_goods_save', function(){
            var  goods_name      = $('#goods_name').val(),
                 goods_name_ru   = $('#goods_name_ru').val(),
@@ -702,6 +700,20 @@ Highcharts.chart('container2', {
                         alert(get_good);
                     }
             });
+        });
+
+        $("body").on('click','#btn_buyurtma_holati_save',function(){
+            var buyurtma_holati = $('#buyurtma_holati').val();
+            var url_buyurtma = "<?php echo base_url('index.php/ajax/buyurtma_ins')?>";
+             $.ajax({
+                url   :  url_buyurtma,
+                type  :  "POST",
+                data  :  {'buyurtma_holati': buyurtma_holati},
+                success: function(buyurtma_get)
+                    {
+                        alert(buyurtma_get);
+                    }  
+             }); 
         });
 
         
@@ -1057,61 +1069,8 @@ Highcharts.chart('container2', {
         			}
         	});
         });
-/*                       goods     update   finish             
 
-            var id = $(this).attr('name'), url_type = "<?php echo base_url('index.php/ajax/get_types');?>", 
-            url_brand = "<?php echo base_url('index.php/ajax/get_brands');?>", 
-            url_services="<?php echo base_url('index.php/ajax/get_services');?>";
-            var t_name     = $("#"+id+" td:eq(0)").text(),
-                t_name_ru  = $("#"+id+" td:eq(1)").text(),
-                id_type    = $("#"+id+" td:eq(2)").text(),
-                price      = $("#"+id+" td:eq(4)").text(),
-                id_services= $("#"+id+" td:eq(5)").text(),
-                title      = $("#"+id+" td:eq(6)").text(),
-                title_ru   = $("#"+id+" td:eq(7)").text();
-                select_type= '';
-                $.ajax({
-                    url : url_type,
-                    type : "POST",
-                    data : {'id' :id},
-                    success: function(types)
-                        {
-                            $("#"+id+" td:eq(2)").html("<select class='form-control' id='id_type"+id+"'>"+types+"</select>");
-                        }
-
-
-                });
-                $.ajax({
-                    url : url_brand,
-                    type : "POST",
-                    data : {'id' :id},
-                    success: function(brands)
-
-                    {
-
-                        {
-
-
-                            // if (xarajat_turi.length == 0)
-                            // {
-                            //     alert("edit knopkasini ikki marta bosdiz! :)");
-                            // }
-                            // else
-                            //{
-                                $("#"+id+" td:eq(0)").html(" ");
-                                $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
-                            //}
-                            
-
-                            $("#"+id+" td:eq(3)").html("<select class='form-control' id='id_brand"+id+"'>"+brands+"</select>");
-
-                    }
-                });
-            });
-*/
-                       
-
-        $('body').on('click','.updhisob',function(){
+     $('body').on('click','.updhisob',function(){
             var id =$(this).attr('name'),
                 xarajat_nomi = $("#xarajat_nomi"+id).val(); 
             var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
@@ -1194,20 +1153,23 @@ Highcharts.chart('container2', {
 
 /*                       service     update   start             */
 
-        $("body").on("click", ".edit_basket", function(){
-            var id      = $(this).attr('name');
-            var status    = $("#"+id+" td:eq(5)").text();
-            $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Yangi zakaz</option><option value='Active'>Qabul qilindi</option><option value='Success'>Yuborildi</option></select>");
-         });
-		
-        $("body").on("click", ".edit_basket", function(){
-        	var id      = $(this).attr('name');
-        	var status    = $("#"+id+" td:eq(5)").text();
-        	$("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"' value='"+status+"'><option value='Waiting'>Waiting</option><option value='Active'>Active</option><option value='Success'>Success </option></select>");
-
+		$("body").on("click", ".edit_basket", function(){
+        	var id      = $(this).attr('name'),
+        	    status    = $("#"+id+" td:eq(5)").text();
+            var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/buyurtma_holati')?>";
+            $.ajax({
+                url   :  url_buyurtma_holati,
+                type  : 'POST',
+                data  : {'id': id,
+                         'status' : status},
+                success:function(buyurtma_holati)
+                    {
+                       $("#"+id+" td:eq(5)").html("<select class='form-control' id='status"+id+"'>"+buyurtma_holati+"</select>"); 
+                    }
+            });
         });
-
-        $("body").on("click",".updbasket",function(){
+        	
+       $("body").on("click",".updbasket",function(){
             var id = $(this).attr('name');
             var status    = $("#status"+id).val();
             var url_basket_upd = "<?php echo base_url('index.php/ajax/basket_upd'); ?>";
@@ -1222,8 +1184,59 @@ Highcharts.chart('container2', {
                         location.reload();
                     }
             });
+
+        });
+
+        $("body").on("click", ".edit_buyurtma_holati", function(){
+            var id      = $(this).attr('name');
+            var buyurtma_holati   = $("#"+id+" td:eq(0)").text();
+                $("#"+id+" td:eq(0)").html("<input class='form-control' id='buyurtma_holati"+id+"' value='"+buyurtma_holati+"'>");        
+        });
+
+        $("body").on("click",".updbuyurtma_holati",function(){
+            var id = $(this).attr('name');
+            var buyurtma_holati    = $("#buyurtma_holati"+id).val();
+            var url_buyurtma_holat_upd = "<?php echo base_url('index.php/ajax/buyurtma_holati_upd'); ?>";
+            $.ajax({
+                url : url_buyurtma_holat_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'buyurtma_holati':buyurtma_holati},
+                success: function(basket_upd)
+                    {
+                        alert(basket_upd);
+                        //location.reload();
+                    }
+            })
+
         });
 /*                       service     update   finish             */
+
+$("body").on("click", ".edit_service", function(){
+            var id      = $(this).attr('name');
+            var name    = $("#"+id+" td:eq(0)").text(),
+                name_ru = $("#"+id+" td:eq(1)").text();
+            $("#"+id+" td:eq(0)").html("<input class='form-control' id='service_save"+id+"' value='"+name+"'>");
+            $("#"+id+" td:eq(1)").html("<input class='form-control' id='service_save_ru"+id+"' value='"+name_ru+"'>");
+        });
+
+        $("body").on("click",".updservice",function(){
+            var id = $(this).attr('name');
+            var save_name    = $("#service_save"+id).val(),
+                save_name_ru = $("#service_save_ru"+id).val();
+            var url_service_upd = "<?php echo base_url('index.php/ajax/service_upd'); ?>";
+            $.ajax({
+                url : url_service_upd,
+                type: "POST",
+                data: {'id':id, 
+                       'ser_name':save_name,
+                       'ser_name_ru':save_name_ru},
+                success: function(service_upd)
+                    {
+                        alert(service_upd);
+                    }
+            })
+        }); 
 
 /*                       Delete knopkalari  start                */
 
@@ -1337,21 +1350,72 @@ Highcharts.chart('container2', {
        });
 
        $('body').on('click','#btn_goods_del', function(){
-        var id= $(this).attr('name');
-        var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
-        $.ajax({
-            url   :  url_goods_del,
-            type  :'POST',
-            data  :{'id':id},
-            success: function(goods_del)
-            {
-                alert(goods_del);
-            }
-        });
+       	var id= $(this).attr('name');
+       	var url_goods_del="<?php echo base_url('index.php/ajax/btn_goods_del')?>";
+       	$.ajax({
+       		url   :  url_goods_del,
+       		type  :'POST',
+       		data  :{'id':id},
+       		success: function(goods_del)
+       			{
+       				alert(goods_del);
+       				//location.reload();
+       			}
+       	});
        }); 
+ 
+
+      $("body").on('click','#btn_buyurtma_holati', function(){
+        var id = $(this).attr('name');
+        var url_buyurtma_holati = "<?php echo base_url('index.php/ajax/btn_buyurtma_holati_del')?>";
+        $.ajax({
+            url   :   url_buyurtma_holati,
+            type  :   "POST",
+            data  :   {'id':id},
+            success:function(buyurtma_holat)
+                {
+                    alert(buyurtma_holat);
+                }
+            });
+      });
+       
 
 
+    });
 /*                 Delete knopkalari  finish                 */
+/*                     hisob update start                      */
+$('body').on('click','.edit_hisob', function(){
+            var id     = $(this).attr('name'),
+                xarajat_nomi = $("#"+id+" td:eq(0)").text();
+            var url_hisob = "<?php echo base_url('index.php/ajax/get_xarajat_turi');?>";
+            $.ajax({
+                    url : url_hisob,
+                    type : "POST",
+                    data : {'id' :id,
+                            'xarajat_nomi':xarajat_nomi},
+                    success: function(xarajat_turi)
+                        {
+                            $("#"+id+" td:eq(0)").html("<select class='form-control' id='xarajat_nomi"+id+"'>"+xarajat_turi+"</select>");
+                        }
+            });
+        });
+
+        $('body').on('click','.updhisob',function(){
+            var id =$(this).attr('name'),
+                xarajat_nomi = $('#xarajat_nomi'+id).val();
+            var url_hisob_upd = "<?php echo base_url('index.php/ajax/hisob_upd')?>";
+            $.ajax({
+                url    : url_hisob_upd,
+                type   : 'POST',
+                data   : {'id'          : id,
+                          'xarajat_nomi': xarajat_nomi},
+                success:function(hisob_upd)
+                    {
+                       alert(hisob_upd)
+                    }
+            });
+        });
+/*                     hisob update finish                     */
 
 
 </script>
