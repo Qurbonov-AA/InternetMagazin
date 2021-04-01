@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
 .dropdown-content {
   display: none;
+    font-family:verdana;
   
   background-color: #111;
   min-width: 160px;
@@ -32,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   z-index: 1;
 }
 
-.dropdown:active .dropdown-content {
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
@@ -130,62 +131,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
 
                         ?>
-                </div>
-  </div>
+                
+  </div></div>
   <div class="dropdown">
         
-        <?php
-        foreach($menu as $q)
-        {
-            if ($q['parent'] == '30' and $q['id_parent'] == '20')
-            {
-                echo "<a href='#'>".$q['menu']."</a>";
-                echo '<div class="dropdown"><ul>';
-            }
-            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
-            {
+                        <?php
+                        foreach($menu as $q)
+                        {
+                            if ($q['parent'] == '30' and $q['id_parent'] == '20')
+                            {
+                                echo "<a href='#'>".$q['menu']."</a>";
+                                echo '<div class="dropdown"><ul>';
+                            }
+                            elseif ($q['parent'] == '20' and $q['id_parent'] == '30')
+                            {
 
-                echo '  <li class="dropdown-content">';
-                echo '    <a href="">'.$q['menu'].'</a>
-                              </li>';
-
-
-            }
+                                echo '  <li class="dropdown-content">';
+                                echo '    <a href="">'.$q['menu'].'</a>
+                                              </li>';
 
 
+                            }
 
-        }
 
-        ?>
+
+                        }
+
+                        ?>
+                
+  </div>
 </div>
-</div>
-<div class="dropdown">
-        
-        <?php
-        foreach($menu as $q)
-        {
-            if ($q['parent'] == '25' and $q['id_parent'] == '26')
-            {
-                echo "<a href='#'>".$q['menu']."</a>";
-                echo '<div class="dropdown"><ul>';
-            }
-            elseif ($q['parent'] == '26' and $q['id_parent'] == '25')
-            {
-
-                echo '  <li class="dropdown-content">';
-                echo '    <a href="">'.$q['menu'].'</a>
-                              </li>';
-
-
-            }
-
-
-
-        }
-
-        ?>
-</div>
-</div><br>
 <div class="dropdown">
         
         <?php
@@ -211,9 +186,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         ?>
+
+</div></div>
 </div>
-</div>
-</div>
+
 <nav class="navbar ">
 <button class="openbtn" onclick="openNav()">☰ Gazzon.Uz</button> 
 <div class="log-sign" style="--i: 1.8s" id="mymenu" >
